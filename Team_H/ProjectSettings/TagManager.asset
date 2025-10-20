@@ -9,6 +9,7 @@ TagManager:
   - Moist_Plowe
   - seed
   - Seed
+  - Wall
   layers:
   - Default
   - TransparentFX
