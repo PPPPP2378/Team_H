@@ -10,6 +10,10 @@ TagManager:
   - seed
   - Seed
   - Wall
+  - Grown
+  - Grassland
+  - discharge
+  - Discharge
   layers:
   - Default
   - TransparentFX
