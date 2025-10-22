@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class player_move : MonoBehaviour
 {
-    public float speed = 5f;//プレイヤーの移動速度
+    [Header ("プレイヤー設定")]
+    [SerializeField] public float speed = 5f;//プレイヤーの移動速度
     private Rigidbody2D rb;
     private Collider2D currentTarget; // 今触れているオブジェクトを記録する
 
@@ -18,6 +20,17 @@ public class player_move : MonoBehaviour
 
     [Header("成長にかかる時間(秒)")]
     [SerializeField] private float growTime = 5f;   // 種が育つまでの時間
+
+    [Header("ポイント設定")]
+    [SerializeField] private int harvestPoints = 10;　　　//1収穫のポイント
+    [SerializeField] private TextMeshProUGUI pointText;　//UI表示
+    private int currentPoint = 100;                        //初期ポイント
+    private bool isHolding = false;
+
+    private void Awake()
+    {
+        updateScoreUI();//初期スコア表示
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -76,8 +89,7 @@ public class player_move : MonoBehaviour
                 else if (currentTarget.CompareTag("Grown"))
                 {
                     Debug.Log("作物を収穫");
-                    sr.sprite = plowSprite;//グラフィック変更
-                    currentTarget.tag = "Plow";//タグも変更
+                    HarvestCrop(sr);
                 }
                 else if (currentTarget.CompareTag("Grassland"))
                 {
@@ -101,7 +113,26 @@ public class player_move : MonoBehaviour
             target.tag = "Grown";//タグ変更
         }
     }
+    private void HarvestCrop(SpriteRenderer sr)
+    {
+        //ポイント加算
+        currentPoint += harvestPoints;
+        updateScoreUI();
 
+        sr.sprite = plowSprite;
+        currentTarget.tag = "Plow";
+    }
+    private void updateScoreUI()
+    {
+        if(pointText!=null)
+        {
+            pointText.text = $"Point:{currentPoint}";
+        }
+        else
+        {
+            Debug.LogWarning("textUIがありません");
+        }
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         Debug.Log("接触中のタグ: " + other.tag);
