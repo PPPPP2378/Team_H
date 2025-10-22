@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class player_move : MonoBehaviour
 {
-    public float speed = 0.01f;//プレイヤーの移動速度
+    public float speed = 5f;//プレイヤーの移動速度
     private Rigidbody2D rb;
     private Collider2D currentTarget; // 今触れているオブジェクトを記録する
-    private bool canmove = true;
 
     [Header("畑のスプライト差し替え用")]
     [SerializeField] private Sprite plowedSprite;  // 耕した後の見た目
@@ -29,35 +28,22 @@ public class player_move : MonoBehaviour
         rb.freezeRotation = true; // 回転を固定（衝突時に回転しない）
     }
 
+    void FixedUpdate()
+    {
+        float x = Input.GetAxis("Horizontal"); 
+        float y = Input.GetAxis("Vertical");
+
+        // 移動ベクトル作成＆正規化
+        Vector2 move = new Vector2(x, y).normalized;
+
+        // 速度をかけて移動
+        rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //移動処理
-        Vector2 position = transform.position;
 
-        if (Input.GetKey("a"))
-        {
-            position.x -= speed;
-        }
-        else if (Input.GetKey("d"))
-        {
-            position.x += speed;
-        }
-        else if (Input.GetKey("w"))
-        {
-            position.y += speed;
-        }
-        else if (Input.GetKey("s"))
-        {
-            position.y -= speed;
-        }
-
-        transform.position = position;
-
-        
-    }
-    void DoActon()
-    {
         //指定タグでスペースキーを押した時の処理
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -121,34 +107,5 @@ public class player_move : MonoBehaviour
         Debug.Log("接触中のタグ: " + other.tag);
         currentTarget = other; // 現在触れているオブジェクトを記録
     }
-
-    // 離れたときに解除
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (currentTarget == other)
-        {
-            currentTarget = null;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject .CompareTag("Wall"))
-        {
-            Debug.Log("障害物に接触");
-            canmove = false;
-            rb.linearVelocity = Vector2.zero;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Wall"))
-        {
-            Debug.Log("障害物から離れました");
-            canmove = true;
-        }
-    }
-
-
 }
 

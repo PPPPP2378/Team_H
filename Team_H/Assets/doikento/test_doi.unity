@@ -558,7 +558,7 @@ Transform:
   m_GameObject: {fileID: 351037598}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.412, y: -2.84, z: 0}
+  m_LocalPosition: {x: -19.97, y: -2.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e2cc3bdfe48d643ae30bf0911b53db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 5
   plowedSprite: {fileID: -6141724211594974790, guid: ffe297430ba95ef4aadcc05dc1ffc8a5, type: 3}
   wateredSprite: {fileID: -4229860799339438811, guid: e79bd15e7024aab468a636057639ba56, type: 3}
   seedSprite: {fileID: -7866928900747384746, guid: 92134edceaab55b43924a4c00cf946a4, type: 3}
@@ -655,7 +655,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!1 &605043819
 GameObject:
@@ -887,11 +887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7622892065340602486, guid: e41b47519441c0f4bafc9b301b513173, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.71
+      value: -24.02
       objectReference: {fileID: 0}
     - target: {fileID: 7622892065340602486, guid: e41b47519441c0f4bafc9b301b513173, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.707109
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 7622892065340602486, guid: e41b47519441c0f4bafc9b301b513173, type: 3}
       propertyPath: m_LocalPosition.z
