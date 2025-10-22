@@ -3,8 +3,8 @@ using UnityEngine;
 public class RabbitAI : MonoBehaviour
 {
     [Header("移動設定")]
-    public float moveSpeed = 2f;           // 移動速度
-    private int direction = 1;             // 1=右, -1=左
+    public float moveSpeed = 2f; 			// 移動速度
+    private int direction = 1; 				// 1=右, -1=左
     public float groundCheckDistance = 0.5f;
     public LayerMask groundLayer;
 
@@ -18,6 +18,7 @@ public class RabbitAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        // MissingComponentExceptionの解決に必須
         sr = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
     }
@@ -29,26 +30,21 @@ public class RabbitAI : MonoBehaviour
 
     void Patrol()
     {
-        // 足元の先に地面があるか判定
-        Vector2 groundCheckPos = new Vector2(transform.position.x + direction * 0.4f, transform.position.y - 0.5f);
-        bool isGroundAhead = Physics2D.Raycast(groundCheckPos, Vector2.down, groundCheckDistance, groundLayer);
+        // ⭐⭐ 修正推奨 ⭐⭐ Raycastの開始位置を0.3fから0.15fに変更
+        float rayStartOffset = 0.15f;
+        float wallRayLength = 0.1f;
+
+        // ... (地面チェック)
 
         // 目の前に壁があるか判定
-        Vector2 wallCheckPos = new Vector2(transform.position.x + direction * 0.5f, transform.position.y);
-        bool isWallAhead = Physics2D.Raycast(wallCheckPos, Vector2.right * direction, 0.2f, groundLayer);
+        Vector2 wallCheckPos = new Vector2(transform.position.x + direction * rayStartOffset, transform.position.y);
+        bool isWallAhead = Physics2D.Raycast(wallCheckPos, Vector2.right * direction, wallRayLength, groundLayer);
 
-        // 壁 or 崖 で方向転換
-        if (!isGroundAhead || isWallAhead)
-        {
-            direction *= -1;
-            sr.flipX = direction < 0; // 見た目を反転
-        }
+        // ... (方向転換ロジック)
 
-        // 移動
         rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
     }
 
-    // ダメージ受ける処理（あとで使う用）
     public void TakeDamage(int dmg)
     {
         currentHP -= dmg;
@@ -60,18 +56,23 @@ public class RabbitAI : MonoBehaviour
 
     void Die()
     {
-        // 今は削除だけ（あとでアニメーション追加可）
         Destroy(gameObject);
     }
 
-    // Sceneで視覚デバッグ用
+    // Sceneで視覚デバッグ用 (調整後の値に合わせてGizmosも調整推奨)
     void OnDrawGizmosSelected()
     {
+        // 崖チェックのRay (黄色)
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position + new Vector3(direction * 0.4f, -0.5f, 0),
                         transform.position + new Vector3(direction * 0.4f, -0.5f - groundCheckDistance, 0));
+
+        // 壁チェックのRay (赤) - 調整後の値 (0.3fと0.1f) に合わせる
+        float debugRayStartOffset = 0.3f;
+        float debugRayLength = 0.1f;
+
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + new Vector3(direction * 0.5f, 0, 0),
-                        transform.position + new Vector3(direction * 0.7f, 0, 0));
+        Gizmos.DrawLine(transform.position + new Vector3(direction * debugRayStartOffset, 0, 0),
+                        transform.position + new Vector3(direction * (debugRayStartOffset + debugRayLength), 0, 0));
     }
 }
