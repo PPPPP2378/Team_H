@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class RabbitAI : MonoBehaviour
 {
-    [Header("�ړ��ݒ�")]
-    public float moveSpeed = 2f;           // �ړ����x
-    private int direction = 1;             // 1=�E, -1=��
+    [Header("移動設定")]
+    public float moveSpeed = 2f;           // 移動速度
+    private int direction = 1;             // 1=右, -1=左
     public float groundCheckDistance = 0.5f;
     public LayerMask groundLayer;
 
-    [Header("HP�ݒ�")]
+    [Header("HP設定")]
     public int maxHP = 3;
     private int currentHP;
 
@@ -29,28 +29,29 @@ public class RabbitAI : MonoBehaviour
 
     void Patrol()
     {
-        // �����E�O���̒n�ʂ�ǂ����m
-        Vector2 front = new Vector2(transform.position.x + direction * 0.5f, transform.position.y);
-        Vector2 down = new Vector2(transform.position.x + direction * 0.5f, transform.position.y - 1f);
+        // 足元の先に地面があるか判定
+        Vector2 groundCheckPos = new Vector2(transform.position.x + direction * 0.4f, transform.position.y - 0.5f);
+        bool isGroundAhead = Physics2D.Raycast(groundCheckPos, Vector2.down, groundCheckDistance, groundLayer);
 
-        bool wallAhead = Physics2D.Raycast(front, Vector2.right * direction, 0.2f, groundLayer);
-        bool groundAhead = Physics2D.Raycast(down, Vector2.down, groundCheckDistance, groundLayer);
+        // 目の前に壁があるか判定
+        Vector2 wallCheckPos = new Vector2(transform.position.x + direction * 0.5f, transform.position.y);
+        bool isWallAhead = Physics2D.Raycast(wallCheckPos, Vector2.right * direction, 0.2f, groundLayer);
 
-        // �� or �R�ɗ����甽�]
-        if (wallAhead || !groundAhead)
+        // 壁 or 崖 で方向転換
+        if (!isGroundAhead || isWallAhead)
         {
             direction *= -1;
-            sr.flipX = !sr.flipX;
+            sr.flipX = direction < 0; // 見た目を反転
         }
 
-        // �ړ�����
+        // 移動
         rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
     }
 
-    public void TakeDamage(int amount)
+    // ダメージ受ける処理（あとで使う用）
+    public void TakeDamage(int dmg)
     {
-        currentHP -= amount;
-
+        currentHP -= dmg;
         if (currentHP <= 0)
         {
             Die();
@@ -59,19 +60,18 @@ public class RabbitAI : MonoBehaviour
 
     void Die()
     {
-        // TODO: �G�t�F�N�g��X�R�A���Z��ǉ����Ă�OK
+        // 今は削除だけ（あとでアニメーション追加可）
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmosSelected()
+    // Sceneで視覚デバッグ用
+    void OnDrawGizmosSelected()
     {
-        // �f�o�b�O�p Ray ����
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + Vector3.right * direction * 0.5f,
-                        transform.position + Vector3.right * direction * 0.7f);
-
         Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position + new Vector3(direction * 0.4f, -0.5f, 0),
+                        transform.position + new Vector3(direction * 0.4f, -0.5f - groundCheckDistance, 0));
+        Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position + new Vector3(direction * 0.5f, 0, 0),
-                        transform.position + new Vector3(direction * 0.5f, -groundCheckDistance, 0));
+                        transform.position + new Vector3(direction * 0.7f, 0, 0));
     }
 }
