@@ -1,142 +1,138 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class player_move : MonoBehaviour
 {
-    [Header ("ƒvƒŒƒCƒ„[İ’è")]
-    [SerializeField] public float speed = 5f;//ƒvƒŒƒCƒ„[‚ÌˆÚ“®‘¬“x
+    public float speed = 3f; //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç§»å‹•é€Ÿåº¦
     private Rigidbody2D rb;
-    private Collider2D currentTarget; // ¡G‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğ‹L˜^‚·‚é
+    private Collider2D currentTarget; // ä»Šè§¦ã‚Œã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¨˜éŒ²ã™ã‚‹
+    private Vector2 movement;
 
-    [Header("”¨‚ÌƒXƒvƒ‰ƒCƒg·‚µ‘Ö‚¦—p")]
-    [SerializeField] private Sprite plowedSprite;  // k‚µ‚½Œã‚ÌŒ©‚½–Ú
-    [SerializeField] private Sprite wateredSprite; // …‚â‚èŒã‚ÌŒ©‚½–Ú
-    [SerializeField] private Sprite seedSprite;@@//í‚ğA‚¦‚½Œã‚ÌŒ©‚½–Ú
-    [SerializeField] private Sprite grownSprite;   //¬’·Œã
-    [SerializeField] private Sprite plowSprite;    //ûŠnŒã‚ÌŒ©‚½–Ú
-    [SerializeField] private Sprite dischargeSprite;     //•ú“dã©İ’uŒã
+    [Header("ç•‘ã®ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆå·®ã—æ›¿ãˆç”¨")]
+    [SerializeField] private Sprite plowedSprite;   // è€•ã—ãŸå¾Œ
+    [SerializeField] private Sprite wateredSprite;  // æ°´ã‚„ã‚Šå¾Œ
+    [SerializeField] private Sprite seedSprite;     // ç¨®ã‚’æ¤ãˆãŸå¾Œ
+    [SerializeField] private Sprite grownSprite;    // æˆé•·å¾Œã®è¦‹ãŸç›®ï¼ˆè¿½åŠ ï¼‰
+    [SerializeField] private Sprite plowSprite;     //è€•ã™å‰
 
-    [Header("¬’·‚É‚©‚©‚éŠÔ(•b)")]
-    [SerializeField] private float growTime = 5f;   // í‚ªˆç‚Â‚Ü‚Å‚ÌŠÔ
+    [Header("æˆé•·ã«ã‹ã‹ã‚‹æ™‚é–“(ç§’)")]
+    [SerializeField] private float growTime = 5f;   // ç¨®ãŒè‚²ã¤ã¾ã§ã®æ™‚é–“
 
-    [Header("ƒ|ƒCƒ“ƒgİ’è")]
-    [SerializeField] private int harvestPoints = 10;@@@//1ûŠn‚Ìƒ|ƒCƒ“ƒg
-    [SerializeField] private TextMeshProUGUI pointText;@//UI•\¦
-    private int currentPoint = 100;                        //‰Šúƒ|ƒCƒ“ƒg
-    private bool isHolding = false;
+    [Header("ã‚¹ã‚³ã‚¢è¨­å®š")]
+    [SerializeField] private int harvestPoints = 10;          // 1å›åç©«ã”ã¨ã®ãƒã‚¤ãƒ³ãƒˆ
+    [SerializeField] private TextMeshProUGUI scoreText;       // UIè¡¨ç¤ºç”¨
+    private int currentScore = 100;
 
-    private void Awake()
-    {
-        updateScoreUI();//‰ŠúƒXƒRƒA•\¦
-    }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // Rigidbody2D ‚Ìİ’è
-        rb.gravityScale = 0;  // 2D‚Ìã•ûŒüd—Í‚ª•s—v‚È‚çƒIƒt
-        rb.freezeRotation = true; // ‰ñ“]‚ğŒÅ’èiÕ“Ë‚É‰ñ“]‚µ‚È‚¢j
-    }
+        rb.gravityScale = 0;
+        rb.freezeRotation = true;
 
+        UpdateScoreUI(); // åˆæœŸã‚¹ã‚³ã‚¢ã‚’è¡¨ç¤º
+    }
     void FixedUpdate()
     {
-        float x = Input.GetAxis("Horizontal"); 
+        float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        // ˆÚ“®ƒxƒNƒgƒ‹ì¬•³‹K‰»
+        // ç§»å‹•ãƒ™ã‚¯ãƒˆãƒ«ä½œæˆï¼†æ­£è¦åŒ–
         Vector2 move = new Vector2(x, y).normalized;
 
-        // ‘¬“x‚ğ‚©‚¯‚ÄˆÚ“®
+        // é€Ÿåº¦ã‚’ã‹ã‘ã¦ç§»å‹•
         rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
     }
-
-    // Update is called once per frame
     void Update()
     {
 
-        //w’èƒ^ƒO‚ÅƒXƒy[ƒXƒL[‚ğ‰Ÿ‚µ‚½‚Ìˆ—
+        //æŒ‡å®šã‚¿ã‚°ã§ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼ã‚’æŠ¼ã—ãŸæ™‚ã®å‡¦ç†
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentTarget != null)
             {
                 SpriteRenderer sr = currentTarget.GetComponent<SpriteRenderer>();
-                if (sr == null) return; // SpriteRenderer‚ª‚È‚¢ê‡‚Í‰½‚à‚µ‚È‚¢
+                if (sr == null) return;
 
                 if (currentTarget.CompareTag("Plow"))
                 {
-                    Debug.Log("”¨‚ğk‚·");
-                    sr.sprite = plowedSprite; // ƒOƒ‰ƒtƒBƒbƒN•ÏX
-                    currentTarget.tag = "Plowed"; // ƒ^ƒO‚à•ÏX
+                    Debug.Log("ç•‘ã‚’è€•ã™");
+                    sr.sprite = plowedSprite;
+                    currentTarget.tag = "Plowed";
                 }
                 else if (currentTarget.CompareTag("Plowed"))
                 {
-                    Debug.Log("”¨‚É…‚â‚è‚ğ‚µ‚½");
-                    sr.sprite = wateredSprite; // ƒOƒ‰ƒtƒBƒbƒN•ÏX
-                    currentTarget.tag = "Moist_Plowe"; // ƒ^ƒO‚à•ÏX
+                    Debug.Log("ç•‘ã«æ°´ã‚„ã‚Šã‚’ã—ãŸ");
+                    sr.sprite = wateredSprite;
+                    currentTarget.tag = "Moist_Plowe";
                 }
                 else if (currentTarget.CompareTag("Moist_Plowe"))
                 {
-                    Debug.Log("”¨‚Éí‚ğA‚¦‚½");
-                    sr.sprite = seedSprite; // ƒOƒ‰ƒtƒBƒbƒN•ÏX
-                    currentTarget.tag = "Seed"; // ƒ^ƒO‚à•ÏX
+                    Debug.Log("ç•‘ã«ç¨®ã‚’æ¤ãˆãŸ");
+                    sr.sprite = seedSprite;
+                    currentTarget.tag = "Seed";
 
-                    //StartCoroutine‚Å¬’·ŠJn
+                    // æˆé•·å‡¦ç†ã‚’é–‹å§‹
                     StartCoroutine(GrowPlant(currentTarget, sr));
                 }
                 else if (currentTarget.CompareTag("Grown"))
                 {
-                    Debug.Log("ì•¨‚ğûŠn");
+                    Debug.Log("ä½œç‰©ã‚’åç©«ã—ãŸï¼");
                     HarvestCrop(sr);
-                }
-                else if (currentTarget.CompareTag("Grassland"))
-                {
-                    Debug.Log("ã©İ’u");
-                    sr.sprite = dischargeSprite;//ƒOƒ‰ƒtƒBƒbƒN•ÏX
-                    currentTarget.tag = "Discharge";//ƒ^ƒO•ÏX
                 }
             }
         }
     }
+   
+    void OnTriggerStay2D(Collider2D other)
+    {
+        currentTarget = other;
+    }
 
-    //ì•¨‚Ì¬’·ˆ—
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (currentTarget == other)
+        {
+            currentTarget = null;
+        }
+    }
+
+    // ä¸€å®šæ™‚é–“å¾Œã«æ¤ç‰©ã‚’æˆé•·ã•ã›ã‚‹
     private IEnumerator GrowPlant(Collider2D target, SpriteRenderer sr)
     {
-        yield return new WaitForSeconds(growTime);//¬’·‘Ò‚¿
+        yield return new WaitForSeconds(growTime); // æˆé•·æ™‚é–“å¾…ã¡
 
+        // ã‚¿ã‚°ãŒSeedã®ã¾ã¾ãªã‚‰æˆé•·ï¼ˆä»–ã®çŠ¶æ…‹ã«å¤‰ã‚ã£ã¦ã„ãªã„ã“ã¨ã‚’ç¢ºèªï¼‰
         if (target != null && target.CompareTag("Seed"))
         {
-            Debug.Log("ì•¨‚ª¬’·");
-            sr.sprite = grownSprite;//ƒOƒ‰ƒtƒBƒbƒN•ÏX
-            target.tag = "Grown";//ƒ^ƒO•ÏX
+            Debug.Log("æ¤ç‰©ãŒæˆé•·ã—ã¾ã—ãŸï¼");
+            sr.sprite = grownSprite;
+            target.tag = "Grown"; // ã‚¿ã‚°å¤‰æ›´
         }
     }
     private void HarvestCrop(SpriteRenderer sr)
     {
-        //ƒ|ƒCƒ“ƒg‰ÁZ
-        currentPoint += harvestPoints;
-        updateScoreUI();
+        // ã‚¹ã‚³ã‚¢åŠ ç®—
+        currentScore += harvestPoints;
+        UpdateScoreUI();
 
-        sr.sprite = plowSprite;
+        // ç•‘ã‚’ãƒªã‚»ãƒƒãƒˆï¼ˆå†ã³è€•ã›ã‚‹çŠ¶æ…‹ã«æˆ»ã™ï¼‰
+        sr.sprite = plowedSprite;
         currentTarget.tag = "Plow";
     }
-    private void updateScoreUI()
+
+    private void UpdateScoreUI()
     {
-        if(pointText!=null)
+        if (scoreText != null)
         {
-            pointText.text = $"Point:{currentPoint}";
+            scoreText.text = $"Score: {currentScore}";
         }
         else
         {
-            Debug.LogWarning("textUI‚ª‚ ‚è‚Ü‚¹‚ñ");
+            Debug.LogWarning("ScoreTextï¼ˆUIï¼‰ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ï¼");
         }
     }
-    void OnTriggerStay2D(Collider2D other)
-    {
-        Debug.Log("ÚG’†‚Ìƒ^ƒO: " + other.tag);
-        currentTarget = other; // Œ»İG‚ê‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ğ‹L˜^
-    }
 }
-
