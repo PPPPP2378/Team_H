@@ -4,9 +4,20 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
+public class EquipmentData
+{
+    public string name;
+    public Sprite sprite;
+    public int cost;
+}
+
 public class player_move : MonoBehaviour
 {
     public float speed = 3f; //プレイヤーの移動速度
+    [Header("設備リスト")]
+    [SerializeField] private EquipmentData[] equipments; // 複数設備データ
+    private int selectedEquipmentIndex = 0;               // 現在選択中の設備番号
     private Rigidbody2D rb;
     private Collider2D currentTarget; // 今触れているオブジェクトを記録する
     private Vector2 movement;
@@ -17,14 +28,18 @@ public class player_move : MonoBehaviour
     [SerializeField] private Sprite seedSprite;     // 種を植えた後
     [SerializeField] private Sprite grownSprite;    // 成長後の見た目（追加）
     [SerializeField] private Sprite plowSprite;     //耕す前
+    [SerializeField] private Sprite dilschargeSprite;
 
     [Header("成長にかかる時間(秒)")]
     [SerializeField] private float growTime = 5f;   // 種が育つまでの時間
 
+    [Header("設備の設置コスト")]
+    [SerializeField] private int equipmentCost = 20; // 設置時に減るスコア
+
     [Header("スコア設定")]
     [SerializeField] private int harvestPoints = 10;          // 1回収穫ごとのポイント
     [SerializeField] private TextMeshProUGUI scoreText;       // UI表示用
-    private int currentScore = 100;
+    private int currentScore = 100;                           //初期スコア
 
 
     void Start()
@@ -83,6 +98,25 @@ public class player_move : MonoBehaviour
                     Debug.Log("作物を収穫した！");
                     HarvestCrop(sr);
                 }
+                else if (currentTarget.CompareTag("Grassland"))
+                {
+                    EquipmentData selected = equipments[selectedEquipmentIndex];
+
+
+                    if (currentScore >= selected.cost)
+                    {
+                        sr.sprite = selected.sprite;
+                        currentTarget.tag = selected.name; // 設備名をタグにする
+                        currentScore -= selected.cost;
+                        UpdateScoreUI();
+
+                        Debug.Log($"{selected.name} を設置しました（コスト {selected.cost}）");
+                    }
+                    else
+                    {
+                        Debug.Log("スコアが足りません！設備を設置できません。");
+                    }
+                }
             }
         }
     }
@@ -120,7 +154,7 @@ public class player_move : MonoBehaviour
         UpdateScoreUI();
 
         // 畑をリセット（再び耕せる状態に戻す）
-        sr.sprite = plowedSprite;
+        sr.sprite = plowSprite;
         currentTarget.tag = "Plow";
     }
 
@@ -133,6 +167,14 @@ public class player_move : MonoBehaviour
         else
         {
             Debug.LogWarning("ScoreText（UI）が設定されていません！");
+        }
+    }
+    public void SelectEquipment(int index)
+    {
+        if (index >= 0 && index < equipments.Length)
+        {
+            selectedEquipmentIndex = index;
+            Debug.Log($"設備を選択: {equipments[index].name}");
         }
     }
 }
