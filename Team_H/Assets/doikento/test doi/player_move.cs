@@ -7,9 +7,10 @@ using UnityEngine;
 [System.Serializable]
 public class EquipmentData
 {
-    public string name;
-    public Sprite sprite;
-    public int cost;
+    public string name;         //名前
+    public Sprite sprite;　　　//グラフィック
+    public int cost;            //設置コスト
+    public int damage;          // 敵に与えるダメージ量
 }
 
 public class player_move : MonoBehaviour
@@ -28,13 +29,10 @@ public class player_move : MonoBehaviour
     [SerializeField] private Sprite seedSprite;     // 種を植えた後
     [SerializeField] private Sprite grownSprite;    // 成長後の見た目（追加）
     [SerializeField] private Sprite plowSprite;     //耕す前
-    [SerializeField] private Sprite dilschargeSprite;
 
     [Header("成長にかかる時間(秒)")]
     [SerializeField] private float growTime = 5f;   // 種が育つまでの時間
 
-    [Header("設備の設置コスト")]
-    [SerializeField] private int equipmentCost = 20; // 設置時に減るスコア
 
     [Header("スコア設定")]
     [SerializeField] private int harvestPoints = 10;          // 1回収穫ごとのポイント
@@ -111,6 +109,12 @@ public class player_move : MonoBehaviour
                         UpdateScoreUI();
 
                         Debug.Log($"{selected.name} を設置しました（コスト {selected.cost}）");
+
+                        if (selected.damage > 0)
+                        {
+                            DamageTrap trap = currentTarget.gameObject.AddComponent<DamageTrap>();
+                            trap.damage = selected.damage;
+                        }
                     }
                     else
                     {
@@ -123,7 +127,12 @@ public class player_move : MonoBehaviour
    
     void OnTriggerStay2D(Collider2D other)
     {
-        currentTarget = other;
+        if (other.CompareTag("Plow") || other.CompareTag("Plowed") ||
+        other.CompareTag("Moist_Plowe") || other.CompareTag("Seed") ||
+        other.CompareTag("Grown") || other.CompareTag("Grassland"))
+        {
+            currentTarget = other;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)

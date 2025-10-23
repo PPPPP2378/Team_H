@@ -15,6 +15,7 @@ TagManager:
   - discharge
   - Discharge
   - darts
+  - Enemy
   layers:
   - Default
   - TransparentFX
