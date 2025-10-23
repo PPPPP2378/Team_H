@@ -820,7 +820,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   equipments:
-  - name: discharge
+  - name: Discharge
     sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
     cost: 10
     damage: 10
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28a94f141769ed84988860f0a00d1868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 50
+  hp: 10
   damageInterval: 0.5
 --- !u!61 &2043335145
 BoxCollider2D:
@@ -1425,8 +1425,8 @@ Transform:
   m_GameObject: {fileID: 2043335143}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.86, y: -4.04, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.92, y: -2.48, z: 0}
+  m_LocalScale: {x: 0.9316, y: 0.9316, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1513,7 +1513,7 @@ Transform:
   m_GameObject: {fileID: 2058239394}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57, y: -4.09, z: 0}
+  m_LocalPosition: {x: 0.77, y: -4.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
