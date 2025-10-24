@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     private float damageTimer = 0f;     // ダメージ間隔用タイマー
     private bool onTrap = false;        // トラップ上にいるかどうか
-    private int trapDamage = 0;         // 現在のトラップのダメージ量
+    private int trapDamage = 10;         // 現在のトラップのダメージ量
 
     void Update()
     {
