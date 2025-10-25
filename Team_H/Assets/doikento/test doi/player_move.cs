@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+
+[System.Serializable]
+public class EquipmentLevelData
+{
+    public Sprite sprite;　　　//グラフィック
+    public int cost;            //設置コスト
+    public int damage;          // 敵に与えるダメージ量
+}
 
 [System.Serializable]
 public class EquipmentData
 {
-    public string name;         //名前
-    public Sprite sprite;　　　//グラフィック
-    public int cost;            //設置コスト
-    public int damage;          // 敵に与えるダメージ量
+    public string name;              // 設備名
+    public EquipmentLevelData[] levels; // レベルごとのデータ
 }
 
 public class player_move : MonoBehaviour
@@ -18,7 +27,9 @@ public class player_move : MonoBehaviour
     public float speed = 3f; //プレイヤーの移動速度
     [Header("設備リスト")]
     [SerializeField] private EquipmentData[] equipments; // 複数設備データ
-    private int selectedEquipmentIndex = 0;               // 現在選択中の設備番号
+
+    private int selectedEquipmentIndex = -1;               // 現在選択中の設備番号
+    
     private Rigidbody2D rb;
     private Collider2D currentTarget; // 今触れているオブジェクトを記録する
     private Vector2 movement;
@@ -40,6 +51,15 @@ public class player_move : MonoBehaviour
     private int currentScore = 100;                           //初期スコア
 
 
+    [Header("操作設定")]
+    [SerializeField] private float holdInterval = 0.8f; // 長押し判定時間
+    public float holdTimer = 0f;
+    private bool isHolding = false; // 今キーを押しているかどうか
+
+    [Header("UI設定")]
+    [SerializeField] private Image progressBar;         // ゲージ部分のImageをここにドラッグ
+    [SerializeField] private CanvasGroup progressGroup; //  ゲージ全体をまとめてフェードする用（任意）
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +67,14 @@ public class player_move : MonoBehaviour
         rb.freezeRotation = true;
 
         UpdateScoreUI(); // 初期スコアを表示
+
+        // 初期はゲージを非表示
+        if (progressGroup != null) progressGroup.alpha = 0;
+        if (progressBar != null)
+        {
+            progressBar.fillAmount = 0f;
+            progressBar.gameObject.SetActive(false); //ゲージを完全非表示
+        }
     }
     void FixedUpdate()
     {
@@ -61,65 +89,141 @@ public class player_move : MonoBehaviour
     }
     void Update()
     {
+        HandleHoldProgress();//長押し処理を分離してわかりやすく
+       
+    }
 
-        //指定タグでスペースキーを押した時の処理
-        if (Input.GetKeyDown(KeyCode.Space))
+    private void HandleHoldProgress()
+    {
+        //スペース長押し時間を計測
+        if (Input.GetKey(KeyCode.Space))
         {
-            if (currentTarget != null)
+            // 押し始めた瞬間にゲージを表示
+            if (!isHolding)
             {
-                SpriteRenderer sr = currentTarget.GetComponent<SpriteRenderer>();
-                if (sr == null) return;
+                isHolding = true;
+                holdTimer = 0f;
 
-                if (currentTarget.CompareTag("Plow"))
+                if (progressBar != null)
                 {
-                    Debug.Log("畑を耕す");
-                    sr.sprite = plowedSprite;
-                    currentTarget.tag = "Plowed";
+                    progressBar.fillAmount = 0f;
+                    progressBar.gameObject.SetActive(true); // ← 表示
                 }
-                else if (currentTarget.CompareTag("Plowed"))
-                {
-                    Debug.Log("畑に水やりをした");
-                    sr.sprite = wateredSprite;
-                    currentTarget.tag = "Moist_Plowe";
-                }
-                else if (currentTarget.CompareTag("Moist_Plowe"))
-                {
-                    Debug.Log("畑に種を植えた");
-                    sr.sprite = seedSprite;
-                    currentTarget.tag = "Seed";
+                if (progressGroup != null) progressGroup.alpha = 1;
+            }
 
-                    // 成長処理を開始
-                    StartCoroutine(GrowPlant(currentTarget, sr));
-                }
-                else if (currentTarget.CompareTag("Grown"))
-                {
-                    Debug.Log("作物を収穫した！");
-                    HarvestCrop(sr);
-                }
-                else if (currentTarget.CompareTag("Grassland"))
-                {
-                    EquipmentData selected = equipments[selectedEquipmentIndex];
+            holdTimer += Time.deltaTime;
 
+            // ゲージ更新
+            if (progressBar != null)
+                progressBar.fillAmount = Mathf.Clamp01(holdTimer / holdInterval);
 
-                    if (currentScore >= selected.cost)
+            // 満タンになったら実行
+            if (holdTimer >= holdInterval)
+            {
+                TryInteract();
+                holdTimer = 0f;
+                if (progressBar != null) progressBar.fillAmount = 0f;
+                progressBar.gameObject.SetActive(false);
+                if (progressGroup != null) progressGroup.alpha = 0;
+                isHolding = false;
+            }
+        }
+        else
+        {
+            // キーを離したらゲージ非表示＆リセット
+            if (isHolding)
+            {
+                isHolding = false;
+                holdTimer = 0f;
+
+                if (progressBar != null)
+                {
+                    progressBar.fillAmount = 0f;
+                    progressBar.gameObject.SetActive(false); //非表示
+                }
+                if (progressGroup != null) progressGroup.alpha = 0;
+            }
+        }
+    }
+    private void TryInteract()
+    {
+        if (currentTarget != null)
+        {
+            if (currentTarget == null) return;
+            SpriteRenderer sr = currentTarget.GetComponent<SpriteRenderer>();
+            if (sr == null) return;
+
+            if (currentTarget.CompareTag("Plow"))
+            {
+                Debug.Log("畑を耕す");
+                sr.sprite = plowedSprite;
+                currentTarget.tag = "Plowed";
+            }
+            else if (currentTarget.CompareTag("Plowed"))
+            {
+                Debug.Log("畑に水やりをした");
+                sr.sprite = wateredSprite;
+                currentTarget.tag = "Moist_Plowe";
+            }
+            else if (currentTarget.CompareTag("Moist_Plowe"))
+            {
+                Debug.Log("畑に種を植えた");
+                sr.sprite = seedSprite;
+                currentTarget.tag = "Seed";
+
+                // 成長処理を開始
+                StartCoroutine(GrowPlant(currentTarget, sr));
+            }
+            else if (currentTarget.CompareTag("Grown"))
+            {
+                Debug.Log("作物を収穫した！");
+                HarvestCrop(sr);
+            }
+            //設備設置
+            else if (currentTarget.CompareTag("Grassland")|| IsPlacedEquipment(currentTarget.tag))
+            {
+                //設備未選択の場合おけない
+                if (selectedEquipmentIndex == -1)
+                {
+                    Debug.Log("設備が選択されていません");
+                    return;
+                }
+
+                EquipmentData selected = equipments[selectedEquipmentIndex];
+
+                // 設備が既に置かれているかチェック
+                PlacedEquipment placed = currentTarget.GetComponent<PlacedEquipment>();
+
+                // --- まだ設置されていない場合 ---
+                if (placed == null)
+                {
+                    if (currentScore >= selected.levels[0].cost)
                     {
-                        sr.sprite = selected.sprite;
-                        currentTarget.tag = selected.name; // 設備名をタグにする
-                        currentScore -= selected.cost;
+
+                        sr.sprite = selected.levels[0].sprite;
+                        currentTarget.tag = selected.name;
+
+                        // 設置データを追加
+                        PlacedEquipment eq = currentTarget.gameObject.AddComponent<PlacedEquipment>();
+                        eq.data = selected;
+                        eq.level = 0;
+
+                        // コスト支払い
+                        currentScore -= selected.levels[0].cost;
                         UpdateScoreUI();
-
-                        Debug.Log($"{selected.name} を設置しました（コスト {selected.cost}）");
-
-                        if (selected.damage > 0)
-                        {
-                            DamageTrap trap = currentTarget.gameObject.AddComponent<DamageTrap>();
-                            trap.damage = selected.damage;
-                        }
+                        Debug.Log($"{selected.name} を設置しました（Lv1）");
                     }
                     else
                     {
-                        Debug.Log("スコアが足りません！設備を設置できません。");
+                        Debug.Log("スコアが足りません！設置できません。");
                     }
+                }
+                // --- 既に設置されている場合：強化 ---
+                else
+                {
+                    bool upgraded = placed.TryUpgrade(ref currentScore);
+                    if (upgraded) UpdateScoreUI();
                 }
             }
         }
@@ -178,6 +282,8 @@ public class player_move : MonoBehaviour
             Debug.LogWarning("ScoreText（UI）が設定されていません！");
         }
     }
+
+    //UIボタンから呼び出す
     public void SelectEquipment(int index)
     {
         if (index >= 0 && index < equipments.Length)
@@ -185,5 +291,21 @@ public class player_move : MonoBehaviour
             selectedEquipmentIndex = index;
             Debug.Log($"設備を選択: {equipments[index].name}");
         }
+    }
+
+    //選択解除
+    public void DeselectEquipment()
+    {
+        selectedEquipmentIndex = -1;
+        Debug.Log("設備選択を解除しました");
+    }
+
+    private bool IsPlacedEquipment(string tag)
+    {
+        foreach (var eq in equipments)
+        {
+            if (eq.name == tag) return true;
+        }
+        return false;
     }
 }
