@@ -23,6 +23,18 @@ public class PlacedEquipment : MonoBehaviour
             return false;
         }
 
+        //レベル制限
+        player_move player = FindAnyObjectByType<player_move>();
+        if(player!=null)
+        {
+            int nextEquipmentLevel = level + 1;
+
+            if (player.PlayerLevel< nextEquipmentLevel)
+            {
+                Debug.Log($"プレイヤーレベルが足りません！ (必要Lv: {nextEquipmentLevel})");
+                return false;
+            }
+        }
         int nextCost = data.levels[level + 1].cost;
         if (currentScore < nextCost)
         {

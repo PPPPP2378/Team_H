@@ -22,6 +22,8 @@ public class EquipmentData
     public EquipmentLevelData[] levels; // レベルごとのデータ
 }
 
+
+
 public class player_move : MonoBehaviour
 {
     public float speed = 3f; //プレイヤーの移動速度
@@ -59,6 +61,14 @@ public class player_move : MonoBehaviour
     [Header("UI設定")]
     [SerializeField] private Image progressBar;         // ゲージ部分のImageをここにドラッグ
     [SerializeField] private CanvasGroup progressGroup; //  ゲージ全体をまとめてフェードする用（任意）
+
+    [Header("レベルシステム")]
+    [SerializeField] private TextMeshProUGUI levelText;
+    private int playerLevel = 1;
+    private int currentExp = 0;
+    private int expToNext = 50; // 次のレベルに必要な経験値
+    private float speedGrowthRate = 0.2f; // レベルアップごとの速度増加
+    private float holdReductionRate = 0.1f; // 長押し時間短縮率
 
     void Start()
     {
@@ -159,18 +169,21 @@ public class player_move : MonoBehaviour
                 Debug.Log("畑を耕す");
                 sr.sprite = plowedSprite;
                 currentTarget.tag = "Plowed";
+                GainExp(5);
             }
             else if (currentTarget.CompareTag("Plowed"))
             {
                 Debug.Log("畑に水やりをした");
                 sr.sprite = wateredSprite;
                 currentTarget.tag = "Moist_Plowe";
+                GainExp(5);
             }
             else if (currentTarget.CompareTag("Moist_Plowe"))
             {
                 Debug.Log("畑に種を植えた");
                 sr.sprite = seedSprite;
                 currentTarget.tag = "Seed";
+                GainExp(10);
 
                 // 成長処理を開始
                 StartCoroutine(GrowPlant(currentTarget, sr));
@@ -179,6 +192,7 @@ public class player_move : MonoBehaviour
             {
                 Debug.Log("作物を収穫した！");
                 HarvestCrop(sr);
+                GainExp(15);
             }
             //設備設置
             else if (currentTarget.CompareTag("Grassland")|| IsPlacedEquipment(currentTarget.tag))
@@ -212,6 +226,7 @@ public class player_move : MonoBehaviour
                         // コスト支払い
                         currentScore -= selected.levels[0].cost;
                         UpdateScoreUI();
+                        GainExp(20);
                         Debug.Log($"{selected.name} を設置しました（Lv1）");
                     }
                     else
@@ -308,4 +323,35 @@ public class player_move : MonoBehaviour
         }
         return false;
     }
+
+    private void UpdateLevelUI()
+    {
+        if (levelText != null)
+            levelText.text = $"Lv {playerLevel}  EXP: {currentExp}/{expToNext}";
+    }
+    //経験値システム
+    private void GainExp(int amount)
+    {
+        currentExp += amount;
+        Debug.Log($"経験値 +{amount}（現在 {currentExp}/{expToNext}）");
+        if (currentExp >= expToNext)
+        {
+            LevelUp();
+        }
+        UpdateLevelUI();
+    }
+
+    public int PlayerLevel => playerLevel;
+    private void LevelUp()
+    {
+        playerLevel++;
+        currentExp -= expToNext;
+        expToNext = Mathf.RoundToInt(expToNext * 1.2f); // 必要経験値増加
+        speed += speedGrowthRate;
+        holdInterval = Mathf.Max(0.3f, holdInterval - holdReductionRate); // 下限0.3秒
+        Debug.Log($"レベルアップ！ Lv{playerLevel} | 速度:{speed} | 長押し時間:{holdInterval}");
+        UpdateLevelUI();
+    }
+    
+
 }
