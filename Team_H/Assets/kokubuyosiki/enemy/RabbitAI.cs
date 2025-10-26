@@ -3,10 +3,10 @@ using UnityEngine;
 public class RabbitAI : MonoBehaviour
 {
     [Header("移動設定")]
-    public float moveSpeed = 2f; 			// 移動速度
-    private int direction = 1; 				// 1=右, -1=左
-    public float groundCheckDistance = 0.5f;
+    public float moveSpeed = 2f;
+    public float detectionRange = 5f;
     public LayerMask groundLayer;
+    public LayerMask obstacleLayer; // ← wood用（Inspectorで指定）
 
     [Header("HP設定")]
     public int maxHP = 3;
@@ -14,65 +14,88 @@ public class RabbitAI : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
+    private Transform targetTransform;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // MissingComponentExceptionの解決に必須
         sr = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
     }
 
     void FixedUpdate()
     {
-        Patrol();
-    }
+        FindTarget();
 
-    void Patrol()
-    {
-        // ⭐⭐ 修正推奨 ⭐⭐ Raycastの開始位置を0.3fから0.15fに変更
-        float rayStartOffset = 0.15f;
-        float wallRayLength = 0.1f;
-
-        // ... (地面チェック)
-
-        // 目の前に壁があるか判定
-        Vector2 wallCheckPos = new Vector2(transform.position.x + direction * rayStartOffset, transform.position.y);
-        bool isWallAhead = Physics2D.Raycast(wallCheckPos, Vector2.right * direction, wallRayLength, groundLayer);
-
-        // ... (方向転換ロジック)
-
-        rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
-    }
-
-    public void TakeDamage(int dmg)
-    {
-        currentHP -= dmg;
-        if (currentHP <= 0)
+        if (targetTransform != null)
         {
-            Die();
+            ChaseTarget();
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
-    void Die()
+    void FindTarget()
     {
-        Destroy(gameObject);
+        GameObject[] seeds = GameObject.FindGameObjectsWithTag("Seed");
+        GameObject[] wheats = GameObject.FindGameObjectsWithTag("Grown");
+
+        Transform closestTarget = null;
+        float minDistance = detectionRange;
+
+        GameObject[] allTargets = new GameObject[seeds.Length + wheats.Length];
+        seeds.CopyTo(allTargets, 0);
+        wheats.CopyTo(allTargets, seeds.Length);
+
+        foreach (GameObject target in allTargets)
+        {
+            float distance = Vector2.Distance(transform.position, target.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closestTarget = target.transform;
+            }
+        }
+
+        targetTransform = closestTarget;
     }
 
-    // Sceneで視覚デバッグ用 (調整後の値に合わせてGizmosも調整推奨)
+    void ChaseTarget()
+    {
+        Vector2 targetPosition = targetTransform.position;
+        Vector2 currentPosition = transform.position;
+        Vector2 directionVector = (targetPosition - currentPosition).normalized;
+
+        // --- ★ 進行方向にRayを飛ばして障害物をチェック ---
+        RaycastHit2D hit = Physics2D.Raycast(currentPosition, directionVector, 5f, obstacleLayer);
+        if (hit.collider != null)
+        {
+            // 木などにぶつかりそうなら、少し横に避ける方向に変更
+            Vector2 avoidDir = Vector2.Perpendicular(directionVector) * (Random.value > 0.5f ? 1 : -1);
+            directionVector = (directionVector + avoidDir * 0.5f).normalized;
+        }
+
+        rb.linearVelocity = directionVector * moveSpeed;
+
+        if (sr != null)
+        {
+            float xDirection = directionVector.x;
+            if (Mathf.Abs(xDirection) > 0.05f)
+            {
+                sr.flipX = xDirection < 0;
+            }
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
-        // 崖チェックのRay (黄色)
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position + new Vector3(direction * 0.4f, -0.5f, 0),
-                        transform.position + new Vector3(direction * 0.4f, -0.5f - groundCheckDistance, 0));
-
-        // 壁チェックのRay (赤) - 調整後の値 (0.3fと0.1f) に合わせる
-        float debugRayStartOffset = 0.3f;
-        float debugRayLength = 0.1f;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position + new Vector3(direction * debugRayStartOffset, 0, 0),
-                        transform.position + new Vector3(direction * (debugRayStartOffset + debugRayLength), 0, 0));
+        // デバッグ用にRayを可視化
+        if (targetTransform != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)(targetTransform.position - transform.position).normalized);
+        }
     }
 }
