@@ -1,2 +1,12 @@
 fileFormatVersion: 2
 guid: e05411a3f739cc94cb92fb54e262d599
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - plowedSoilSprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
