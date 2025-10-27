@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 895625925388047268}
   - component: {fileID: 6884804602552370216}
   - component: {fileID: 7542746404698482406}
-  - component: {fileID: 5803952659813923980}
+  - component: {fileID: 4956925992023346183}
   m_Layer: 0
   m_Name: "\u30A6\u30B5\u30AE_0"
   m_TagString: Enemy
@@ -115,7 +115,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7542746404698482406
 BoxCollider2D:
@@ -151,7 +151,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.011897624, y: -0.06645635}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -161,9 +161,9 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.04, y: 1.04}
+  m_Size: {x: 0.3989358, y: 0.37735504}
   m_EdgeRadius: 0
---- !u!114 &5803952659813923980
+--- !u!114 &4956925992023346183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,8 +172,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6139544446933270633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28a94f141769ed84988860f0a00d1868, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a2e9f2262de6634f987d039702802e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  damageInterval: 0.5
+  moveSpeed: 1.25
+  detectionRange: 50
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  maxHP: 100
+  plowedSoilSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}
