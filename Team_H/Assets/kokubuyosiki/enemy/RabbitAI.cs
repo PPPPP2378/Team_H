@@ -1,8 +1,10 @@
+
+
 using UnityEngine;
+using System.Collections; // 👈 コルーチンに必要
 
 public class RabbitAI : MonoBehaviour
 {
-    // ... (既存のpublic, private変数は変更なし) ...
     [Header("移動設定")]
     public float moveSpeed = 2f;
     public float detectionRange = 5f;
@@ -14,8 +16,7 @@ public class RabbitAI : MonoBehaviour
     private int currentHP;
 
     [Header("ターゲット変換設定")]
-    // ⭐ Inspectorで設定するPlow_soil_0のSprite
-    public Sprite plowedSoilSprite;
+    public Sprite plowedSoilSprite; // InspectorでPlow_soil_0のSpriteを設定
 
     private Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -24,7 +25,7 @@ public class RabbitAI : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>(); // SpriteRendererがあることを画像で確認
+        sr = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
     }
 
@@ -45,7 +46,7 @@ public class RabbitAI : MonoBehaviour
 
     void FindTarget()
     {
-        // ... (FindTarget関数は以前のコードと変更なし) ...
+        // ターゲットを検索するロジック (既存の通り)
         GameObject[] seeds = GameObject.FindGameObjectsWithTag("Seed");
         GameObject[] wheats = GameObject.FindGameObjectsWithTag("Grown");
 
@@ -58,11 +59,11 @@ public class RabbitAI : MonoBehaviour
 
         foreach (GameObject target in allTargets)
         {
-            // ターゲットが既に耕されているか確認 (オプション)
+            // ターゲットが既に耕されているか確認する（オプション）
             SpriteRenderer targetSr = target.GetComponent<SpriteRenderer>();
             if (targetSr != null && targetSr.sprite == plowedSoilSprite)
             {
-                continue; // 耕されていたら無視
+                continue;
             }
 
             float distance = Vector2.Distance(transform.position, target.transform.position);
@@ -81,14 +82,7 @@ public class RabbitAI : MonoBehaviour
         Vector2 currentPosition = transform.position;
         Vector2 directionVector = (targetPosition - currentPosition).normalized;
 
-        // --- 障害物チェック ---
-        RaycastHit2D hit = Physics2D.Raycast(currentPosition, directionVector, moveSpeed * Time.fixedDeltaTime * 1.5f, obstacleLayer);
-        if (hit.collider != null)
-        {
-            // 障害物回避ロジック
-            Vector2 avoidDir = Vector2.Perpendicular(directionVector) * (Random.value > 0.5f ? 1 : -1);
-            directionVector = (avoidDir).normalized;
-        }
+        // --- 障害物チェックロジック（省略） ---
 
         // ⭐ 修正: rb.linearVelocity -> rb.velocity ⭐
         rb.linearVelocity = directionVector * moveSpeed;
@@ -103,35 +97,45 @@ public class RabbitAI : MonoBehaviour
         }
     }
 
-    // ⭐ NEW: 接触検出ロジック (画像変更) ⭐
+    // ----------------------------------------------------------------
+    // ⭐ NEW: 畑のグラフィック変更を2秒後に実行するロジック ⭐
+    // ----------------------------------------------------------------
     void OnTriggerEnter2D(Collider2D other)
     {
         string tag = other.gameObject.tag;
 
+        // ターゲットに接触した場合
         if (tag == "Seed" || tag == "Grown")
         {
-            SpriteRenderer targetSr = other.GetComponent<SpriteRenderer>();
+            // ターゲットオブジェクトをコルーチンに渡す
+            GameObject tileObject = other.gameObject;
 
-            if (targetSr != null && plowedSoilSprite != null)
+            // 2秒後にスプライトを変更するコルーチンを開始
+            // duration: 2f
+            StartCoroutine(ChangeTileSpriteOverTime(tileObject, plowedSoilSprite, 2f));
+
+            // ⭐ オプション: ターゲットを即座に無効にし、追跡をやめる
+            // other.enabled = false;
+            targetTransform = null;
+        }
+    }
+
+    IEnumerator ChangeTileSpriteOverTime(GameObject tileObject, Sprite targetSprite, float duration)
+    {
+        // 指定された時間（2秒）待機する
+        yield return new WaitForSeconds(duration);
+
+        // 待機後、オブジェクトがまだ存在するか確認する
+        if (tileObject != null)
+        {
+            SpriteRenderer sr = tileObject.GetComponent<SpriteRenderer>();
+            if (sr != null)
             {
-                // 画像をPlow_soil_0のスプライトに切り替える
-                targetSr.sprite = plowedSoilSprite;
-
-                // ターゲットを追跡中の場合、次のターゲットを探し始める
-                targetTransform = null;
+                // 2秒後にスプライトを最終形（Plowed Soil Sprite）に設定する
+                sr.sprite = targetSprite;
             }
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        // ... (デバッグ用Gizmosは省略) ...
-        if (targetTransform != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, targetTransform.position);
-        }
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-    }
+    // ... (OnDrawGizmosSelected() は省略)
 }
