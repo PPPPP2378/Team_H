@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: c1fbe2f32b77a35499461f965d1bc115
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - waveText: {instanceID: 0}
+  - timerText: {instanceID: 0}
+  - stateText: {instanceID: 0}
+  - spawner: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
