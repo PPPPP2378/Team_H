@@ -99,7 +99,7 @@ public class WaveManager : MonoBehaviour
             waveText.text = $"WAVE: {currentWave}/{maxWave}";
 
         if (timerText != null)
-            timerText.text = $"TIME: {timer:F1} SECOND";
+            timerText.text = $"TIME: {timer:F1}";
     }
 
     // 一定時間だけステートテキストを表示して自動で消す
