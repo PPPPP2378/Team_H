@@ -80,7 +80,8 @@ public class WaveManager : MonoBehaviour
             // --- ウェーブ終了 ---
             inWave = false;
             spawner.StopSpawning();
-
+            // ウェーブ終了時に敵を全削除
+            RabbitAI_Complete.RemoveAllRabbits();
             // 「WAVE X CLEAR」表示
             ShowStateText($"WAVE {currentWave} CLEAR",displayTime);
             // 次のウェーブに行く前に少し待機

@@ -7,7 +7,11 @@ MonoImporter:
   - waveText: {instanceID: 0}
   - timerText: {instanceID: 0}
   - stateText: {instanceID: 0}
+<<<<<<< HEAD
+  - spawner: {fileID: 7639420444155934423, guid: 3dcca561a8e7baa4fb821de2b16c2702, type: 3}
+=======
   - spawner: {instanceID: 0}
+>>>>>>> 1672f051984e7fcefb662b297f7a76c9433df892
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
