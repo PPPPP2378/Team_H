@@ -20,6 +20,9 @@ public class RabbitAI_Complete : MonoBehaviour
     private SpriteRenderer sr;
     private Transform targetTransform;
 
+    [Header("回避設定")]
+    public float obstacleCheckDistance = 0.5f;
+
     public int scoreValue = 50; // 倒したときのスコア値
 
     void Start()
@@ -30,25 +33,31 @@ public class RabbitAI_Complete : MonoBehaviour
         FindTarget();
     }
 
+    private Vector2 lastPosition;
+    private float stuckTimer = 0f;
     void FixedUpdate()
     {
-        if (targetTransform == null)
-        {
-            FindTarget();
-            rb.linearVelocity = Vector2.zero;
-            return;
-        }
+        if (Vector2.Distance(rb.position, lastPosition) < 0.01f)
+            stuckTimer += Time.fixedDeltaTime;
+        else
+            stuckTimer = 0f;
 
-        // ターゲットが削除済みまたは荒らされている場合は再探索
-        SpriteRenderer targetSr = targetTransform.GetComponent<SpriteRenderer>();
-        if (targetSr == null || targetSr.sprite == plowedSoilSprite)
+        if (stuckTimer > 2f)
         {
             targetTransform = null;
+            stuckTimer = 0f;
+        }
+
+        lastPosition = rb.position;
+
+        if (targetTransform == null)
+        {
+            rb.linearVelocity = Vector2.zero;
             FindTarget();
             return;
         }
 
-        MoveTowardsTarget(); // ← 変更点
+        MoveTowardsTarget();
     }
 
     // -------------------------------
@@ -97,28 +106,19 @@ public class RabbitAI_Complete : MonoBehaviour
         Vector2 direction = (targetPos - currentPos).normalized;
 
         // Raycastで前方の壁をチェック
-        RaycastHit2D hit = Physics2D.Raycast(currentPos, direction, 0.5f, obstacleLayer);
+        RaycastHit2D fronHit = Physics2D.Raycast(currentPos, direction, obstacleCheckDistance, obstacleLayer);
 
-        if (hit.collider == null)
+        if(fronHit.collider!=null)
         {
-            // 壁がない → 移動
-            Vector2 newPos = currentPos + direction * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(newPos);
+            // 壁に当たったら壁の法線方向を使ってスライド
+            Vector2 wallNormal = fronHit.normal;
+            // 法線に垂直な方向へ滑る（壁沿いに動く）
+            direction = Vector2.Perpendicular(wallNormal) * Mathf.Sign(Vector2.Dot(direction, Vector2.Perpendicular(wallNormal)));
         }
-        else
-        {
-            // 壁がある → 少し横にずらす
-            Vector2 avoid = new Vector2(direction.y, -direction.x);
-            Vector2 newPos = currentPos + avoid * moveSpeed * 0.5f * Time.fixedDeltaTime;
-            rb.MovePosition(newPos);
-        }
+        rb.linearVelocity = direction * moveSpeed;
 
-        // 向き反転
-        if (sr != null)
-        {
-            if (direction.x > 0.05f) sr.flipX = false;
-            else if (direction.x < -0.05f) sr.flipX = true;
-        }
+        if (Mathf.Abs(direction.x) > 0.1)
+            sr.flipX = direction.x < 0;
     }
 
     // -------------------------------

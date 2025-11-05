@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6603698409829211207}
   - component: {fileID: 5176535217179744490}
   - component: {fileID: 8142293175076571772}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 6477727296599749444}
   - component: {fileID: 492940890957536181}
   - component: {fileID: 3404458154201688592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "\u4E3B\u4EBA\u516C_0"
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0030041933, y: -0.008141398}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -270,7 +270,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 1.1}
+  m_Size: {x: 0.6138184, y: 0.9550402}
   m_EdgeRadius: 0
 --- !u!50 &6477727296599749444
 Rigidbody2D:
@@ -284,7 +284,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.814
+  m_Mass: 0.5862213
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 1756466123564481368}
   - component: {fileID: 6093276182192703165}
   - component: {fileID: 7839998983124953331}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 6766360315059137857}
   - component: {fileID: 2380962521076388812}
   - component: {fileID: 2795770786800660298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CanvasGroup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 6665860101008085119}
   - component: {fileID: 7096613685933100110}
   - component: {fileID: 1280722231639747322}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 6788389777121999650}
   - component: {fileID: 9131930014660912870}
   - component: {fileID: 7670061868601739302}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: stateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   - component: {fileID: 6890553105453604136}
   - component: {fileID: 6891288186647038984}
   - component: {fileID: 5135188543495610520}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +911,7 @@ GameObject:
   - component: {fileID: 173790066733355677}
   - component: {fileID: 2314700436256850507}
   - component: {fileID: 4125659250074456693}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ProgressBar_BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 725054521485198764}
   - component: {fileID: 4394804635313499774}
   - component: {fileID: 912733716522110374}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   - component: {fileID: 90711675294946726}
   - component: {fileID: 4379601737019273963}
   - component: {fileID: 8343163748584273475}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: timerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1230,7 +1230,7 @@ GameObject:
   - component: {fileID: 826459699013500867}
   - component: {fileID: 8020769642545869962}
   - component: {fileID: 3709121716401360135}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1366,7 @@ GameObject:
   - component: {fileID: 7500117573669232639}
   - component: {fileID: 7451117997527077424}
   - component: {fileID: 641044503574758288}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: ProgressBar_Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 3247655856667091930}
   - component: {fileID: 6418035404279086060}
   - component: {fileID: 662632775761875760}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1540,7 +1540,7 @@ GameObject:
   - component: {fileID: 3852503757608409740}
   - component: {fileID: 3809161697257064532}
   - component: {fileID: 4810696985391065733}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: 'waveText '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
