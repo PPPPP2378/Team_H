@@ -202,7 +202,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1312684791}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1312684793}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1312684791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.29803923, g: 0.80392164, b: 0.9960785, a: 1}
+  m_Color: {r: 0, g: 0.5764706, b: 0.18823531, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -253,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: 
+  scenename: test2
 --- !u!1 &1422776188
 GameObject:
   m_ObjectHideFlags: 0
