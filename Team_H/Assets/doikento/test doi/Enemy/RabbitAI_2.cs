@@ -7,7 +7,7 @@ public class RabbitAI_Complete : MonoBehaviour
     [Header("移動設定")]
     public float moveSpeed = 2f;
     public float detectionRange = 8f;
-    public LayerMask obstacleLayer;
+    public LayerMask WallLayer;
 
     [Header("HP設定")]
     public int maxHP = 100;
@@ -106,7 +106,7 @@ public class RabbitAI_Complete : MonoBehaviour
         Vector2 direction = (targetPos - currentPos).normalized;
 
         // Raycastで前方の壁をチェック
-        RaycastHit2D fronHit = Physics2D.Raycast(currentPos, direction, obstacleCheckDistance, obstacleLayer);
+        RaycastHit2D fronHit = Physics2D.Raycast(currentPos, direction, obstacleCheckDistance, WallLayer);
 
         if(fronHit.collider!=null)
         {
