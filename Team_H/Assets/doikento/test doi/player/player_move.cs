@@ -352,6 +352,12 @@ public class player_move : MonoBehaviour
         Debug.Log($"レベルアップ！ Lv{playerLevel} | 速度:{speed} | 長押し時間:{holdInterval}");
         UpdateLevelUI();
     }
-    
+    public void AddScore(int amount)
+    {
+        currentScore += amount;
+        UpdateScoreUI();
+        Debug.Log($"敵を倒した！スコア +{amount}（現在: {currentScore}）");
+    }
+
 
 }

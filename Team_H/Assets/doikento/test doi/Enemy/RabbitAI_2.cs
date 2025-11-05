@@ -20,6 +20,7 @@ public class RabbitAI_Complete : MonoBehaviour
     private SpriteRenderer sr;
     private Transform targetTransform;
 
+    public int scoreValue = 50; // 倒したときのスコア値
 
     void Start()
     {
@@ -152,8 +153,16 @@ public class RabbitAI_Complete : MonoBehaviour
         currentHP -= dmg;
         if (currentHP <= 0)
         {
+            // プレイヤーにスコア加算
+            player_move player = FindAnyObjectByType<player_move>();
+            if (player != null)
+            {
+                player.AddScore(scoreValue);
+            }
             Destroy(gameObject);
         }
+
+
     }
 
     // -------------------------------
@@ -186,3 +195,4 @@ public class RabbitAI_Complete : MonoBehaviour
         }
     }
 }
+
