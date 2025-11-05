@@ -15605,6 +15605,10 @@ PrefabInstance:
       value: 505
       objectReference: {fileID: 0}
     - target: {fileID: 1756466123564481368, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1756466123564481368, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.65441895
       objectReference: {fileID: 0}
@@ -15696,6 +15700,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4238827556388144497, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4238827556388144497, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6284233850364448807, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: m_Size.x
       value: 0.70611435
@@ -15712,6 +15724,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6418035404279086060, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7391901198789243302, guid: 4119903ddc7f7864aa6aced21d346b89, type: 3}
+    - target: {fileID: 6418035404279086060, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418035404279086060, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6418035404279086060, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6477727296599749444, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: m_Mass
       value: 0.72887135
@@ -15719,6 +15747,10 @@ PrefabInstance:
     - target: {fileID: 6766360315059137857, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839998983124953331, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8413158081522089639, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: m_Camera
