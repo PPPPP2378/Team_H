@@ -16,6 +16,7 @@ TagManager:
   - Discharge
   - darts
   - Enemy
+  - Waypoint
   layers:
   - Default
   - TransparentFX

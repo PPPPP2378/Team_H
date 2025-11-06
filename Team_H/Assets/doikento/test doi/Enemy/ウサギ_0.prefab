@@ -130,13 +130,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.35
-  detectionRange: 50
-  obstacleLayer:
+  detectionRange: 3
+  WallLayer:
     serializedVersion: 2
     m_Bits: 512
   maxHP: 100
   plowedSoilSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}
-  obstacleCheckDistance: 0.01
+  obstacleCheckDistance: 0.1
+  avoidStrength: 3
+  slideStrength: 10
   scoreValue: 50
 --- !u!61 &7601219923508314024
 BoxCollider2D:
