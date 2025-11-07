@@ -17,6 +17,7 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI waveText; // 現在のウェーブ表示
     public TextMeshProUGUI timerText;// タイマー表示
     public TextMeshProUGUI stateText;// 状態
+    public TextMeshProUGUI gameOverText; //ゲームオーバー表示用
 
     [Header("敵スポナー")]
     public EnemySpawner spawner; // 敵を出す専用スクリプト
@@ -28,6 +29,17 @@ public class WaveManager : MonoBehaviour
 
     private bool isTextActive = false;   //テキスト表示地中のフラグ
     private Coroutine stateTextCoroutine;// 状態テキストのコルーチン制御用
+    private int startPlowCount=0;//ウェーブ開始時の畑
+    private bool isGameOver = false;//ゲームオーバー判定
+    public static bool CanGrow = false; //成長可能フラグ
+
+
+    [Header("畑スプライト設定")]
+    public Sprite plowedSoilSprite; // ← Plow状態のスプライトをここに設定
+
+    [Header("畑カウント設定")]
+    public string[] fieldTags = { "Plow", "Plowed", "Moist_Plowe", "Seed", "Grown" };
+    public float fieldCheckInterval = 3f; // 何秒ごとに再カウントするか
 
     // ゲーム開始時にウェーブ管理ループを開始
     void Start()
@@ -43,6 +55,7 @@ public class WaveManager : MonoBehaviour
             // --- 準備フェーズ ---
             inPrep = true;
             inWave = false;
+            CanGrow = false; // 成長ストップ！
             ShowStateText  ("PREPA TIME",displayTime);
             
             spawner.StopSpawning();
@@ -62,9 +75,21 @@ public class WaveManager : MonoBehaviour
             currentWave++;
             inPrep = false;
             inWave = true;
+            CanGrow = true; // 成長再開
 
             ShowStateText ($"WAVE {currentWave} START",displayTime);
             spawner.StartSpawning(currentWave); // 敵出現開始
+            timer = waveDuration;
+
+            //畑カウントの自動チェックを開始
+            StartCoroutine(CheckFieldStatusRoutine());
+
+            //ウェーブ開始時に「Plow」タグの数を記録
+            startPlowCount = CountAllFieldTiles();
+            Debug.Log($"WAVE {currentWave} 開始時の畑数: {startPlowCount}");
+
+            spawner.StartSpawning(currentWave);
+
             timer = waveDuration;
 
             // ウェーブ中（テキスト表示中はタイマーを止める）
@@ -74,14 +99,29 @@ public class WaveManager : MonoBehaviour
                     timer -= Time.deltaTime;
 
                 UpdateUI();
+
+                //毎フレーム「Plow」数を監視
+                if (CountAllFieldTiles() <= 0)
+                {
+                    Debug.Log("畑がすべて荒らされました → ゲームオーバー");
+                    TriggerGameOver();
+                }
                 yield return null;
             }
 
             // --- ウェーブ終了 ---
             inWave = false;
+            CanGrow = false; // 成長ストップ！
             spawner.StopSpawning();
             // ウェーブ終了時に敵を全削除
             RabbitAI_Complete.RemoveAllRabbits();
+
+            if (isGameOver)
+                yield break; //ゲームオーバーならここで終了
+
+            CollectAllGrownCrops();
+            ShowStateText($"WAVE {currentWave} CLEAR", displayTime);
+            yield return new WaitForSeconds(2f);
             // 「WAVE X CLEAR」表示
             ShowStateText($"WAVE {currentWave} CLEAR",displayTime);
             // 次のウェーブに行く前に少し待機
@@ -91,6 +131,80 @@ public class WaveManager : MonoBehaviour
         // 全ウェーブ終了
         ShowStateText("STAGE CLEAR",displayTimeClear);
         spawner.StopSpawning();
+    }
+
+    // Grown タグの作物をすべて回収
+    private void CollectAllGrownCrops()
+    {
+        GameObject[] grownCrops = GameObject.FindGameObjectsWithTag("Grown");
+
+        if (grownCrops.Length == 0)
+        {
+            Debug.Log("収穫する作物はありません。");
+            return;
+        }
+
+        int totalCollected = 0;
+
+        // プレイヤー取得
+        player_move player = FindAnyObjectByType<player_move>();
+        if (player == null)
+        {
+            Debug.LogWarning("player_move が見つかりません。スコア加算できません。");
+            return;
+        }
+
+        foreach (GameObject crop in grownCrops)
+        {
+            if (crop == null) continue;
+
+            //スコア加算
+            player.AddScore(10);
+
+            //スプライト変更
+            SpriteRenderer sr = crop.GetComponent<SpriteRenderer>();
+            if (sr != null && plowedSoilSprite != null)
+            {
+                sr.sprite = plowedSoilSprite;
+            }
+
+            //タグを Plow に変更
+            crop.tag = "Plow";
+
+            totalCollected++;
+        }
+
+        Debug.Log($"Grown 作物を {totalCollected} 個収穫 → Plow に戻しました。");
+    }
+
+    // 畑タグをまとめてカウント
+    private int CountAllFieldTiles()
+    {
+        // ゲーム内で「畑」と見なすタグをここで指定
+        string[] fieldTags = { "Plow", "Seed", "Grown", "Moist_Plowe", "Plowed" };
+
+        int total = 0;
+        foreach (string tag in fieldTags)
+        {
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(tag);
+            total += objs.Length;
+        }
+
+        return total;
+    }
+
+    // ゲームオーバー処理
+    private void TriggerGameOver()
+    {
+        if (isGameOver) return;
+        isGameOver = true;
+
+        spawner.StopSpawning();
+        RabbitAI_Complete.RemoveAllRabbits();
+
+
+        ShowStateText("GAME OVER", displayTimeClear);
+        Debug.Log("ゲームオーバー処理を実行しました。");
     }
 
     // UI（ウェーブ番号・残り時間）の更新
@@ -134,5 +248,30 @@ public class WaveManager : MonoBehaviour
         // フラグをOFFに戻す
         isTextActive = false;
         stateTextCoroutine = null;
+    }
+
+    private IEnumerator CheckFieldStatusRoutine()
+    {
+        while (inWave) // ウェーブ中のみ実行
+        {
+            int totalFields = 0;
+
+            // 登録されたタグをすべてチェック
+            foreach (string tag in fieldTags)
+            {
+                totalFields += GameObject.FindGameObjectsWithTag(tag).Length;
+            }
+
+            Debug.Log($"畑の残数: {totalFields}");
+
+            if (totalFields == 0)
+            {
+                Debug.Log("すべての畑が失われました…ゲームオーバー！");
+                TriggerGameOver();
+                yield break;
+            }
+
+            yield return new WaitForSeconds(fieldCheckInterval);
+        }
     }
 }

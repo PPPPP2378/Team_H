@@ -265,14 +265,29 @@ public class player_move : MonoBehaviour
     // 一定時間後に植物を成長させる
     private IEnumerator GrowPlant(Collider2D target, SpriteRenderer sr)
     {
-        yield return new WaitForSeconds(growTime); // 成長時間待ち
+        float timer = 0f;
 
-        // タグがSeedのままなら成長（他の状態に変わっていないことを確認）
+        while (timer < growTime)
+        {
+            // 🌱 ウェーブ中のみ時間を進める
+            if (WaveManager.CanGrow)
+            {
+                timer += Time.deltaTime;
+            }
+
+            // タグが変わっていたら中断（他の状態になったら終了）
+            if (target == null || !target.CompareTag("Seed"))
+                yield break;
+
+            yield return null;
+        }
+
+        // 成長完了！
         if (target != null && target.CompareTag("Seed"))
         {
             Debug.Log("植物が成長しました！");
             sr.sprite = grownSprite;
-            target.tag = "Grown"; // タグ変更
+            target.tag = "Grown";
         }
     }
     private void HarvestCrop(SpriteRenderer sr)

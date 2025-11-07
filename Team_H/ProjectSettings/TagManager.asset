@@ -17,6 +17,8 @@ TagManager:
   - darts
   - Enemy
   - Waypoint
+  - Rough
+  - 'Rough '
   layers:
   - Default
   - TransparentFX

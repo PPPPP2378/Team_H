@@ -19,7 +19,8 @@ public class RabbitAI_Complete : MonoBehaviour
 
     [Header("ターゲット変換設定")]
     public Sprite plowedSoilSprite; // 食べ終わった畑のスプライト
-
+    [Header("荒らした後の設定")]
+    public string destroyedFieldTag = "Rough"; // 荒らされた畑のタグ
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Transform targetTransform;
@@ -101,7 +102,7 @@ public class RabbitAI_Complete : MonoBehaviour
             else if (currentTarget == finalTarget)
             {
                 // 最終地点到達
-                StartCoroutine(DisappearAfter(0.5f));
+                StartCoroutine(DisappearAfter(0.95f));
             }
         }
 
@@ -133,10 +134,16 @@ public class RabbitAI_Complete : MonoBehaviour
         //ターゲットタグを取得
         GameObject[] seeds = GameObject.FindGameObjectsWithTag("Seed");
         GameObject[] wheats = GameObject.FindGameObjectsWithTag("Grown");
+        GameObject[] plow = GameObject.FindGameObjectsWithTag("Plow");
+        GameObject[] plowed = GameObject.FindGameObjectsWithTag("Plowed");
+        GameObject[] moist_plowe = GameObject.FindGameObjectsWithTag("Moist_Plowe");
 
         List<GameObject> allTargets = new List<GameObject>();
         allTargets.AddRange(seeds);
         allTargets.AddRange(wheats);
+        allTargets.AddRange(plow);
+        allTargets.AddRange(plowed);
+        allTargets.AddRange(moist_plowe);
 
         Transform closest = null;
         float minDistance = detectionRange;
@@ -211,7 +218,7 @@ public class RabbitAI_Complete : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
-        if (tag == "Seed" || tag == "Grown")
+        if (tag == "Seed" || tag == "Grown"||tag=="Plow"||tag=="Plowed"||tag=="Moist_Plowe")
         {
             GameObject tile = other.gameObject;
             if (tile == null) return;
@@ -220,7 +227,7 @@ public class RabbitAI_Complete : MonoBehaviour
             if (tileRendere != null && tileRendere.sprite != plowedSoilSprite)
             {
                 Debug.Log("畑を荒らしました！");
-                StartCoroutine(ChangeTileSpriteOverTime(tile, plowedSoilSprite, 0.8f));
+                StartCoroutine(ChangeTileSpriteOverTime(tile, plowedSoilSprite, 1.0f));
                 StartCoroutine(DisappearAfter(1.5f));
             }
 
@@ -258,9 +265,23 @@ public class RabbitAI_Complete : MonoBehaviour
         yield return new WaitForSeconds(duration);
         if (tile != null)
         {
-            SpriteRenderer sr = tile.GetComponent<SpriteRenderer>();
+            SpriteRenderer sr = tile.GetComponentInChildren<SpriteRenderer>();
             if (sr != null)
+            {
+                Debug.Log("スプライトを変更します：" + sr.name);
                 sr.sprite = targetSprite;
+            }
+            else
+            {
+                Debug.LogWarning("SpriteRenderer が見つかりません: " + tile.name);
+            }
+
+            // --- タグを変更 ---
+            if (!string.IsNullOrEmpty(destroyedFieldTag))
+            {
+                Debug.Log($"タグを変更します：{tile.tag} → {destroyedFieldTag}");
+                tile.tag = destroyedFieldTag;
+            }
         }
     }
 
