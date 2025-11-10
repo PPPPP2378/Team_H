@@ -32,7 +32,7 @@ public class WaveManager : MonoBehaviour
     private int startPlowCount=0;//ウェーブ開始時の畑
     private bool isGameOver = false;//ゲームオーバー判定
     public static bool CanGrow = false; //成長可能フラグ
-
+    public static bool PlayerCanControl = true; // プレイヤー操作可否
 
     [Header("畑スプライト設定")]
     public Sprite plowedSoilSprite; // ← Plow状態のスプライトをここに設定
@@ -75,9 +75,19 @@ public class WaveManager : MonoBehaviour
             currentWave++;
             inPrep = false;
             inWave = true;
-            CanGrow = true; // 成長再開
+
+            //一時的に止めておく
+            CanGrow = false;
+            spawner.StopSpawning();
 
             ShowStateText ($"WAVE {currentWave} START",displayTime);
+
+            // テキストが消えるまで待機
+            while (isTextActive)
+                yield return null;
+
+            //テキストが消えたらスタート
+            CanGrow = true;
             spawner.StartSpawning(currentWave); // 敵出現開始
             timer = waveDuration;
 
@@ -88,10 +98,6 @@ public class WaveManager : MonoBehaviour
             startPlowCount = CountAllFieldTiles();
             Debug.Log($"WAVE {currentWave} 開始時の畑数: {startPlowCount}");
 
-            spawner.StartSpawning(currentWave);
-
-            timer = waveDuration;
-
             // ウェーブ中（テキスト表示中はタイマーを止める）
             while (timer > 0)
             {
@@ -100,7 +106,7 @@ public class WaveManager : MonoBehaviour
 
                 UpdateUI();
 
-                //毎フレーム「Plow」数を監視
+                //毎フレーム「Plow」数をチェック
                 if (CountAllFieldTiles() <= 0)
                 {
                     Debug.Log("畑がすべて荒らされました → ゲームオーバー");
@@ -226,6 +232,9 @@ public class WaveManager : MonoBehaviour
         stateText.text = text;
         isTextActive = true;
 
+        // === プレイヤー操作をロック ===
+        PlayerCanControl = false;
+
         // 既に他の表示コルーチン(Coroutine)が動いている場合は止める
         if (stateTextCoroutine != null)
             StopCoroutine(stateTextCoroutine);
@@ -248,6 +257,9 @@ public class WaveManager : MonoBehaviour
         // フラグをOFFに戻す
         isTextActive = false;
         stateTextCoroutine = null;
+
+        // === 操作を再び有効化 ===
+        PlayerCanControl = true;
     }
 
     private IEnumerator CheckFieldStatusRoutine()

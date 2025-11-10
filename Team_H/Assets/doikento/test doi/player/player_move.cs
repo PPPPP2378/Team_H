@@ -40,12 +40,13 @@ public class player_move : MonoBehaviour
     [SerializeField] private Sprite plowedSprite;   // 耕した後
     [SerializeField] private Sprite wateredSprite;  // 水やり後
     [SerializeField] private Sprite seedSprite;     // 種を植えた後
+    [SerializeField] private Sprite seed_Sprite;   // 成長段階
     [SerializeField] private Sprite grownSprite;    // 成長後の見た目（追加）
-    [SerializeField] private Sprite plowSprite;     //耕す前
+    [SerializeField] private Sprite plowSprite;     // 耕す前
 
     [Header("成長にかかる時間(秒)")]
-    [SerializeField] private float growTime = 5f;   // 種が育つまでの時間
-
+    [SerializeField] public float growTime = 5f;   // 種が育つまでの時間
+    [SerializeField] public float fullgrowTime = 5f;
 
     [Header("スコア設定")]
     [SerializeField] private int harvestPoints = 10;          // 1回収穫ごとのポイント
@@ -70,6 +71,11 @@ public class player_move : MonoBehaviour
     private float speedGrowthRate = 0.2f; // レベルアップごとの速度増加
     private float holdReductionRate = 0.1f; // 長押し時間短縮率
 
+    [Header("ハイライト")]
+    [SerializeField] private Sprite highlightSprite;//赤湧くスプライト
+    private GameObject highlightFrame;    //赤枠オブジェクト
+    public int on_in_layer = 2;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -78,6 +84,14 @@ public class player_move : MonoBehaviour
 
         UpdateScoreUI(); // 初期スコアを表示
 
+        if(highlightSprite!=null)
+        {
+            highlightFrame = new GameObject("HighlightFrame");
+            var sr = highlightFrame.AddComponent<SpriteRenderer>();
+            sr.sprite = highlightSprite;
+            sr.sortingOrder = on_in_layer;
+            highlightFrame.SetActive(false);
+        }
         // 初期はゲージを非表示
         if (progressGroup != null) progressGroup.alpha = 0;
         if (progressBar != null)
@@ -88,6 +102,10 @@ public class player_move : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //WaveManagerから操作制限を確認
+        if (!WaveManager.PlayerCanControl)
+            return;
+
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
@@ -99,8 +117,11 @@ public class player_move : MonoBehaviour
     }
     void Update()
     {
+        //WaveManagerから操作制限を確認
+        if (!WaveManager.PlayerCanControl)
+            return;
+
         HandleHoldProgress();//長押し処理を分離してわかりやすく
-       
     }
 
     private void HandleHoldProgress()
@@ -248,9 +269,23 @@ public class player_move : MonoBehaviour
     {
         if (other.CompareTag("Plow") || other.CompareTag("Plowed") ||
         other.CompareTag("Moist_Plowe") || other.CompareTag("Seed") ||
+        other.CompareTag("Seed_")||other.CompareTag("Wall")||
         other.CompareTag("Grown") || other.CompareTag("Grassland"))
         {
             currentTarget = other;
+            if (highlightFrame != null)
+            {
+                highlightFrame.SetActive(true);
+                highlightFrame.transform.position = other.transform.position;
+                //枠のサイズを合わせる
+                SpriteRenderer targetSR = other.GetComponent<SpriteRenderer>();
+                if (targetSR != null)
+                {
+                    float sizeX = targetSR.bounds.size.x;
+                    float sizeY = targetSR.bounds.size.y;
+                    highlightFrame.transform.localScale = new Vector3(sizeX, sizeY, 1f);
+                }
+            }
         }
     }
 
@@ -259,6 +294,12 @@ public class player_move : MonoBehaviour
         if (currentTarget == other)
         {
             currentTarget = null;
+
+            //ハイライトを消す
+            if(highlightFrame!=null)
+            {
+                highlightFrame.SetActive(false);
+            }
         }
     }
 
@@ -269,7 +310,7 @@ public class player_move : MonoBehaviour
 
         while (timer < growTime)
         {
-            // 🌱 ウェーブ中のみ時間を進める
+            //ウェーブ中のみ時間を進める
             if (WaveManager.CanGrow)
             {
                 timer += Time.deltaTime;
@@ -282,8 +323,32 @@ public class player_move : MonoBehaviour
             yield return null;
         }
 
-        // 成長完了！
+        //中間段階
         if (target != null && target.CompareTag("Seed"))
+        {
+            Debug.Log("植物が少し成長");
+            sr.sprite = seed_Sprite;
+            target.tag = "Seed_";
+        }
+
+        timer = 0f;
+
+        while (timer < fullgrowTime)
+        {
+            //ウェーブ中のみ時間を進める
+            if (WaveManager.CanGrow)
+            {
+                timer += Time.deltaTime;
+            }
+
+            // タグが変わっていたら中断（他の状態になったら終了）
+            if (target == null || !target.CompareTag("Seed_"))
+                yield break;
+
+            yield return null;
+        }
+        // 成長完了！
+        if (target != null && target.CompareTag("Seed_"))
         {
             Debug.Log("植物が成長しました！");
             sr.sprite = grownSprite;
