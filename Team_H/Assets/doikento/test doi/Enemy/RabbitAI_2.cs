@@ -1,70 +1,154 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
+/*ウサギの動きを決めるコード
+ * 倒すとグラフィックが削除されポイントが加算される
+ */
 public class RabbitAI_Complete : MonoBehaviour
 {
     [Header("移動設定")]
-    public float moveSpeed = 2f;
-    public float detectionRange = 8f;
-    public LayerMask obstacleLayer;
+    public float moveSpeed = 2f;// 通常の移動速度
+    public float detectionRange = 8f; // 畑を探す範囲
+    public LayerMask WallLayer; // 壁レイヤー（
 
     [Header("HP設定")]
-    public int maxHP = 100;
-    private int currentHP;
+    public int maxHP = 100; //最大HP
+    private int currentHP;  //現在のHP
 
     [Header("ターゲット変換設定")]
-    public Sprite plowedSoilSprite;
-
+    public Sprite plowedSoilSprite; // 食べ終わった畑のスプライト
+    [Header("荒らした後の設定")]
+    public string destroyedFieldTag = "Rough"; // 荒らされた畑のタグ
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Transform targetTransform;
 
+    [Header("回避設定")]
+    public float obstacleCheckDistance = 2.0f;
+    public float avoidStrength = 5f; //壁を避ける強さ（数値を上げると強く避ける）
+    public float slideStrength = 2.0f;
 
+    public int scoreValue = 50; // 倒したときのスコア値
+
+    private List<Transform> waypoints = new List<Transform>(); // 経路上のチェックポイント
+    private int currentWaypointIndex = 0;                      // 現在のチェックポイント番号
+    private Transform finalTarget;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
-        FindTarget();
+
+        // Waypointをすべて取得
+        GameObject[] waypointObjects = GameObject.FindGameObjectsWithTag("Waypoint");
+        foreach (GameObject wp in waypointObjects)
+        {
+            waypoints.Add(wp.transform);
+        }
+
+        // 近い順にソート（ウサギに近い順で進む）
+        waypoints.Sort((a, b) =>
+            Vector2.Distance(transform.position, a.position)
+            .CompareTo(Vector2.Distance(transform.position, b.position))
+        );
+
+        // 最終目的地（畑）を探索
+        FindFinalTarget();
+
+        // 両方ないと動けない
+        if (waypoints.Count == 0 && finalTarget == null)
+        {
+            Debug.LogWarning("RabbitAI: Waypoint も Target も見つかりませんでした。");
+        }
     }
+
+    private float targetCheckTimer = 0f;
 
     void FixedUpdate()
     {
-        if (targetTransform == null)
+        // 一定間隔で畑の再探索を行う
+        targetCheckTimer += Time.fixedDeltaTime;
+        if (targetCheckTimer >= 1.0f) // 1秒ごとに再探索
         {
-            FindTarget();
+            FindFinalTarget();
+            targetCheckTimer = 0f;
+        }
+
+        // 現在の目的地（Waypoint or 畑）を取得/
+        Transform currentTarget = GetCurrentTarget();
+
+        // ターゲットがなければ停止
+        if (currentTarget == null)
+        {
             rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        // ターゲットが削除済みまたは荒らされている場合は再探索
-        SpriteRenderer targetSr = targetTransform.GetComponent<SpriteRenderer>();
-        if (targetSr == null || targetSr.sprite == plowedSoilSprite)
+        // ターゲット方向へ移動処理
+        MoveTowards(currentTarget);
+
+        // 目標に近づいたら次へ
+        float distance = Vector2.Distance(transform.position, currentTarget.position);
+        if (distance < 0.5f)
         {
-            targetTransform = null;
-            FindTarget();
-            return;
+            // Waypointを通過したら次のWaypointへ
+            if (waypoints.Count > 0 && currentWaypointIndex < waypoints.Count)
+            {
+                currentWaypointIndex++;
+            }
+            // 最終地点（畑）に到達した場合
+            else if (currentTarget == finalTarget)
+            {
+                // 最終地点到達
+                StartCoroutine(DisappearAfter(0.95f));
+            }
         }
 
-        MoveTowardsTarget(); // ← 変更点
     }
 
     // -------------------------------
-    // ターゲット探索
+    // 現在のターゲットを決定
     // -------------------------------
-    void FindTarget()
+    Transform GetCurrentTarget()
     {
+        // Waypointがまだ残っている場合はそちらを優先
+        if (waypoints.Count > 0 && currentWaypointIndex < waypoints.Count)
+            return waypoints[currentWaypointIndex];
+
+        // Waypointをすべて通過 or 消去 → 最終ターゲットへ
+        if (finalTarget != null)
+            return finalTarget;
+
+        // 念のため畑を再探索
+        FindFinalTarget();
+        return finalTarget;
+    }
+
+    // -------------------------------
+    // 畑のターゲット探索
+    // -------------------------------
+    void FindFinalTarget()
+    {
+        //ターゲットタグを取得
         GameObject[] seeds = GameObject.FindGameObjectsWithTag("Seed");
         GameObject[] wheats = GameObject.FindGameObjectsWithTag("Grown");
+        GameObject[] plow = GameObject.FindGameObjectsWithTag("Plow");
+        GameObject[] plowed = GameObject.FindGameObjectsWithTag("Plowed");
+        GameObject[] moist_plowe = GameObject.FindGameObjectsWithTag("Moist_Plowe");
 
         List<GameObject> allTargets = new List<GameObject>();
         allTargets.AddRange(seeds);
         allTargets.AddRange(wheats);
+        allTargets.AddRange(plow);
+        allTargets.AddRange(plowed);
+        allTargets.AddRange(moist_plowe);
 
         Transform closest = null;
         float minDistance = detectionRange;
 
+        // 最も近いターゲットを探す
         foreach (GameObject obj in allTargets)
         {
             if (obj == null) continue;
@@ -80,44 +164,51 @@ public class RabbitAI_Complete : MonoBehaviour
                 closest = obj.transform;
             }
         }
+        if (closest != null)
+        {
+            finalTarget = closest;// 最も近いターゲットを設定
 
-        targetTransform = closest;
+            //畑を見つけたら Waypoint を全削除して直行モードへ
+            if (waypoints.Count > 0)
+            {
+                Debug.Log("畑を検知！Waypoint経由を中断して直行します。");
+                waypoints.Clear();
+                currentWaypointIndex = 0;
+            }
+        }
     }
-
     // -------------------------------
     // 移動処理（壁を避ける）
     // -------------------------------
-    void MoveTowardsTarget()
+    void MoveTowards(Transform target)
     {
-        if (targetTransform == null) return;
+        if (target == null) return;
 
         Vector2 currentPos = rb.position;
-        Vector2 targetPos = targetTransform.position;
+        Vector2 targetPos = target.position;
         Vector2 direction = (targetPos - currentPos).normalized;
 
-        // Raycastで前方の壁をチェック
-        RaycastHit2D hit = Physics2D.Raycast(currentPos, direction, 0.5f, obstacleLayer);
+        // Raycastで壁を検出
+        RaycastHit2D frontHit = Physics2D.Raycast(currentPos, direction, obstacleCheckDistance, WallLayer);
+        if (frontHit.collider != null)
+        {
+            Vector2 wallNormal = frontHit.normal;
 
-        if (hit.collider == null)
-        {
-            // 壁がない → 移動
-            Vector2 newPos = currentPos + direction * moveSpeed * Time.fixedDeltaTime;
-            rb.MovePosition(newPos);
-        }
-        else
-        {
-            // 壁がある → 少し横にずらす
-            Vector2 avoid = new Vector2(direction.y, -direction.x);
-            Vector2 newPos = currentPos + avoid * moveSpeed * 0.5f * Time.fixedDeltaTime;
-            rb.MovePosition(newPos);
+            // 壁を避ける
+            direction += wallNormal * avoidStrength;
+
+            // 壁に沿って滑る
+            Vector2 slideDir = Vector2.Perpendicular(wallNormal);
+            direction += slideDir * slideStrength;
+
+            Debug.DrawRay(currentPos, direction * obstacleCheckDistance, Color.red);
         }
 
-        // 向き反転
-        if (sr != null)
-        {
-            if (direction.x > 0.05f) sr.flipX = false;
-            else if (direction.x < -0.05f) sr.flipX = true;
-        }
+        direction = direction.normalized;
+        rb.linearVelocity = direction * moveSpeed;
+
+        if (Mathf.Abs(direction.x) > 0.1)
+            sr.flipX = direction.x < 0;
     }
 
     // -------------------------------
@@ -127,19 +218,20 @@ public class RabbitAI_Complete : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
-        if (tag == "Seed" || tag == "Grown")
+        if (tag == "Seed" || tag == "Grown"||tag=="Plow"||tag=="Plowed"||tag=="Moist_Plowe")
         {
             GameObject tile = other.gameObject;
             if (tile == null) return;
 
-            SpriteRenderer sr = tile.GetComponent<SpriteRenderer>();
-            if (sr != null && sr.sprite != plowedSoilSprite)
+            SpriteRenderer tileRendere = tile.GetComponent<SpriteRenderer>();
+            if (tileRendere != null && tileRendere.sprite != plowedSoilSprite)
             {
-                StartCoroutine(ChangeTileSpriteOverTime(tile, plowedSoilSprite, 1.5f));
-                StartCoroutine(DisappearAfter(1.6f));
+                Debug.Log("畑を荒らしました！");
+                StartCoroutine(ChangeTileSpriteOverTime(tile, plowedSoilSprite, 1.0f));
+                StartCoroutine(DisappearAfter(1.5f));
             }
 
-            targetTransform = null;
+          
         }
 
     }
@@ -152,8 +244,17 @@ public class RabbitAI_Complete : MonoBehaviour
         currentHP -= dmg;
         if (currentHP <= 0)
         {
+            // プレイヤーにスコア加算
+            player_move player = FindAnyObjectByType<player_move>();
+            if (player != null)
+            {
+                player.AddScore(scoreValue);
+            }
+            // グラフィックを消す
             Destroy(gameObject);
         }
+
+
     }
 
     // -------------------------------
@@ -164,12 +265,27 @@ public class RabbitAI_Complete : MonoBehaviour
         yield return new WaitForSeconds(duration);
         if (tile != null)
         {
-            SpriteRenderer sr = tile.GetComponent<SpriteRenderer>();
+            SpriteRenderer sr = tile.GetComponentInChildren<SpriteRenderer>();
             if (sr != null)
+            {
+                Debug.Log("スプライトを変更します：" + sr.name);
                 sr.sprite = targetSprite;
+            }
+            else
+            {
+                Debug.LogWarning("SpriteRenderer が見つかりません: " + tile.name);
+            }
+
+            // --- タグを変更 ---
+            if (!string.IsNullOrEmpty(destroyedFieldTag))
+            {
+                Debug.Log($"タグを変更します：{tile.tag} → {destroyedFieldTag}");
+                tile.tag = destroyedFieldTag;
+            }
         }
     }
 
+    // 一定時間後にウサギを削除
     IEnumerator DisappearAfter(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -177,6 +293,7 @@ public class RabbitAI_Complete : MonoBehaviour
             Destroy(gameObject);
     }
 
+    // すべてのウサギを削除
     public static void RemoveAllRabbits()
     {
         GameObject[] rabbits = GameObject.FindGameObjectsWithTag("Enemy");
@@ -186,3 +303,4 @@ public class RabbitAI_Complete : MonoBehaviour
         }
     }
 }
+

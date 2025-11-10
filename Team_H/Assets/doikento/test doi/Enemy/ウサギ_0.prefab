@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8142511446185850400}
   - component: {fileID: 895625925388047268}
   - component: {fileID: 6884804602552370216}
-  - component: {fileID: 7542746404698482406}
   - component: {fileID: 4956925992023346183}
-  m_Layer: 0
+  - component: {fileID: 7601219923508314024}
+  m_Layer: 7
   m_Name: "\u30A6\u30B5\u30AE_0"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 6139544446933270633}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.92, y: -2.48, z: 0}
-  m_LocalScale: {x: 0.9316, y: 0.9316, z: 1}
+  m_LocalPosition: {x: 1.8702, y: -2.4302, z: 0}
+  m_LocalScale: {x: 0.83564335, y: 0.83564335, z: 0.89699805}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,22 +102,46 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 1
+  m_Mass: 0.016920555
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 555a6f13b34459b41ab2e6f8a078f9e1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &7542746404698482406
+--- !u!114 &4956925992023346183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139544446933270633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2e9f2262de6634f987d039702802e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.35
+  detectionRange: 2
+  WallLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  maxHP: 100
+  plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
+  destroyedFieldTag: Rough
+  obstacleCheckDistance: 0.1
+  avoidStrength: 3
+  slideStrength: 10
+  scoreValue: 50
+--- !u!61 &7601219923508314024
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,11 +171,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.011897624, y: -0.06645635}
+  m_Offset: {x: 0.000007227063, y: -0.07365805}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -161,24 +185,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3989358, y: 0.37735504}
+  m_Size: {x: 0.14994285, y: 0.16160208}
   m_EdgeRadius: 0
---- !u!114 &4956925992023346183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6139544446933270633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2e9f2262de6634f987d039702802e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1.25
-  detectionRange: 50
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  maxHP: 100
-  plowedSoilSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}

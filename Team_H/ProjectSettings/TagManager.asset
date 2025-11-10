@@ -16,6 +16,10 @@ TagManager:
   - Discharge
   - darts
   - Enemy
+  - Waypoint
+  - Rough
+  - 'Rough '
+  - Seed_
   layers:
   - Default
   - TransparentFX
@@ -24,9 +28,9 @@ TagManager:
   - Water
   - UI
   - Obstacle
-  - 
-  - 
-  - 
+  - Enemy
+  - Player
+  - Wall
   - 
   - 
   - 
