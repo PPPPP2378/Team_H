@@ -15837,6 +15837,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 492940890957536181, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: seed_Sprite
+      value: 
+      objectReference: {fileID: -5470514257416098240, guid: 7563410ce9bf6e14ba112ce38127c7ce, type: 3}
     - target: {fileID: 662632775761875760, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: spawner
       value: 
@@ -15844,6 +15848,10 @@ PrefabInstance:
     - target: {fileID: 662632775761875760, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: prepTime
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 662632775761875760, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
+      propertyPath: waveDuration
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 725054521485198764, guid: cd6a07038c7d5ee47b7cd7febdff54c9, type: 3}
       propertyPath: m_Camera
@@ -16025,7 +16033,7 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 547315797}
   - {fileID: 182511499}
-  spawnInterval: 1
+  spawnInterval: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

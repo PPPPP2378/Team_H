@@ -260,7 +260,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0030041933, y: -0.008141398}
+  m_Offset: {x: -0.0009958744, y: 0.011859775}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -270,7 +270,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6138184, y: 0.9550402}
+  m_Size: {x: 0.57381725, y: 0.7630327}
   m_EdgeRadius: 0
 --- !u!50 &6477727296599749444
 Rigidbody2D:
@@ -284,7 +284,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.5862213
+  m_Mass: 0.43784133
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
@@ -331,9 +331,11 @@ MonoBehaviour:
   plowedSprite: {fileID: -6141724211594974790, guid: ffe297430ba95ef4aadcc05dc1ffc8a5, type: 3}
   wateredSprite: {fileID: -4229860799339438811, guid: e79bd15e7024aab468a636057639ba56, type: 3}
   seedSprite: {fileID: -7866928900747384746, guid: 92134edceaab55b43924a4c00cf946a4, type: 3}
+  seed_Sprite: {fileID: -5470514257416098240, guid: 7563410ce9bf6e14ba112ce38127c7ce, type: 3}
   grownSprite: {fileID: -8341788796487943218, guid: f0fd39fa05c7a7142957bff996662cc4, type: 3}
   plowSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}
   growTime: 5
+  fullgrowTime: 5
   harvestPoints: 10
   scoreText: {fileID: 3709121716401360135}
   holdInterval: 0.8
@@ -341,6 +343,8 @@ MonoBehaviour:
   progressBar: {fileID: 641044503574758288}
   progressGroup: {fileID: 2795770786800660298}
   levelText: {fileID: 1280722231639747322}
+  highlightSprite: {fileID: -909141687429717216, guid: 0cdd1c910ab46884aac946d3eaa6e87c, type: 3}
+  on_in_layer: 2
 --- !u!114 &3404458154201688592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1578,7 +1582,7 @@ GameObject:
   - component: {fileID: 6418035404279086060}
   - component: {fileID: 662632775761875760}
   m_Layer: 8
-  m_Name: Image
+  m_Name: weve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1668,6 +1672,13 @@ MonoBehaviour:
   gameOverText: {fileID: 6628189296845651500}
   spawner: {fileID: 0}
   plowedSoilSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}
+  fieldTags:
+  - Plow
+  - Plowed
+  - Moist_Plowe
+  - Seed
+  - Grown
+  fieldCheckInterval: 3
 --- !u!1 &9050897253509307229
 GameObject:
   m_ObjectHideFlags: 0
