@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: MENU
+  scenename: shop
 --- !u!114 &757377903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +215,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 757377904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 757377902}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &757377904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,7 +562,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MENU
+  m_Text: shop
 --- !u!222 &1489989139
 CanvasRenderer:
   m_ObjectHideFlags: 0
