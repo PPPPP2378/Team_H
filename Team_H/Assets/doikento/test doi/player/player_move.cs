@@ -76,6 +76,9 @@ public class player_move : MonoBehaviour
     private GameObject highlightFrame;    //赤枠オブジェクト
     public int on_in_layer = 2;
 
+    [Header("操作範囲設定")]
+    [SerializeField] private float interactRadius = 2.5f; // マウス指定で操作できる範囲
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -122,12 +125,15 @@ public class player_move : MonoBehaviour
             return;
 
         HandleHoldProgress();//長押し処理を分離してわかりやすく
+
+        // --- マウス位置から対象取得 ---
+        UpdateMouseTarget();
     }
 
     private void HandleHoldProgress()
     {
         //スペース長押し時間を計測
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetMouseButton(0))
         {
             // 押し始めた瞬間にゲージを表示
             if (!isHolding)
@@ -176,6 +182,52 @@ public class player_move : MonoBehaviour
                 if (progressGroup != null) progressGroup.alpha = 0;
             }
         }
+    }
+    private void UpdateMouseTarget()
+    {
+        Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos);
+
+        if (hit != null)
+        {
+            // プレイヤーからの距離チェック
+            float dist = Vector2.Distance(transform.position, hit.transform.position);
+            if (dist <= interactRadius && IsValidTarget(hit))
+            {
+                currentTarget = hit;
+
+                if (highlightFrame != null)
+                {
+                    highlightFrame.SetActive(true);
+                    highlightFrame.transform.position = hit.transform.position;
+
+                    // サイズ合わせ
+                    SpriteRenderer targetSR = hit.GetComponent<SpriteRenderer>();
+                    if (targetSR != null)
+                    {
+                        float sizeX = targetSR.bounds.size.x;
+                        float sizeY = targetSR.bounds.size.y;
+                        highlightFrame.transform.localScale = new Vector3(sizeX, sizeY, 1f);
+                    }
+                }
+                return;
+            }
+        }
+
+        // 範囲外 or 何もヒットしていない場合
+        currentTarget = null;
+        if (highlightFrame != null)
+            highlightFrame.SetActive(false);
+    }
+
+    // 対象が操作可能タグかチェック
+    private bool IsValidTarget(Collider2D other)
+    {
+        return other.CompareTag("Plow") ||        other.CompareTag("Plowed") ||
+               other.CompareTag("Moist_Plowe") || other.CompareTag("Seed") ||
+               other.CompareTag("Seed_")       || other.CompareTag("Grown") ||
+               other.CompareTag("Grassland")   || other.CompareTag("Wall") ||
+               IsPlacedEquipment(other.tag);
     }
     private void TryInteract()
     {
@@ -265,7 +317,7 @@ public class player_move : MonoBehaviour
         }
     }
    
-    void OnTriggerStay2D(Collider2D other)
+  /*  void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Plow") || other.CompareTag("Plowed") ||
         other.CompareTag("Moist_Plowe") || other.CompareTag("Seed") ||
@@ -301,7 +353,7 @@ public class player_move : MonoBehaviour
                 highlightFrame.SetActive(false);
             }
         }
-    }
+    }*/
 
     // 一定時間後に植物を成長させる
     private IEnumerator GrowPlant(Collider2D target, SpriteRenderer sr)
