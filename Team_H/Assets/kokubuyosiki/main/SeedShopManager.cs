@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using System.Collections; // コルーチンを使うために必要です
+using System.Collections; // コルーチン (メッセージ表示) を使うために必要です
 
 public class SeedShopManager : MonoBehaviour
 {
-    // === 1. UI要素の参照 (Inspectorで設定が必要) ===
+    // === 1. Inspectorで設定する要素 ===
 
     [Header("確認ダイアログ")]
     public GameObject confirmationPanel; // 確認パネルの親オブジェクト
@@ -14,6 +14,10 @@ public class SeedShopManager : MonoBehaviour
     public GameObject notificationObject; // 通知メッセージの親オブジェクト (普段は非表示)
     public Text notificationText;         // 通知メッセージを表示するText
     public float displayDuration = 3f;    // メッセージの表示時間（秒）
+
+    [Header("サウンド設定")]
+    public AudioSource audioSource; // Audio Sourceコンポーネント
+    public AudioClip purchaseSound;   // 購入成功時のSEファイル
 
     [Header("アイテムデータ")]
     public ItemData[] availableItems; // Inspectorで設定するアイテムリスト
@@ -35,8 +39,7 @@ public class SeedShopManager : MonoBehaviour
         }
     }
 
-    // === 3. 各商品ボタンから呼ばれる関数 ===
-    // 引数がintのみの関数 (OpenConfirmation(int))
+    // === 3. 各商品ボタンから呼ばれる関数 (On Clickでintを渡す) ===
     public void OpenConfirmation(int itemID)
     {
         // 配列の範囲チェック
@@ -64,12 +67,16 @@ public class SeedShopManager : MonoBehaviour
 
         string boughtItemName = availableItems[currentItemID].itemName;
 
-        Debug.Log($"{boughtItemName}を購入しました！");
+        // 1. SEを鳴らす
+        if (audioSource != null && purchaseSound != null)
+        {
+            audioSource.PlayOneShot(purchaseSound);
+        }
 
-        // 1. 確認ダイアログを閉じる
+        // 2. 確認ダイアログを閉じる
         confirmationPanel.SetActive(false);
 
-        // 2. 購入完了メッセージの表示を開始する
+        // 3. 購入完了メッセージの表示を開始する
         StartCoroutine(ShowNotificationCoroutine($"{boughtItemName}を買いました！"));
     }
 
@@ -94,9 +101,9 @@ public class SeedShopManager : MonoBehaviour
         notificationObject.SetActive(false);
     }
 }
-// ↑↑↑↑↑ SeedShopManager の閉じ括弧はここまで ↑↑↑↑↑
+// ↑↑↑↑↑ SeedShopManager クラスはここまで ↑↑↑↑↑
 
-// 2. ItemData クラス（ファイルの末尾に記述）
+// === 7. データ構造 ===
 [System.Serializable]
 public class ItemData
 {
