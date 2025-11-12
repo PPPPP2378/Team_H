@@ -108,7 +108,7 @@ MonoBehaviour:
   cohesionStrength: 0.3
   alignmentStrength: 0.3
   maxHP: 80
-  plowedSoilSprite: {fileID: 0}
+  plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   scoreValue: 100
 --- !u!61 &2949002630835075032
