@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6582246804775135049}
   - component: {fileID: 2949002630835075032}
   - component: {fileID: 3561248640207522190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: "\u30AB\u30E9\u30B9_0"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4442330188658434452, guid: 0be6e19481fc1fd47b4d775444d3aa3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc67a230374957346a990536720685dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  detectionRange: 10
+  moveSpeed: 1.2
+  detectionRange: 50
   separationDistance: 1
   cohesionStrength: 0.3
   alignmentStrength: 0.3
@@ -141,11 +141,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.027972937, y: -0.004662156}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +155,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.15, y: 1.04}
+  m_Size: {x: 0.3356843, y: 0.33446717}
   m_EdgeRadius: 0
 --- !u!50 &3561248640207522190
 Rigidbody2D:

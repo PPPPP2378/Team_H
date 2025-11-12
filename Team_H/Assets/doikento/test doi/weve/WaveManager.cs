@@ -137,6 +137,13 @@ public class WaveManager : MonoBehaviour
         // 全ウェーブ終了
         ShowStateText("STAGE CLEAR",displayTimeClear);
         spawner.StopSpawning();
+
+        // 成長・操作ともに完全停止
+        CanGrow = false;
+        PlayerCanControl = false;
+
+        UIManager ui = FindAnyObjectByType<UIManager>();
+        if (ui != null) ui.ShowResult(true);
     }
 
     // Grown タグの作物をすべて回収
@@ -208,9 +215,15 @@ public class WaveManager : MonoBehaviour
         spawner.StopSpawning();
         RabbitAI_Complete.RemoveAllRabbits();
 
+        // 成長停止・操作停止
+        CanGrow = false;
+        PlayerCanControl = false;
 
         ShowStateText("GAME OVER", displayTimeClear);
         Debug.Log("ゲームオーバー処理を実行しました。");
+
+        UIManager ui = FindAnyObjectByType<UIManager>();
+        if (ui != null) ui.ShowResult(false);
     }
 
     // UI（ウェーブ番号・残り時間）の更新

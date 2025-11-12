@@ -1162,6 +1162,11 @@ MonoBehaviour:
   seedInventoryUI: {fileID: 6646529160443935228}
   equipmentTabButton: {fileID: 1121504245074922047}
   seedTabButton: {fileID: 9039922952444373683}
+  resultPanel: {fileID: 0}
+  titleText: {fileID: 0}
+  _scoreText: {fileID: 0}
+  retryButton: {fileID: 0}
+  stageSelectButton: {fileID: 0}
 --- !u!1 &5586252890838980158
 GameObject:
   m_ObjectHideFlags: 0
