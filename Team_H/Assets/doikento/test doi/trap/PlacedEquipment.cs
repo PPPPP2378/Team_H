@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlacedEquipment : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class PlacedEquipment : MonoBehaviour
     private SpriteRenderer sr;
     private Collider2D col;
     private Coroutine damageCoroutine;
-    private Dictionary<RabbitAI_Complete, Coroutine> damageCoroutines = new Dictionary<RabbitAI_Complete, Coroutine>();
+
+    private Dictionary<MonoBehaviour, Coroutine> damageCoroutines = new Dictionary<MonoBehaviour, Coroutine>();
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -83,16 +86,18 @@ public class PlacedEquipment : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (!other.CompareTag("Enemy")) return;
         {
             RabbitAI_Complete rabbit = other.GetComponent<RabbitAI_Complete>();
-            if (rabbit != null)
+            CrowFlockAI crow = other.GetComponent<CrowFlockAI>();
+            MonoBehaviour target = rabbit != null ? (MonoBehaviour)rabbit : crow != null ? (MonoBehaviour)crow : null;
+            if (target != null&& !damageCoroutines.ContainsKey(target))
             {
                 // ダメージを一度だけコルーチンで処理
-                if (!damageCoroutines.ContainsKey(rabbit))
+                if (!damageCoroutines.ContainsKey(target))
                 {
-                    Coroutine c = StartCoroutine(DealDamageOverTime(rabbit));
-                    damageCoroutines.Add(rabbit, c);
+                    Coroutine c = StartCoroutine(DealDamageOverTime(target));
+                    damageCoroutines.Add(target, c);
                 }
             }
         }
@@ -103,10 +108,13 @@ public class PlacedEquipment : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             RabbitAI_Complete rabbit = other.GetComponent<RabbitAI_Complete>();
-            if (rabbit != null && damageCoroutines.ContainsKey(rabbit))
+            CrowFlockAI crow = other.GetComponent<CrowFlockAI>();
+
+            MonoBehaviour target = rabbit != null ? (MonoBehaviour)rabbit : crow != null ? (MonoBehaviour)crow : null;
+            if (target != null && damageCoroutines.ContainsKey(target))
             {
-                StopCoroutine(damageCoroutines[rabbit]);
-                damageCoroutines.Remove(rabbit);
+                StopCoroutine(damageCoroutines[target]);
+                damageCoroutines.Remove(target);
             }
         }
     }
@@ -124,12 +132,21 @@ public class PlacedEquipment : MonoBehaviour
         }
     }
 
-    private IEnumerator DealDamageOverTime(RabbitAI_Complete rabbit)
+    private IEnumerator DealDamageOverTime(MonoBehaviour target)
     {
-        while (rabbit != null)
+        while (target != null)
         {
-            rabbit.TakeDamage(damage);
-            Debug.Log($"[PlacedEquipment] {gameObject.name} が {rabbit.name} に {damage} ダメージを与えました！");
+            if (target is RabbitAI_Complete rabbit)
+            {
+                rabbit.TakeDamage(damage);
+                Debug.Log($"[Trap] {gameObject.name} が {rabbit.name} に {damage} ダメージ！");
+            }
+            else if (target is CrowFlockAI crow)
+            {
+                crow.TakeDamage(damage);
+                Debug.Log($"[Trap] {gameObject.name} が {crow.name} に {damage} ダメージ！");
+            }
+
             yield return new WaitForSeconds(damageInterval);
         }
     }
