@@ -86,7 +86,6 @@
     <Compile Include="Assets\kokubuyosiki\main\loading.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\doikento\test doi\FarmTile.cs" />
-    <Compile Include="Assets\OkunoRyota\Crow_Ai.cs" />
     <Compile Include="Assets\kokubuyosiki\main\ChangeScene.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\doikento\test doi\UI\UIManager.cs" />
