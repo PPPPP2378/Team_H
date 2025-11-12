@@ -33,18 +33,14 @@ public class player_move : MonoBehaviour
     [Header("畑のスプライト設定")]
     [SerializeField] private Sprite plowedSprite;
     [SerializeField] private Sprite wateredSprite;
-    [SerializeField] private Sprite seedSprite;
-    [SerializeField] private Sprite seed_Sprite;
-    [SerializeField] private Sprite grownSprite;
     [SerializeField] private Sprite plowSprite;
 
-    [Header("成長時間設定")]
-    [SerializeField] public float growTime = 5f;
-    [SerializeField] public float fullgrowTime = 5f;
+    [Header("作物リスト設定")]
+    [SerializeField] private CropData[] crops; // 複数の作物データ
+    private int selectedCropIndex = 0; // 現在選択中の作物
 
     [Header("スコア・経験値設定")]
     private int currentScore = 100;
-    private int harvestPoints = 10;
     private int currentExp = 0;
     private int expToNext = 50;
     private int playerLevel = 1;
@@ -94,7 +90,7 @@ public class player_move : MonoBehaviour
             highlightFrame.SetActive(false);
         }
 
-        // ✅ UIは非表示から開始
+        //UIは非表示から開始
         uiManager?.ShowProgress(false);
     }
 
@@ -114,6 +110,12 @@ public class player_move : MonoBehaviour
 
         HandleHoldProgress();
         UpdateMouseTarget();
+
+        //Eでインベントリを開く
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            uiManager?.ToggleInventory();
+        }
     }
 
     // --- 長押し処理 ---
@@ -211,10 +213,12 @@ public class player_move : MonoBehaviour
         }
         else if (currentTarget.CompareTag("Moist_Plowe"))
         {
-            sr.sprite = seedSprite;
+            if (crops.Length == 0) return;
+            CropData crop = crops[selectedCropIndex];
+            sr.sprite = crop.seedSprite;
             currentTarget.tag = "Seed";
-            GainExp(10);
-            StartCoroutine(GrowPlant(currentTarget, sr));
+            GainExp(crop.expGain);
+            StartCoroutine(GrowPlant(currentTarget, sr,crop));
         }
         else if (currentTarget.CompareTag("Grown"))
         {
@@ -261,11 +265,11 @@ public class player_move : MonoBehaviour
     }
 
     // --- 植物成長 ---
-    private IEnumerator GrowPlant(Collider2D target, SpriteRenderer sr)
+    private IEnumerator GrowPlant(Collider2D target, SpriteRenderer sr,CropData crop)
     {
         float timer = 0f;
 
-        while (timer < growTime)
+        while (timer < crop.growTime)
         {
             if (WaveManager.CanGrow)
                 timer += Time.deltaTime;
@@ -274,11 +278,11 @@ public class player_move : MonoBehaviour
             yield return null;
         }
 
-        sr.sprite = seed_Sprite;
+        sr.sprite = crop.growingSprite;
         target.tag = "Seed_";
 
         timer = 0f;
-        while (timer < fullgrowTime)
+        while (timer < crop.fullGrowTime)
         {
             if (WaveManager.CanGrow)
                 timer += Time.deltaTime;
@@ -287,13 +291,16 @@ public class player_move : MonoBehaviour
             yield return null;
         }
 
-        sr.sprite = grownSprite;
+        sr.sprite = crop.grownSprite;
         target.tag = "Grown";
+
+        GainExp(crop.expGain);
     }
 
     private void HarvestCrop(SpriteRenderer sr)
     {
-        currentScore += harvestPoints;
+        CropData crop = crops[selectedCropIndex];
+        currentScore += crop.harvestPoints;
         UpdateScoreUI();
         sr.sprite = plowSprite;
         currentTarget.tag = "Plow";
