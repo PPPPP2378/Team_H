@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: titlescene
+  scenename: 
 --- !u!114 &459483354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: shop
+  scenename: 
 --- !u!114 &757377903
 MonoBehaviour:
   m_ObjectHideFlags: 0

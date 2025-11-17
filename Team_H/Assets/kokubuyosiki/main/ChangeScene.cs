@@ -45,8 +45,9 @@ public class ChangeScene : MonoBehaviour
             // clip.lengthでアタッチされた音源の再生時間が取得できます
             yield return new WaitForSeconds(audioSource.clip.length);
         }
+        LoadingManager.nextSceneName = scenename;
 
         // 3. シーンを読み込む
-        SceneManager.LoadScene(scenename);
+        SceneManager.LoadScene("LoadingScene");
     }
 }

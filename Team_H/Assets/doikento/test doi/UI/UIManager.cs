@@ -85,13 +85,15 @@ public class UIManager : MonoBehaviour
     // 再挑戦ボタン
     public void OnRetryButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LoadingManager.nextSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("LoadingScene");
     }
 
     // ステージ選択に戻る
     public void OnStageSelectButton()
     {
-        SceneManager.LoadScene("stageselect"); // あなたのステージ選択シーン名に変更
+        LoadingManager.nextSceneName = "StageSelect";
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void ToggleInventory()
