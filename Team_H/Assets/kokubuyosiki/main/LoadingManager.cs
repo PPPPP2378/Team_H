@@ -4,13 +4,19 @@ using System.Collections;
 
 public class LoadingManager : MonoBehaviour
 {
-    public string nextScene;
-    public float minimumLoadTime = 2.5f; // ← ここで「最低ロード時間」を指定
+    public static string nextSceneName;
+    public float minimumLoadTime = 2.5f; //ここで「最低ロード時間」を指定
 
     IEnumerator Start()
     {
+        //次のシーンが設定されていない場合
+        if (string.IsNullOrEmpty(nextSceneName))
+        {
+            Debug.LogError("次のシーン名が設定されていません！");
+            yield break;
+        }
         float startTime = Time.time;
-        var async = SceneManager.LoadSceneAsync(nextScene);
+        var async = SceneManager.LoadSceneAsync(nextSceneName);
         async.allowSceneActivation = false;
 
         while (!async.isDone)

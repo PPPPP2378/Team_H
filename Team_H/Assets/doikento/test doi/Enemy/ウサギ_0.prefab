@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.35
-  detectionRange: 2
+  detectionRange: 2.1
   WallLayer:
     serializedVersion: 2
     m_Bits: 512

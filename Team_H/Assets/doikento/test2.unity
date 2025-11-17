@@ -13786,7 +13786,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -15890,7 +15890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: waveDuration
-      value: 5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3245726647100418377, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Camera
@@ -16021,11 +16021,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c246d60f43ea6ee43bc3d6492a4781da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8357301466270428543, guid: b7d733019eaa5544a8a9906b1a7cc742, type: 3}
+  enemyPrefab: {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
   spawnPoints:
   - {fileID: 547315797}
   - {fileID: 182511499}
-  spawnInterval: 1
+  spawnInterval: 2
 --- !u!1001 &8512207079811612475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16137,6 +16137,22 @@ PrefabInstance:
     - target: {fileID: 6491695226404645782, guid: dd601fa19623f4a41b83deb7fcfb5278, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573884211585926505, guid: dd601fa19623f4a41b83deb7fcfb5278, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 246.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573884211585926505, guid: dd601fa19623f4a41b83deb7fcfb5278, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 138.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573884211585926505, guid: dd601fa19623f4a41b83deb7fcfb5278, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.53707886
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573884211585926505, guid: dd601fa19623f4a41b83deb7fcfb5278, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.38417053
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
