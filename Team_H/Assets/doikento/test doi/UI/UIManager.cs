@@ -1,6 +1,6 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -36,19 +36,17 @@ public class UIManager : MonoBehaviour
     {
         if (resultPanel != null && resultPanel.activeSelf)
         {
-                resultPanel.SetActive(false);
+            resultPanel.SetActive(false);
             Debug.Log("ResultPanel を初期化時に非表示にしました。");
         }
-        // インベントリも非表示で開始
+
         if (inventoryPanel != null)
             inventoryPanel.SetActive(false);
 
         player = FindAnyObjectByType<player_move>();
 
-        // 初期インベントリの表示
         ShowEquipmentInventory();
 
-        // タブボタンにイベント登録
         equipmentTabButton?.onClick.AddListener(ShowEquipmentInventory);
         seedTabButton?.onClick.AddListener(ShowSeedInventory);
     }
@@ -59,20 +57,18 @@ public class UIManager : MonoBehaviour
 
         resultPanel.SetActive(true);
 
-        // タイトル
+        // タイトルテキストを元に戻す
         titleText.text = isClear ? "STAGE CLEAR" : "GAME OVER";
 
-        // スコア表示（任意）
+        // スコア表示
         if (player != null)
-            scoreText.text = $"SCORE: {playerScoreText()}";
+            _scoreText.text = $"SCORE: {playerScoreText()}";
         else
-            scoreText.text = "";
+            _scoreText.text = "";
 
-        // ボタン表示制御
-        retryButton.gameObject.SetActive(!isClear); // ゲームオーバー時のみ再挑戦ボタンON
+        retryButton.gameObject.SetActive(!isClear);
         stageSelectButton.gameObject.SetActive(true);
 
-        // 操作完全停止
         WaveManager.PlayerCanControl = false;
         WaveManager.CanGrow = false;
     }
@@ -82,17 +78,13 @@ public class UIManager : MonoBehaviour
         return $"{player.GetType().GetField("currentScore", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(player)}";
     }
 
-    // 再挑戦ボタン
     public void OnRetryButton()
     {
-        LoadingManager.nextSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    // ステージ選択に戻る
     public void OnStageSelectButton()
     {
-        LoadingManager.nextSceneName = "StageSelect";
         SceneManager.LoadScene("LoadingScene");
     }
 
@@ -101,13 +93,13 @@ public class UIManager : MonoBehaviour
         if (inventoryPanel == null) return;
 
         isInventoryOpen = !isInventoryOpen;
-        inventoryPanel.SetActive(!isInventoryOpen);
+        inventoryPanel.SetActive(isInventoryOpen);
     }
 
     public void ShowEquipmentInventory()
     {
         if (equipmentInventoryUI == null || seedInventoryUI == null) return;
-        
+
         equipmentInventoryUI.SetActive(true);
         seedInventoryUI.SetActive(false);
     }
@@ -119,14 +111,13 @@ public class UIManager : MonoBehaviour
         equipmentInventoryUI.SetActive(false);
         seedInventoryUI.SetActive(true);
     }
-    //スコア
+
     public void UpdateScore(int score)
     {
         if (scoreText != null)
             scoreText.text = $"Score: {score}";
     }
 
-    //レベル
     public void UpdateLevel(int level, int currentExp, int expToNext)
     {
         if (levelText != null)

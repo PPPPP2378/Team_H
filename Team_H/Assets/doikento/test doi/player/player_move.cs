@@ -348,6 +348,15 @@ public class player_move : MonoBehaviour
         selectedEquipmentIndex = -1;
     }
 
+    public void SelectCrop(int index)
+    {
+        if (index >= 0 && index < crops.Length)
+        {
+            selectedCropIndex = index;
+            Debug.Log("選択された作物: " + crops[index].cropName);
+        }
+    }
+
     private bool IsPlacedEquipment(string tag)
     {
         foreach (var eq in equipments)
@@ -356,6 +365,8 @@ public class player_move : MonoBehaviour
         }
         return false;
     }
+
+
 
     public int PlayerLevel => playerLevel;
 }
