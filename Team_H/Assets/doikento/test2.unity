@@ -15905,7 +15905,7 @@ PrefabInstance:
       objectReference: {fileID: 7692572729909568713}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: prepTime
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: waveDuration
@@ -15933,6 +15933,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5509296348376373760, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105907372134001094, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: equipments.Array.data[1].keepsWallCollider
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6749542906229459267, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}

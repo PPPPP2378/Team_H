@@ -11,6 +11,7 @@ public class EquipmentLevelData
     public Sprite sprite; // グラフィック
     public int cost;      // 設置コスト
     public int damage;    // 敵に与えるダメージ量
+    public int requiredPlayerLevel;
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -56,21 +57,24 @@ public class PlacedEquipment : MonoBehaviour
     // レベルアップ処理
     public bool TryUpgrade(ref int currentScore)
     {
+        Debug.Log("TryUpgrade 呼ばれたよ！");
+
         if (level >= data.levels.Length - 1)
         {
             Debug.Log($"{data.name} は最大レベルです！");
             return false;
         }
 
+        int required = data.levels[level + 1].requiredPlayerLevel;
+       
+
         // レベル制限
         player_move player = FindAnyObjectByType<player_move>();
         if (player != null)
         {
-            int nextEquipmentLevel = level + 1;
-
-            if (player.PlayerLevel < nextEquipmentLevel)
+            if (player.PlayerLevel < required)
             {
-                Debug.Log($"プレイヤーレベルが足りません！ (必要Lv: {nextEquipmentLevel})");
+                Debug.Log($"プレイヤーレベルが足りません！ (必要Lv: {required})");
                 return false;
             }
         }
