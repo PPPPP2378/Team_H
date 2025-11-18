@@ -99,7 +99,11 @@
     <Compile Include="Assets\doikento\test doi\Enemy\RabbitAI_2.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+<<<<<<< HEAD
+    <Compile Include="Assets\doikento\test doi\Enemy\bear_Ai.cs" />
+=======
     <Compile Include="Assets\doikento\test doi\trap\DamageArea.cs" />
+>>>>>>> 39d42ff13845f1989fc3d5cce39eebe715e391d7
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\doikento\test doi\Enemy\EnemySpawner.cs" />
@@ -108,7 +112,6 @@
     <Compile Include="Assets\doikento\test doi\player\player_move.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\OkunoRyota\bear_Ai.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
