@@ -1,10 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlacedEquipment;
 using static UnityEngine.GraphicsBuffer;
+
+
+[System.Serializable]
+public class EquipmentLevelData
+{
+    public Sprite sprite; // グラフィック
+    public int cost;      // 設置コスト
+    public int damage;    // 敵に与えるダメージ量
+}
 
 public class PlacedEquipment : MonoBehaviour
 {
+
     [Header("設備データ")]
     public EquipmentData data; // 元の設備データ
     public int level = 0;      // 現在のレベル（0スタート）
@@ -25,9 +36,18 @@ public class PlacedEquipment : MonoBehaviour
 
         // Collider がない場合は追加（トラップとして機能させるため）
         if (col == null)
+        {
             col = gameObject.AddComponent<BoxCollider2D>();
+        }
 
-        col.isTrigger = true; // 敵を通過させる場合はTrigger
+        if (data.isWallEquipment)
+        {
+            col.isTrigger = false;
+        }
+        else
+        {
+            col.isTrigger = true;
+        }
 
         ApplyLevelStats();
     }

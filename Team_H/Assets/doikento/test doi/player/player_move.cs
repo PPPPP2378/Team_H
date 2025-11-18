@@ -4,19 +4,20 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class EquipmentLevelData
+public enum EquipmentPlacementType
 {
-    public Sprite sprite; //グラフィック
-    public int cost;      //設置コスト
-    public int damage;    //敵に与えるダメージ量
+    Grassland,   // 床専用
+    Wall,        // 壁専用
+    Both         // どちらでも設置可能
 }
 
 [System.Serializable]
 public class EquipmentData
 {
-    public string name;                //設備名
-    public EquipmentLevelData[] levels; //レベルごとのデータ
+    public string name;                       // 設備名
+    public EquipmentLevelData[] levels;       // レベルごとのデータ
+    public EquipmentPlacementType placementType = EquipmentPlacementType.Both;
+    public bool isWallEquipment = false;      // 壁専用設備かどうか
 }
 
 public class player_move : MonoBehaviour
@@ -225,7 +226,7 @@ public class player_move : MonoBehaviour
             HarvestCrop(sr);
             GainExp(15);
         }
-        else if (currentTarget.CompareTag("Grassland") || IsPlacedEquipment(currentTarget.tag))
+        else if (currentTarget.CompareTag("Grassland") || currentTarget.CompareTag("Wall"))
         {
             if (selectedEquipmentIndex == -1)
             {
@@ -234,6 +235,13 @@ public class player_move : MonoBehaviour
             }
 
             EquipmentData selected = equipments[selectedEquipmentIndex];
+            // 設置タイプ判定
+            if ((selected.placementType == EquipmentPlacementType.Grassland && currentTarget.CompareTag("Wall")) ||
+                (selected.placementType == EquipmentPlacementType.Wall && currentTarget.CompareTag("Grassland")))
+            {
+                Debug.Log("この設備はこの場所には設置できません");
+                return;
+            }
             PlacedEquipment placed = currentTarget.GetComponent<PlacedEquipment>();
 
             if (placed == null)
