@@ -160,7 +160,9 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+    placementType: 0
   level: 1
+  damageInterval: 0.5
 --- !u!50 &3700973229427622527
 Rigidbody2D:
   serializedVersion: 5
