@@ -226,7 +226,7 @@ public class player_move : MonoBehaviour
             HarvestCrop(sr);
             GainExp(15);
         }
-        else if (currentTarget.CompareTag("Grassland") || currentTarget.CompareTag("Wall"))
+        else if (currentTarget.CompareTag("Grassland") || currentTarget.CompareTag("Wall")||IsPlacedEquipment(currentTarget.tag))
         {
             if (selectedEquipmentIndex == -1)
             {
