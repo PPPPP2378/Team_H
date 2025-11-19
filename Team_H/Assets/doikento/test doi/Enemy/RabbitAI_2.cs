@@ -32,6 +32,10 @@ public class RabbitAI_Complete : MonoBehaviour
 
     public int scoreValue = 50; // 倒したときのスコア値
 
+    [Header("死亡時のグラフィック")]
+    public Sprite deadSprite;     // 死亡した時のスプライト
+    public float deathDisappearTime = 1.0f; // 消えるまでの時間
+
     private List<Transform> waypoints = new List<Transform>(); // 経路上のチェックポイント
     private int currentWaypointIndex = 0;                      // 現在のチェックポイント番号
     private Transform finalTarget;
@@ -242,6 +246,7 @@ public class RabbitAI_Complete : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         currentHP -= dmg;
+
         if (currentHP <= 0)
         {
             // プレイヤーにスコア加算
@@ -250,8 +255,8 @@ public class RabbitAI_Complete : MonoBehaviour
             {
                 player.AddScore(scoreValue);
             }
-            // グラフィックを消す
-            Destroy(gameObject);
+
+            StartCoroutine(PlayDeathAnimation());
         }
 
 
@@ -283,6 +288,24 @@ public class RabbitAI_Complete : MonoBehaviour
                 tile.tag = destroyedFieldTag;
             }
         }
+    }
+
+    IEnumerator PlayDeathAnimation()
+    {
+        // 移動停止
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false; // 衝突判定オフ
+
+        // スプライト切り替え
+        if (sr != null && deadSprite != null)
+        {
+            sr.sprite = deadSprite;
+        }
+
+        // 少し待ってから削除
+        yield return new WaitForSeconds(deathDisappearTime);
+
+        Destroy(gameObject);
     }
 
     // 一定時間後にウサギを削除

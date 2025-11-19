@@ -12,6 +12,7 @@ public class EquipmentLevelData
     public int cost;      // 設置コスト
     public int damage;    // 敵に与えるダメージ量
     public int requiredPlayerLevel;
+    public GameObject hitEffect;
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -29,6 +30,7 @@ public class PlacedEquipment : MonoBehaviour
     private Coroutine damageCoroutine;
 
     private Dictionary<MonoBehaviour, Coroutine> damageCoroutines = new Dictionary<MonoBehaviour, Coroutine>();
+    private GameObject currentEffectPrefab;
 
     void Start()
     {
@@ -103,6 +105,9 @@ public class PlacedEquipment : MonoBehaviour
 
         // 攻撃力更新
         damage = stats.damage;
+
+        // レベルごとのエフェクトを更新
+        currentEffectPrefab = stats.hitEffect;
     }
 
     // --- DamageTrap の機能統合 ---
@@ -114,7 +119,9 @@ public class PlacedEquipment : MonoBehaviour
         {
             RabbitAI_Complete rabbit = other.GetComponent<RabbitAI_Complete>();
             CrowFlockAI crow = other.GetComponent<CrowFlockAI>();
-            MonoBehaviour target = rabbit != null ? (MonoBehaviour)rabbit : crow != null ? (MonoBehaviour)crow : null;
+            bear_Ai bear = other.GetComponent<bear_Ai>();
+
+            MonoBehaviour target = rabbit != null ? (MonoBehaviour)rabbit : crow != null ? (MonoBehaviour)crow : bear != null ? (MonoBehaviour)bear : null;
             if (target != null&& !damageCoroutines.ContainsKey(target))
             {
                 // ダメージを一度だけコルーチンで処理
@@ -133,8 +140,9 @@ public class PlacedEquipment : MonoBehaviour
         {
             RabbitAI_Complete rabbit = other.GetComponent<RabbitAI_Complete>();
             CrowFlockAI crow = other.GetComponent<CrowFlockAI>();
+            bear_Ai bear = other.GetComponent<bear_Ai>();
 
-            MonoBehaviour target = rabbit != null ? (MonoBehaviour)rabbit : crow != null ? (MonoBehaviour)crow : null;
+            MonoBehaviour target = rabbit != null ? (MonoBehaviour)rabbit : crow != null ? (MonoBehaviour)crow : bear!=null?(MonoBehaviour)bear:null;
             if (target != null && damageCoroutines.ContainsKey(target))
             {
                 StopCoroutine(damageCoroutines[target]);
@@ -158,8 +166,18 @@ public class PlacedEquipment : MonoBehaviour
 
     private IEnumerator DealDamageOverTime(MonoBehaviour target)
     {
+        // 敵の Collider を取得
+        Collider2D targetCol = target.GetComponent<Collider2D>();
+
         while (target != null)
         {
+            // まだ衝突しているか？（踏んでいる間だけ true）
+            if (!col.bounds.Intersects(targetCol.bounds))
+            {
+                // 接触が終わった → コルーチン停止
+                break;
+            }
+
             if (target is RabbitAI_Complete rabbit)
             {
                 rabbit.TakeDamage(damage);
@@ -170,6 +188,21 @@ public class PlacedEquipment : MonoBehaviour
                 crow.TakeDamage(damage);
                 Debug.Log($"[Trap] {gameObject.name} が {crow.name} に {damage} ダメージ！");
             }
+            else if (target is bear_Ai bear)
+            {
+                bear.TakeDamage(damage);
+                Debug.Log($"[Trap] {gameObject.name} が {bear.name} に {damage} ダメージ！");
+            }
+
+            var effectPrefab = data.levels[level].hitEffect;
+            if (effectPrefab != null)
+            {
+                // 「罠の中心」からエフェクトを出す
+                GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+                Destroy(effect, 0.4f); // エフェクトの残骸を消去
+            }
+            if (damageCoroutines.ContainsKey(target))
+                damageCoroutines.Remove(target);
 
             yield return new WaitForSeconds(damageInterval);
         }

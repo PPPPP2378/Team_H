@@ -80,11 +80,13 @@ public class UIManager : MonoBehaviour
 
     public void OnRetryButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LoadingManager.nextSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void OnStageSelectButton()
     {
+        LoadingManager.nextSceneName = "StageSelect"; //セレクト画面のシーン名
         SceneManager.LoadScene("LoadingScene");
     }
 

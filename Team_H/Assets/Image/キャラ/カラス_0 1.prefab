@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4045259389086594854}
   - component: {fileID: 3553811170151471811}
-  - component: {fileID: 1015823620119810065}
   - component: {fileID: 2595011823464661802}
   - component: {fileID: 6231610641593127533}
-  m_Layer: 0
+  - component: {fileID: 206580452428173050}
+  m_Layer: 7
   m_Name: "\u30AB\u30E9\u30B9_0 1"
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4442330188658434452, guid: 0be6e19481fc1fd47b4d775444d3aa3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -90,27 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1015823620119810065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7625392139700843229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc67a230374957346a990536720685dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  detectionRange: 10
-  separationDistance: 1
-  cohesionStrength: 0.3
-  alignmentStrength: 0.3
-  maxHP: 80
-  plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
-  destroyedFieldTag: Rough
-  scoreValue: 100
 --- !u!61 &2595011823464661802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -141,11 +120,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0021247864, y: 0.0042482615}
+  m_Offset: {x: -0.027544975, y: 0.0042482615}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5764847, y: 0.18184972}
+  m_Size: {x: 0.3053341, y: 0.18184972}
   m_EdgeRadius: 0
 --- !u!50 &6231610641593127533
 Rigidbody2D:
@@ -183,4 +162,30 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &206580452428173050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7625392139700843229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc67a230374957346a990536720685dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+  detectionRange: 2.1
+  WallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxHP: 80
+  plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
+  destroyedFieldTag: Rough
+  obstacleCheckDistance: 2
+  avoidStrength: 5
+  slideStrength: 2
+  scoreValue: 100
+  deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
+  deathDisappearTime: 1

@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class DamageTrap : MonoBehaviour
 {
@@ -31,6 +31,8 @@ public class DamageTrap : MonoBehaviour
         while (target != null && target.bounds.Intersects(GetComponent<Collider2D>().bounds))
         {
             rabbit.TakeDamage(damage);
+
+
             Debug.Log($"[DamageTrap] {target.name} に {damage} ダメージを与えました！");
             yield return new WaitForSeconds(damageInterval);
         }

@@ -1388,14 +1388,17 @@ MonoBehaviour:
       cost: 10
       damage: 10
       requiredPlayerLevel: 0
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 20
       requiredPlayerLevel: 1
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 30
       requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
     placementType: 0
     isWallEquipment: 0
   - name: darts
@@ -1404,14 +1407,17 @@ MonoBehaviour:
       cost: 0
       damage: 0
       requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
     - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
       cost: 0
       damage: 0
       requiredPlayerLevel: 1
+      hitEffect: {fileID: 0}
     - sprite: {fileID: 0}
       cost: 0
       damage: 0
       requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
     placementType: 1
     isWallEquipment: 1
   - name: 

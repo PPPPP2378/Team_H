@@ -134,13 +134,15 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  maxHP: 100
+  maxHP: 20
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   obstacleCheckDistance: 0.1
   avoidStrength: 3
   slideStrength: 10
   scoreValue: 50
+  deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
+  deathDisappearTime: 1
 --- !u!61 &7601219923508314024
 BoxCollider2D:
   m_ObjectHideFlags: 0

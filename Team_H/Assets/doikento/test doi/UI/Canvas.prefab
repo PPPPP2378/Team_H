@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8915200903127116476, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnRetryButton
         m_Mode: 1
@@ -541,6 +541,7 @@ GameObject:
   - component: {fileID: 8995312279005753062}
   - component: {fileID: 1492142367416911984}
   - component: {fileID: 474000774984277211}
+  - component: {fileID: 8287702540865467430}
   m_Layer: 8
   m_Name: StageSelectButton
   m_TagString: Untagged
@@ -650,7 +651,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8915200903127116476, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: OnStageSelectButton
         m_Mode: 1
@@ -662,6 +663,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8287702540865467430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583565695052504490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenename: stageselect
 --- !u!1 &8770092451766241464
 GameObject:
   m_ObjectHideFlags: 0
