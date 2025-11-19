@@ -1,54 +1,61 @@
-using UnityEngine;
-using UnityEngine.Audio; // AudioMixer‚ğˆµ‚¤‚½‚ß‚É•K—v
+ï»¿using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro; // è¿½åŠ 
 
 public class SettingsManager : MonoBehaviour
 {
-    // Inspector‚©‚çAudioMixer‚ğİ’è‚Å‚«‚é‚æ‚¤‚É‚·‚é
+    // æ—¢å­˜ã®å¤‰æ•°
     public AudioMixer audioMixer;
-
-    // ƒXƒ‰ƒCƒ_[‚ğQÆ‚Å‚«‚é‚æ‚¤‚É‚·‚é (Hierarchy‚Åİ’è)
     public Slider masterVolumeSlider;
 
-    // AudioMixer‚Åİ’è‚µ‚½Exposed Parameter‚Ì–¼‘O
-    private const string MASTER_VOL_PARAM = "MasterVolume";
+    // â­ è¿½åŠ : ãƒ†ã‚­ã‚¹ãƒˆã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å‚ç…§
+    public TextMeshProUGUI masterVolumeText;
+    // â€» TextMeshProUGUIã¯ã€Canvasã®å­è¦ç´ ã¨ã—ã¦ä½œæˆã•ã‚ŒãŸTMPãƒ†ã‚­ã‚¹ãƒˆã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆåã§ã™ã€‚
 
-    // PlayerPrefs‚É•Û‘¶‚·‚éƒL[
+    private const string MASTER_VOL_PARAM = "MasterVolume";
     private const string MASTER_VOL_KEY = "MasterVol";
+
 
     void Start()
     {
-        // ƒQ[ƒ€ŠJn‚É•Û‘¶‚³‚ê‚½‰¹—Ê‚ğƒ[ƒh
         LoadVolume();
 
-        // ƒXƒ‰ƒCƒ_[‚ÌƒŠƒXƒi[‚ğİ’è (ƒXƒ‰ƒCƒ_[‚ª“®‚¢‚½‚Æ‚«‚ÉŒÄ‚Î‚ê‚éŠÖ”)
+        // ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®ãƒªã‚¹ãƒŠãƒ¼ã‚’è¨­å®š
         masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
+
+        // â­ è¿½åŠ : åˆå›èµ·å‹•æ™‚ã«ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°
+        UpdateVolumeText(masterVolumeSlider.value);
     }
 
-    // ƒXƒ‰ƒCƒ_[‚Ì’l (0.0f ~ 1.0f) ‚ğó‚¯æ‚èA‰¹—Ê‚ğİ’è‚·‚éŠÖ”
+    // ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼ã®å€¤ (0.0f ~ 1.0f) ã‚’å—ã‘å–ã‚Šã€éŸ³é‡ã‚’è¨­å®šã™ã‚‹é–¢æ•°
     public void SetMasterVolume(float volume)
     {
-        // ƒXƒ‰ƒCƒ_[‚Ì’l (ƒŠƒjƒA) ‚ğAudioMixer‚Åg‚¦‚éƒfƒVƒxƒ‹’l (‘Î”) ‚É•ÏŠ·
-        // volume‚ªÅ¬(0.0001f)‚Ì‚Æ‚«A-80dB‚È‚ÇA‰¹‚ğ‚Ù‚Ú•·‚±‚¦‚È‚­‚·‚é
+        // æ—¢å­˜ã®éŸ³é‡è¨­å®šå‡¦ç†ï¼ˆå¤‰æ›´ãªã—ï¼‰
         float volumeInDb = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20f;
-
-        // AudioMixer‚Ìƒpƒ‰ƒ[ƒ^‚ğİ’è
         audioMixer.SetFloat(MASTER_VOL_PARAM, volumeInDb);
-
-        // İ’è‚ğ•Û‘¶
         PlayerPrefs.SetFloat(MASTER_VOL_KEY, volume);
         PlayerPrefs.Save();
+
+        // â­ è¿½åŠ : ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°é–¢æ•°ã‚’å‘¼ã³å‡ºã™
+        UpdateVolumeText(volume);
+    }
+
+    // â­ è¿½åŠ : ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°ã™ã‚‹é–¢æ•°
+    private void UpdateVolumeText(float volume)
+    {
+        // volume (0.0fï½1.0f) ã‚’ 0ï½100 ã®æ•´æ•°ã«å¤‰æ›
+        int percentage = Mathf.RoundToInt(volume * 100f);
+
+        // TextMeshProUGUIã«æ–‡å­—åˆ—ã‚’è¨­å®š
+        masterVolumeText.text = percentage.ToString() + "%";
     }
 
     void LoadVolume()
     {
-        // •Û‘¶‚³‚ê‚½’l‚ª‚ ‚ê‚Îƒ[ƒhA‚È‚¯‚ê‚ÎƒfƒtƒHƒ‹ƒg’l (1.0f) ‚ğg‚¤
         float savedVolume = PlayerPrefs.GetFloat(MASTER_VOL_KEY, 1.0f);
-
-        // ƒXƒ‰ƒCƒ_[‚Ì’l‚ğƒ[ƒh‚µ‚½’l‚Éİ’è
         masterVolumeSlider.value = savedVolume;
-
-        // ƒ[ƒh‚µ‚½’l‚Å‰¹—Ê‚ğİ’è
         SetMasterVolume(savedVolume);
+        // SetMasterVolumeå†…ã§ã™ã§ã« UpdateVolumeText(volume) ãŒå‘¼ã°ã‚Œã‚‹ãŸã‚ã€ã“ã“ã§ã¯ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã§ã‚‚OK
     }
 }
