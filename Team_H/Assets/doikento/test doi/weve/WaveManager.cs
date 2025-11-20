@@ -142,6 +142,9 @@ public class WaveManager : MonoBehaviour
         CanGrow = false;
         PlayerCanControl = false;
 
+        UnlockNextStage();
+
+        //リザルト
         UIManager ui = FindAnyObjectByType<UIManager>();
         if (ui != null) ui.ShowResult(true);
     }
@@ -298,5 +301,38 @@ public class WaveManager : MonoBehaviour
 
             yield return new WaitForSeconds(fieldCheckInterval);
         }
+    }
+
+    private void UnlockNextStage()
+    {
+        // 現在のステージ番号をどこかに設定しておく必要がある
+        // 例：Stage1 → 1, Stage2 → 2
+        int currentStage = GetCurrentStageNumber();
+
+        // セーブされている解放済み最高ステージ番号を取得（初期値1）
+        int unlocked = PlayerPrefs.GetInt("UnlockedStage", 1);
+
+        // 今クリアしたステージが解放済み最高より大きければ更新
+        if (currentStage >= unlocked)
+        {
+            PlayerPrefs.SetInt("UnlockedStage", currentStage + 1);
+            PlayerPrefs.Save();
+            Debug.Log($"ステージ {currentStage + 1} を解放しました！");
+        }
+
+    }
+    private int GetCurrentStageNumber()
+    {
+        string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
+        // "Stage1" → 1 に変換
+        if (scene.StartsWith("Stage"))
+        {
+            string numStr = scene.Replace("Stage", "");
+            if (int.TryParse(numStr, out int num))
+                return num;
+        }
+
+        return 1; // デフォルト
     }
 }

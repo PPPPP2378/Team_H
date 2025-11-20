@@ -15913,7 +15913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: waveDuration
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3245726647100418377, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Camera

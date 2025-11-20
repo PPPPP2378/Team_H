@@ -838,7 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: 
+  scenename: Stage3
 --- !u!114 &877282064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: test2
+  scenename: Stage1
 --- !u!82 &1312684794
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: 
+  scenename: Stage2
 --- !u!114 &1408512545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,7 +2271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97693eeb6cb6c67468b51c44681e726b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: 
+  scenename: Stage4
 --- !u!114 &1910469271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2378,6 +2378,7 @@ GameObject:
   - component: {fileID: 1958808360}
   - component: {fileID: 1958808359}
   - component: {fileID: 1958808358}
+  - component: {fileID: 1958808362}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2473,6 +2474,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1958808362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958808357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83cfd10766a014143874f9939cc251c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageButtons:
+  - {fileID: 1312684790}
+  - {fileID: 1408512545}
+  - {fileID: 877282064}
+  - {fileID: 1910469271}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
