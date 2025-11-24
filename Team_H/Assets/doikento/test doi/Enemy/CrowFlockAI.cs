@@ -42,6 +42,9 @@ public class CrowFlockAI : MonoBehaviour
     private List<Transform> waypoints = new List<Transform>(); // 経路上のチェックポイント
     private int currentWaypointIndex = 0;                      // 現在のチェックポイント番号
     private Transform finalTarget;
+
+    public GameObject damageTextPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -249,6 +252,8 @@ public class CrowFlockAI : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         currentHP -= dmg;
+        //テキストを表示
+        ShowDamageText(dmg);
 
         if (currentHP <= 0)
         {
@@ -327,5 +332,23 @@ public class CrowFlockAI : MonoBehaviour
         {
             Destroy(crow);
         }
+    }
+
+    void ShowDamageText(int dmg)
+    {
+        if (damageTextPrefab == null) return;
+
+        // Canvas を取得（名前は Canvas であること）
+        Canvas canvas = GameObject.Find("Canvas_2").GetComponent<Canvas>();
+        if (canvas == null) return;
+
+        // ワールド座標 → 画面座標へ変換する
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 0.7f, 0));
+
+        // UI を生成（Canvas の子）
+        GameObject obj = Instantiate(damageTextPrefab, screenPosition, Quaternion.identity, canvas.transform);
+
+        // テキスト内容を設定
+        obj.GetComponent<DamageText>().SetText("-" + dmg);
     }
 }
