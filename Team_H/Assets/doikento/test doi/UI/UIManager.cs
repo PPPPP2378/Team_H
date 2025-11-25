@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button retryButton;
     [SerializeField] private Button stageSelectButton;
 
+
     private player_move player;
     private bool isInventoryOpen = false;
 
