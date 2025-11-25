@@ -42,6 +42,12 @@ public class bear_Ai : MonoBehaviour
 
     public GameObject damageTextPrefab;
 
+    [Header("方向ごとスプライト")]
+    public Sprite spriteUp;
+    public Sprite spriteDown;
+    public Sprite spriteLeft;
+    public Sprite spriteRight;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -214,6 +220,8 @@ public class bear_Ai : MonoBehaviour
         direction = direction.normalized;
         rb.linearVelocity = direction * moveSpeed;
 
+        UpdateSpriteByDirection(direction);
+
         if (Mathf.Abs(direction.x) > 0.1)
             sr.flipX = direction.x < 0;
     }
@@ -347,6 +355,37 @@ public class bear_Ai : MonoBehaviour
 
         // テキスト内容を設定
         obj.GetComponent<DamageText>().SetText("-" + dmg);
+    }
+
+    void UpdateSpriteByDirection(Vector2 dir)
+    {
+        // 移動していないときは切り替えない
+        if (dir.magnitude < 0.1f) return;
+
+        // 横方向の方が大きい → 左右
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if (dir.x > 0)
+            {
+                sr.sprite = spriteRight;
+            }
+            else
+            {
+                sr.sprite = spriteLeft;
+            }
+        }
+        else
+        {
+            // 上下方向の方が大きい → 上下
+            if (dir.y > 0)
+            {
+                sr.sprite = spriteUp;
+            }
+            else
+            {
+                sr.sprite = spriteDown;
+            }
+        }
     }
 }
 

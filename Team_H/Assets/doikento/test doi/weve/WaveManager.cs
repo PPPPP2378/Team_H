@@ -41,6 +41,10 @@ public class WaveManager : MonoBehaviour
     public string[] fieldTags = { "Plow", "Plowed", "Moist_Plowe", "Seed", "Grown" };
     public float fieldCheckInterval = 3f; // 何秒ごとに再カウントするか
 
+    [Header("BGM設定")]
+    public AudioSource prepBGM;    // 準備時間用BGM
+    public AudioSource waveBGM;    // ウェーブ中BGM
+
     // ゲーム開始時にウェーブ管理ループを開始
     void Start()
     {
@@ -53,6 +57,7 @@ public class WaveManager : MonoBehaviour
         while (currentWave < maxWave)
         {
             // --- 準備フェーズ ---
+            PlayPrepBGM();
             inPrep = true;
             inWave = false;
             CanGrow = false; // 成長ストップ！
@@ -73,6 +78,7 @@ public class WaveManager : MonoBehaviour
 
             // --- ウェーブ開始 ---
             currentWave++;
+            PlayWaveBGM();
             inPrep = false;
             inWave = true;
 
@@ -135,6 +141,7 @@ public class WaveManager : MonoBehaviour
         }
 
         // 全ウェーブ終了
+        StopAllBGM();
         ShowStateText("STAGE CLEAR",displayTimeClear);
         spawner.StopSpawning();
 
@@ -214,6 +221,7 @@ public class WaveManager : MonoBehaviour
     {
         if (isGameOver) return;
         isGameOver = true;
+        StopAllBGM();
 
         spawner.StopSpawning();
         RabbitAI_Complete.RemoveAllRabbits();
@@ -233,7 +241,7 @@ public class WaveManager : MonoBehaviour
     private void UpdateUI()
     {
         if (waveText != null)
-            waveText.text = $"WAVE: {currentWave}/{maxWave}";
+            waveText.text = $": {currentWave}/{maxWave}";
 
         if (timerText != null)
             timerText.text = $"TIME: {timer:F1}";
@@ -334,5 +342,26 @@ public class WaveManager : MonoBehaviour
         }
 
         return 1; // デフォルト
+    }
+
+    //bgm再生用
+    private void PlayPrepBGM()
+    {
+        if (waveBGM != null) waveBGM.Stop();
+        if (prepBGM != null && !prepBGM.isPlaying)
+            prepBGM.Play();
+    }
+
+    private void PlayWaveBGM()
+    {
+        if (prepBGM != null) prepBGM.Stop();
+        if (waveBGM != null && !waveBGM.isPlaying)
+            waveBGM.Play();
+    }
+
+    private void StopAllBGM()
+    {
+        if (prepBGM != null) prepBGM.Stop();
+        if (waveBGM != null) waveBGM.Stop();
     }
 }

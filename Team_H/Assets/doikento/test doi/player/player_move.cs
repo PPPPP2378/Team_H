@@ -26,6 +26,7 @@ public class player_move : MonoBehaviour
     public float speed = 3f;
     private Rigidbody2D rb;
     private Collider2D currentTarget;
+    private Animator animator;
 
     [Header("設備リスト")]
     [SerializeField] private EquipmentData[] equipments;
@@ -69,6 +70,7 @@ public class player_move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.freezeRotation = true;
+        animator = GetComponent<Animator>();
 
         //UIマネージャーを取得
         uiManager = FindAnyObjectByType<UIManager>();
@@ -103,6 +105,13 @@ public class player_move : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         Vector2 move = new Vector2(x, y).normalized;
         rb.MovePosition(rb.position + move * speed * Time.fixedDeltaTime);
+
+        if (animator != null)
+        {
+            animator.SetFloat("MoveX", move.x);
+            animator.SetFloat("MoveY", move.y);
+            animator.SetFloat("Speed", move.sqrMagnitude);
+        }
     }
 
     void Update()

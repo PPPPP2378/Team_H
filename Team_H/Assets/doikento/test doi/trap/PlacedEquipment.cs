@@ -13,6 +13,13 @@ public class EquipmentLevelData
     public int damage;    // 敵に与えるダメージ量
     public int requiredPlayerLevel;
     public GameObject hitEffect;
+
+    // --- 遠距離用 ---
+    public bool isRanged;            // 遠距離設備なら true
+    public float attackRange = 3f;   // 射程
+    public float projectileSpeed = 6f;
+    public GameObject projectilePrefab; // 弾のPrefab
+
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -53,6 +60,12 @@ public class PlacedEquipment : MonoBehaviour
         }
 
         ApplyLevelStats();
+
+        // もし遠距離設備なら、専用コルーチンを開始
+        if (data.levels[level].isRanged)
+        {
+            StartCoroutine(RangedAttackLoop());
+        }
     }
 
 
@@ -206,5 +219,86 @@ public class PlacedEquipment : MonoBehaviour
 
             yield return new WaitForSeconds(damageInterval);
         }
+    }
+
+    private IEnumerator RangedAttackLoop()
+    {
+        while (true)
+        {
+            var lv = data.levels[level];
+
+            if (!lv.isRanged)
+            {
+                yield return null;
+                continue;
+            }
+
+            // 射程内の敵を探す
+            Collider2D[] hits = Physics2D.OverlapCircleAll(
+                transform.position,
+                lv.attackRange,
+                LayerMask.GetMask("Enemy")
+            );
+
+            if (hits.Length > 0)
+            {
+                // 最初の敵をターゲット
+                var enemy = hits[0];
+                FireProjectile(enemy.transform);
+            }
+
+            yield return new WaitForSeconds(damageInterval);
+        }
+    }
+
+    private void FireProjectile(Transform target)
+    {
+        var lv = data.levels[level];
+        if (lv.projectilePrefab == null) return;
+
+        GameObject bullet = Instantiate(
+            lv.projectilePrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        StartCoroutine(MoveProjectile(bullet, target, lv));
+    }
+    //弾丸発射処理
+    private IEnumerator MoveProjectile(GameObject bullet, Transform target, EquipmentLevelData lv)
+    {
+        while (bullet != null && target != null)
+        {
+            bullet.transform.position =
+                Vector3.MoveTowards(
+                    bullet.transform.position,
+                    target.position,
+                    lv.projectileSpeed * Time.deltaTime
+                );
+
+            // 命中
+            if (Vector3.Distance(bullet.transform.position, target.position) < 0.1f)
+            {
+                // 敵にダメージ
+                var rabbit = target.GetComponent<RabbitAI_Complete>();
+                var crow = target.GetComponent<CrowFlockAI>();
+                var bear = target.GetComponent<bear_Ai>();
+
+                if (rabbit) rabbit.TakeDamage(lv.damage);
+                if (crow) crow.TakeDamage(lv.damage);
+                if (bear) bear.TakeDamage(lv.damage);
+
+                // ヒットエフェクト
+                if (lv.hitEffect != null)
+                    Instantiate(lv.hitEffect, target.position, Quaternion.identity);
+
+                Destroy(bullet);
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        if (bullet) Destroy(bullet);
     }
 }

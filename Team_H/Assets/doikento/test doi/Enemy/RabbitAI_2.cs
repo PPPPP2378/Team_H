@@ -42,11 +42,28 @@ public class RabbitAI_Complete : MonoBehaviour
 
     public GameObject damageTextPrefab;
 
+    [Header("方向ごとスプライト")]
+    public Sprite spriteUp;
+    public Sprite spriteDown;
+    public Sprite spriteLeft;
+    public Sprite spriteRight;
+
+    [Header("効果音")]
+    public AudioClip deathSE;      // 死亡時の効果音
+    private AudioSource audioSource;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
+
+        // オーディオソースを取得／追加
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
 
         // Waypointをすべて取得
         GameObject[] waypointObjects = GameObject.FindGameObjectsWithTag("Waypoint");
@@ -214,6 +231,8 @@ public class RabbitAI_Complete : MonoBehaviour
         direction = direction.normalized;
         rb.linearVelocity = direction * moveSpeed;
 
+        UpdateSpriteByDirection(direction);
+
         if (Mathf.Abs(direction.x) > 0.1)
             sr.flipX = direction.x < 0;
     }
@@ -301,6 +320,12 @@ public class RabbitAI_Complete : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false; // 衝突判定オフ
 
+        // 死亡SE再生（AudioClip が設定されている場合のみ）
+        if (deathSE != null)
+        {
+            audioSource.PlayOneShot(deathSE);
+        }
+
         // スプライト切り替え
         if (sr != null && deadSprite != null)
         {
@@ -349,6 +374,37 @@ public class RabbitAI_Complete : MonoBehaviour
 
         // テキスト内容を設定
         obj.GetComponent<DamageText>().SetText("-" + dmg);
+    }
+
+    void UpdateSpriteByDirection(Vector2 dir)
+    {
+        // 移動していないときは切り替えない
+        if (dir.magnitude < 0.1f) return;
+
+        // 横方向の方が大きい → 左右
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if (dir.x > 0)
+            {
+                sr.sprite = spriteRight;
+            }
+            else
+            {
+                sr.sprite = spriteLeft;
+            }
+        }
+        else
+        {
+            // 上下方向の方が大きい → 上下
+            if (dir.y > 0)
+            {
+                sr.sprite = spriteUp;
+            }
+            else
+            {
+                sr.sprite = spriteDown;
+            }
+        }
     }
 }
 
