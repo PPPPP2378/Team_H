@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -4442330188658434452, guid: 0be6e19481fc1fd47b4d775444d3aa3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,11 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc67a230374957346a990536720685dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 2
   detectionRange: 2.1
   WallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   maxHP: 80
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
@@ -190,3 +190,7 @@ MonoBehaviour:
   deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
   deathDisappearTime: 1
   damageTextPrefab: {fileID: 5605639851439266096, guid: 0d2eec51acc47a7479098f7c44d352ed, type: 3}
+  spriteUp: {fileID: 0}
+  spriteDown: {fileID: 0}
+  spriteLeft: {fileID: 0}
+  spriteRight: {fileID: 0}

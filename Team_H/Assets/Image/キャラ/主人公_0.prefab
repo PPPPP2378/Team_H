@@ -1155,6 +1155,8 @@ MonoBehaviour:
   - Seed
   - Grown
   fieldCheckInterval: 3
+  prepBGM: {fileID: 0}
+  waveBGM: {fileID: 0}
 --- !u!1 &4996480023248405112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,7 +1293,7 @@ GameObject:
   - component: {fileID: 6105907372134001094}
   - component: {fileID: 2699956980868788863}
   - component: {fileID: 8915200903127116476}
-  - component: {fileID: 1165418859022392572}
+  - component: {fileID: 5728746424151829571}
   m_Layer: 8
   m_Name: "\u4E3B\u4EBA\u516C_0"
   m_TagString: Player
@@ -1586,7 +1588,7 @@ MonoBehaviour:
   _scoreText: {fileID: 0}
   retryButton: {fileID: 0}
   stageSelectButton: {fileID: 0}
---- !u!95 &1165418859022392572
+--- !u!95 &5728746424151829571
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -1596,7 +1598,7 @@ Animator:
   m_GameObject: {fileID: 5509296348376373760}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a5ca4f02395d0d4b98906a09e46567e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
