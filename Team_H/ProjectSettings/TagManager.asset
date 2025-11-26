@@ -20,6 +20,8 @@ TagManager:
   - Rough
   - 'Rough '
   - Seed_
+  - Waypoint2
+  - Waypoint3
   layers:
   - Default
   - TransparentFX

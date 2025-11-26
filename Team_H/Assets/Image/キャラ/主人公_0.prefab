@@ -1684,12 +1684,12 @@ MonoBehaviour:
   interactRadius: 2.5
   maxLevel: 15
   audioSource: {fileID: 2823297978411939943}
-  plowSE: {fileID: 0}
-  waterSE: {fileID: 0}
-  seedSE: {fileID: 0}
-  harvestSE: {fileID: 0}
-  placeEquipmentSE: {fileID: 0}
-  upgradeSE: {fileID: 0}
+  plowSE: {fileID: 8300000, guid: 448065483cc53f848afa5ae8fa38f7ee, type: 3}
+  waterSE: {fileID: 8300000, guid: 7721c6a996a7de24f95a46ca36e59d43, type: 3}
+  seedSE: {fileID: 8300000, guid: b805b4de75bd0d047b3f60849f9ea022, type: 3}
+  harvestSE: {fileID: 8300000, guid: 8760bd1cb6d526940bba853f989cf9a1, type: 3}
+  placeEquipmentSE: {fileID: 8300000, guid: 195ad4d426ba0e14d91cd9aacee7d690, type: 3}
+  upgradeSE: {fileID: 8300000, guid: 5353adcc5c7fd8341bf3db0757b16246, type: 3}
   errorSE: {fileID: 0}
 --- !u!114 &2699956980868788863
 MonoBehaviour:

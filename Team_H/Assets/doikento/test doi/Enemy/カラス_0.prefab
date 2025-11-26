@@ -121,7 +121,7 @@ MonoBehaviour:
   spriteDown: {fileID: -4637666780228130129, guid: 949c3817efa1ace468683ab2cfa9ba9f, type: 3}
   spriteLeft: {fileID: 6210398801393420539, guid: e8f034222c3fafb4e8dca08ada0b68f1, type: 3}
   spriteRight: {fileID: -4442330188658434452, guid: 0be6e19481fc1fd47b4d775444d3aa3f, type: 3}
-  deathSE: {fileID: 0}
+  deathSE: {fileID: 8300000, guid: ebb99dcf96a010e468b545eb34224da5, type: 3}
 --- !u!61 &3785144949071177200
 BoxCollider2D:
   m_ObjectHideFlags: 0

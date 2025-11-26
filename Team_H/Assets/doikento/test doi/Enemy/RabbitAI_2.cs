@@ -53,6 +53,8 @@ public class RabbitAI_Complete : MonoBehaviour
     public AudioClip deathSE;      // 死亡時の効果音
     private AudioSource audioSource;
 
+    [Header("移動経路（手動設定）")]
+    public List<Transform> manualWaypoints = new List<Transform>();
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

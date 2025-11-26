@@ -194,3 +194,4 @@ MonoBehaviour:
   spriteDown: {fileID: 8390597372841878687, guid: 638432187612c6d458b75aae4346fd99, type: 3}
   spriteLeft: {fileID: -3381025874229103547, guid: a7612737b16eeb045bcb91add29574e1, type: 3}
   spriteRight: {fileID: -8182709734815071491, guid: 8f6cb91cb6ae8fd42bd1723f5172eb5a, type: 3}
+  deathSE: {fileID: 8300000, guid: ebb99dcf96a010e468b545eb34224da5, type: 3}
