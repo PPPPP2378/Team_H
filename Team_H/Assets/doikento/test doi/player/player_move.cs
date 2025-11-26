@@ -383,7 +383,19 @@ public class player_move : MonoBehaviour
         return false;
     }
 
+    //移動のアニメーション空白の時間
+    public void PauseWalk()
+    {
+        animator.speed = 0f;
+        StartCoroutine(ResumeWalk());
+    }
 
+    private IEnumerator ResumeWalk()
+    {
+        yield return new WaitForSeconds(0.3f); // 秒停止
+        animator.speed = 1f;
+    }
 
+    
     public int PlayerLevel => playerLevel;
 }
