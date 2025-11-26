@@ -62,6 +62,19 @@ public class player_move : MonoBehaviour
     [Header("操作範囲設定")]
     [SerializeField] private float interactRadius = 2.5f;
 
+    [Header("レベル設定")]
+    [SerializeField] private int maxLevel = 15; //レベル上限
+
+    [Header("効果音設定")]
+    public AudioSource audioSource;      // SE を鳴らすための AudioSource
+    public AudioClip plowSE;             // 土を耕す
+    public AudioClip waterSE;            // 水やり
+    public AudioClip seedSE;             // 種を植える
+    public AudioClip harvestSE;          // 収穫
+    public AudioClip placeEquipmentSE;   // 設備設置
+    public AudioClip upgradeSE;          // 設備アップグレード
+    public AudioClip errorSE;            // エラー（スコア足りない など）
+
     //UIManagerを参照する
     private UIManager uiManager;
 
@@ -214,12 +227,14 @@ public class player_move : MonoBehaviour
             sr.sprite = plowedSprite;
             currentTarget.tag = "Plowed";
             GainExp(5);
+            PlaySE(plowSE);
         }
         else if (currentTarget.CompareTag("Plowed"))
         {
             sr.sprite = wateredSprite;
             currentTarget.tag = "Moist_Plowe";
             GainExp(5);
+            PlaySE(waterSE);
         }
         else if (currentTarget.CompareTag("Moist_Plowe"))
         {
@@ -228,12 +243,14 @@ public class player_move : MonoBehaviour
             sr.sprite = crop.seedSprite;
             currentTarget.tag = "Seed";
             GainExp(crop.expGain);
+            PlaySE(seedSE);
             StartCoroutine(GrowPlant(currentTarget, sr,crop));
         }
         else if (currentTarget.CompareTag("Grown"))
         {
             HarvestCrop(sr);
             GainExp(15);
+            PlaySE(harvestSE);
         }
         else if (currentTarget.CompareTag("Grassland") || currentTarget.CompareTag("Wall")||IsPlacedEquipment(currentTarget.tag))
         {
@@ -267,16 +284,22 @@ public class player_move : MonoBehaviour
                     currentScore -= selected.levels[0].cost;
                     UpdateScoreUI();
                     GainExp(20);
+                    PlaySE(placeEquipmentSE);
                 }
                 else
                 {
                     Debug.Log("スコアが足りません！");
+                    PlaySE(errorSE);
                 }
             }
             else
             {
                 bool upgraded = placed.TryUpgrade(ref currentScore);
-                if (upgraded) UpdateScoreUI();
+                if (upgraded)
+                {
+                    UpdateScoreUI();
+                    PlaySE(upgradeSE);
+                }
             }
         }
     }
@@ -338,11 +361,20 @@ public class player_move : MonoBehaviour
 
     private void LevelUp()
     {
+        if(playerLevel>=maxLevel)
+        {
+            playerLevel = maxLevel;
+            currentExp = expToNext;
+            return;
+        }
         playerLevel++;
         currentExp -= expToNext;
         expToNext = Mathf.RoundToInt(expToNext * 1.2f);
+
+        // 成長処理
         speed += speedGrowthRate;
         holdInterval = Mathf.Max(0.3f, holdInterval - holdReductionRate);
+
         UpdateLevelUI();
     }
 
@@ -396,6 +428,11 @@ public class player_move : MonoBehaviour
         animator.speed = 1f;
     }
 
-    
+    private void PlaySE(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+            audioSource.PlayOneShot(clip);
+    }
+
     public int PlayerLevel => playerLevel;
 }

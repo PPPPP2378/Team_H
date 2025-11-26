@@ -146,8 +146,8 @@ MonoBehaviour:
   damageTextPrefab: {fileID: 5605639851439266096, guid: 0d2eec51acc47a7479098f7c44d352ed, type: 3}
   spriteUp: {fileID: 2870560489113576069, guid: 0e1c8321c6f7b1c41b30fe2521f95d5c, type: 3}
   spriteDown: {fileID: 825729957387406492, guid: d02a6f1a233c2244b9170a594fac1f49, type: 3}
-  spriteLeft: {fileID: -8801589502559592263, guid: 80f7c73603dbb54499c9b58e109b62c1, type: 3}
-  spriteRight: {fileID: 4116945680190528977, guid: ab90909a71e696e46afecb8971815cfe, type: 3}
+  spriteLeft: {fileID: 97987624060749941, guid: 30f796a45adfc6541bf4984195c1a4c8, type: 3}
+  spriteRight: {fileID: -7076201000853916034, guid: 6e0d8389c673e2d4b941dd40b82113a7, type: 3}
   deathSE: {fileID: 0}
 --- !u!61 &7601219923508314024
 BoxCollider2D:
