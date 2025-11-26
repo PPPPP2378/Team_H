@@ -16408,7 +16408,7 @@ PrefabInstance:
       objectReference: {fileID: 7692572729909568713}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: prepTime
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: displayTime
@@ -16416,7 +16416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: waveDuration
-      value: 25
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3245726647100418377, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Camera
@@ -16668,11 +16668,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c246d60f43ea6ee43bc3d6492a4781da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
+  enemyPrefab:
+  - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
+  - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
   spawnPoints:
   - {fileID: 547315797}
   - {fileID: 182511499}
-  - {fileID: 0}
   spawnInterval: 2
 --- !u!1001 &8512207079811612475
 PrefabInstance:
