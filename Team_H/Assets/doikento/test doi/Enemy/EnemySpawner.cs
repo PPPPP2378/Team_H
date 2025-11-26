@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("敵設定")]
-    public GameObject[] enemyPrefab;    // 出現させる敵のプレハブ
+    public GameObject[] enemyPrefabs;    // 出現させる敵のプレハブ
 
     [Header("スポーン位置設定")]
     public Transform[] spawnPoints;   // 敵を出す座標（複数指定可）
@@ -44,10 +44,10 @@ public class EnemySpawner : MonoBehaviour
             int spawnIndex = Random.Range(0, spawnPoints.Length);
 
             // 出現位置をランダムに選択
-            int enemyIndex = Random.Range(0, enemyPrefab.Length);
+            int enemyIndex = Random.Range(0, enemyPrefabs.Length);
 
             // 指定位置に敵プレハブを生成
-            Instantiate(enemyPrefab[enemyIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
+            Instantiate(enemyPrefabs[enemyIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
 
             // ウェーブが進むごとに出現頻度を上げる
             float interval = Mathf.Max(0.5f, spawnInterval - (wave * 0.2f));
