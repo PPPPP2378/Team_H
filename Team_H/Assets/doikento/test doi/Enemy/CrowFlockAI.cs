@@ -38,6 +38,7 @@ public class CrowFlockAI : MonoBehaviour
     [Header("死亡時のグラフィック")]
     public Sprite deadSprite;     // 死亡した時のスプライト
     public float deathDisappearTime = 1.0f; // 消えるまでの時間
+    private bool isDead = false;
 
     private List<Transform> waypoints = new List<Transform>(); // 経路上のチェックポイント
     private int currentWaypointIndex = 0;                      // 現在のチェックポイント番号
@@ -51,8 +52,19 @@ public class CrowFlockAI : MonoBehaviour
     public Sprite spriteLeft;
     public Sprite spriteRight;
 
+    [Header("効果音")]
+    public AudioClip deathSE;      // 死亡時の効果音
+    private AudioSource audioSource;
+
     void Start()
     {
+        // オーディオソースを取得／追加
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         currentHP = maxHP;
@@ -225,8 +237,6 @@ public class CrowFlockAI : MonoBehaviour
 
         UpdateSpriteByDirection(direction);
 
-        if (Mathf.Abs(direction.x) > 0.1)
-            sr.flipX = direction.x < 0;
     }
 
     // -------------------------------
@@ -308,9 +318,17 @@ public class CrowFlockAI : MonoBehaviour
 
     IEnumerator PlayDeathAnimation()
     {
+        isDead = true;
+
         // 移動停止
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false; // 衝突判定オフ
+
+        // 死亡SE再生（AudioClip が設定されている場合のみ）
+        if (deathSE != null)
+        {
+            audioSource.PlayOneShot(deathSE);
+        }
 
         // スプライト切り替え
         if (sr != null && deadSprite != null)
@@ -361,6 +379,7 @@ public class CrowFlockAI : MonoBehaviour
     }
     void UpdateSpriteByDirection(Vector2 dir)
     {
+        if (isDead) return;
         // 移動していないときは切り替えない
         if (dir.magnitude < 0.1f) return;
 
