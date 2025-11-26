@@ -103,10 +103,10 @@ TextureImporter:
       name: usagimigi_0
       rect:
         serializedVersion: 2
-        x: 191
-        y: 119
-        width: 599
-        height: 671
+        x: 212
+        y: 187
+        width: 562
+        height: 631
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
