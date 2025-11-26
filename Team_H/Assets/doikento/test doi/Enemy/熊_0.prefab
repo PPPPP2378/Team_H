@@ -175,18 +175,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bceede7997d7e348b1794b43f59af60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
+  moveSpeed: 1.5
   detectionRange: 2.1
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 20
+  maxHP: 300
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   obstacleCheckDistance: 2
   avoidStrength: 5
   slideStrength: 2
-  scoreValue: 400
+  scoreValue: 20
   deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
   deathDisappearTime: 1
   damageTextPrefab: {fileID: 5605639851439266096, guid: 0d2eec51acc47a7479098f7c44d352ed, type: 3}
