@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int score)
     {
         if (scoreText != null)
-            scoreText.text = $"Score: {score}";
+            scoreText.text = $": {score}";
     }
 
     public void UpdateLevel(int level, int currentExp, int expToNext)

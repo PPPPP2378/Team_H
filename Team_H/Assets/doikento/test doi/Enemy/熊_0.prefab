@@ -180,7 +180,7 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 300
+  maxHP: 250
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   obstacleCheckDistance: 2

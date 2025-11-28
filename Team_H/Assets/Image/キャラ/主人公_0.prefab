@@ -1680,7 +1680,7 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
-      damage: 20
+      damage: 12
       requiredPlayerLevel: 1
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -1688,8 +1688,116 @@ MonoBehaviour:
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
-      cost: 10
-      damage: 30
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 20
+      damage: 20
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
+      cost: 15
+      damage: 15
       requiredPlayerLevel: 2
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0

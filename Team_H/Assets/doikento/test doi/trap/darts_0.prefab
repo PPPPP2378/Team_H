@@ -136,18 +136,141 @@ MonoBehaviour:
       cost: 0
       damage: 0
       requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
     - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
       cost: 0
       damage: 0
       requiredPlayerLevel: 1
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
     - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
       cost: 0
       damage: 0
       requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
+    - sprite: {fileID: 1682624514240064743, guid: c13540c9553a04c489a1c1ac9f995948, type: 3}
+      cost: 0
+      damage: 0
+      requiredPlayerLevel: 2
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 3
+      projectileSpeed: 6
+      projectilePrefab: {fileID: 0}
     placementType: 1
     isWallEquipment: 1
   level: 0
-  damageInterval: 0.5
+  damageInterval: 0.6
 --- !u!61 &5921191796999423754
 BoxCollider2D:
   m_ObjectHideFlags: 0
