@@ -36,12 +36,10 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
-
         if (resultPanel != null && resultPanel.activeSelf)
         {
             resultPanel.SetActive(false);
-            Debug.Log("ResultPanel ‚ğ‰Šú‰»‚É”ñ•\¦‚É‚µ‚Ü‚µ‚½B");
+           
         }
 
         if (inventoryPanel != null)
