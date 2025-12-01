@@ -52,6 +52,8 @@ public class RabbitAI_Complete : MonoBehaviour
     [Header("効果音")]
     public AudioClip deathSE;      // 死亡時の効果音
     private AudioSource audioSource;
+    public AudioClip damageSoilSE;   // 畑を荒らした時のSE
+  
 
     [Header("移動経路（手動設定）")]
     public List<Transform> manualWaypoints = new List<Transform>();
@@ -246,7 +248,7 @@ public class RabbitAI_Complete : MonoBehaviour
     {
         string tag = other.gameObject.tag;
 
-        if (tag == "Seed" || tag == "Grown"||tag=="Plow"||tag=="Plowed"||tag=="Moist_Plowe")
+        if (tag == "Seed" || tag == "Grown"||tag=="Plow"||tag=="Plowed"||tag=="Moist_Plowe"||tag=="Seed_")
         {
             GameObject tile = other.gameObject;
             if (tile == null) return;
@@ -255,7 +257,9 @@ public class RabbitAI_Complete : MonoBehaviour
             if (tileRendere != null && tileRendere.sprite != plowedSoilSprite)
             {
                 Debug.Log("畑を荒らしました！");
+               
                 StartCoroutine(ChangeTileSpriteOverTime(tile, plowedSoilSprite, 1.0f));
+                
                 StartCoroutine(DisappearAfter(1.5f));
             }
 
@@ -301,6 +305,10 @@ public class RabbitAI_Complete : MonoBehaviour
             {
                 Debug.Log("スプライトを変更します：" + sr.name);
                 sr.sprite = targetSprite;
+                if (audioSource != null && damageSoilSE != null)
+                {
+                    audioSource.PlayOneShot(damageSoilSE);
+                }
             }
             else
             {
@@ -321,13 +329,13 @@ public class RabbitAI_Complete : MonoBehaviour
         isDead = true;
         // 移動停止
         rb.linearVelocity = Vector2.zero;
-        rb.simulated = false; // 衝突判定オフ
-
         // 死亡SE再生（AudioClip が設定されている場合のみ）
         if (deathSE != null)
         {
             audioSource.PlayOneShot(deathSE);
         }
+
+        rb.simulated = false; // 衝突判定オフ
 
         // スプライト切り替え
         if (sr != null && deadSprite != null)

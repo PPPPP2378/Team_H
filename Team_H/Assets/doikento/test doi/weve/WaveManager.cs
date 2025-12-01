@@ -35,7 +35,7 @@ public class WaveManager : MonoBehaviour
     public static bool PlayerCanControl = true; // プレイヤー操作可否
 
     [Header("畑スプライト設定")]
-    public Sprite plowedSoilSprite; // ← Plow状態のスプライトをここに設定
+    public Sprite plowedSoilSprite; // Plow状態のスプライトをここに設定
 
     [Header("畑カウント設定")]
     public string[] fieldTags = { "Plow", "Plowed", "Moist_Plowe", "Seed", "Grown" };

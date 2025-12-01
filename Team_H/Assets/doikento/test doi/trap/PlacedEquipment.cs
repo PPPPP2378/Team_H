@@ -182,14 +182,9 @@ public class PlacedEquipment : MonoBehaviour
         // 敵の Collider を取得
         Collider2D targetCol = target.GetComponent<Collider2D>();
 
-        while (target != null)
+        while (target != null && targetCol != null && col.bounds.Intersects(targetCol.bounds))
         {
-            // まだ衝突しているか？（踏んでいる間だけ true）
-            if (!col.bounds.Intersects(targetCol.bounds))
-            {
-                // 接触が終わった → コルーチン停止
-                break;
-            }
+           
 
             if (target is RabbitAI_Complete rabbit)
             {
@@ -214,11 +209,12 @@ public class PlacedEquipment : MonoBehaviour
                 GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
                 Destroy(effect, 0.4f); // エフェクトの残骸を消去
             }
-            if (damageCoroutines.ContainsKey(target))
-                damageCoroutines.Remove(target);
-
             yield return new WaitForSeconds(damageInterval);
+          
         }
+        if (damageCoroutines.ContainsKey(target))
+            damageCoroutines.Remove(target);
+
     }
 
     private IEnumerator RangedAttackLoop()

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,6 +36,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        
+
         if (resultPanel != null && resultPanel.activeSelf)
         {
             resultPanel.SetActive(false);
