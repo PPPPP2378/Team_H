@@ -102,7 +102,7 @@ public class WaveManager : MonoBehaviour
             if (isGameOver)
                 yield break;
 
-            CollectAllGrownCrops();
+            //CollectAllGrownCrops();
             ShowStateText($"WAVE {currentWave} CLEAR", displayTime);
             yield return new WaitForSeconds(2f);
         }
@@ -122,7 +122,7 @@ public class WaveManager : MonoBehaviour
     }
 
     // --- 収穫処理 ---
-    private void CollectAllGrownCrops()
+   /* private void CollectAllGrownCrops()
     {
         GameObject[] grownCrops = GameObject.FindGameObjectsWithTag("Grown");
 
@@ -143,7 +143,7 @@ public class WaveManager : MonoBehaviour
 
             crop.tag = "Plow";
         }
-    }
+    }*/
 
     // --- ゲームオーバー処理 ---
     private void TriggerGameOver()
