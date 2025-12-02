@@ -103,12 +103,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc67a230374957346a990536720685dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.6
+  moveSpeed: 1.1
   detectionRange: 2.1
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 90
+  maxHP: 50
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   obstacleCheckDistance: 2

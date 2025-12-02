@@ -1591,14 +1591,7 @@ MonoBehaviour:
   stateText: {fileID: 7180278719714830387}
   gameOverText: {fileID: 4132690529110513402}
   spawner: {fileID: 0}
-  plowedSoilSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}
-  fieldTags:
-  - Plow
-  - Plowed
-  - Moist_Plowe
-  - Seed
-  - Grown
-  fieldCheckInterval: 3
+  maxDestroyedCount: 5
   prepBGM: {fileID: 5761180779330322560}
   waveBGM: {fileID: 3838417603871249006}
 --- !u!1 &4996480023248405112
@@ -2128,7 +2121,7 @@ MonoBehaviour:
       hitEffect: {fileID: 0}
       isRanged: 1
       attackRange: 3
-      projectileSpeed: 4
+      projectileSpeed: 6
       projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
@@ -2137,7 +2130,7 @@ MonoBehaviour:
       hitEffect: {fileID: 0}
       isRanged: 1
       attackRange: 3
-      projectileSpeed: 4
+      projectileSpeed: 6
       projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
@@ -2146,7 +2139,7 @@ MonoBehaviour:
       hitEffect: {fileID: 0}
       isRanged: 1
       attackRange: 3
-      projectileSpeed: 4
+      projectileSpeed: 6
       projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
@@ -2155,7 +2148,7 @@ MonoBehaviour:
       hitEffect: {fileID: 0}
       isRanged: 1
       attackRange: 3
-      projectileSpeed: 4
+      projectileSpeed: 6
       projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 15
