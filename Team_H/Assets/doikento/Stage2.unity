@@ -19814,6 +19814,10 @@ PrefabInstance:
       propertyPath: waveDuration
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: maxDestroyedCount
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1969296175111470152, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -31.300003

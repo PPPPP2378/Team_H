@@ -42,7 +42,7 @@ public class player_move : MonoBehaviour
     private int selectedCropIndex = 0; // 現在選択中の作物
 
     [Header("スコア・経験値設定")]
-    public int currentScore = 100;
+    private int currentScore = 150;
     private int currentExp = 0;
     private int expToNext = 50;
     private int playerLevel = 1;

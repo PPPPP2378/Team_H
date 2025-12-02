@@ -321,6 +321,11 @@ public class RabbitAI_Complete : MonoBehaviour
                 Debug.Log($"タグを変更します：{tile.tag} → {destroyedFieldTag}");
                 tile.tag = destroyedFieldTag;
             }
+            WaveManager wm = FindAnyObjectByType<WaveManager>();
+            if (wm != null)
+            {
+                wm.AddDestroyedField();
+            }
         }
     }
 
