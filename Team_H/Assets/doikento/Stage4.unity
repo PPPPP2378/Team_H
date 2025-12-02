@@ -1960,6 +1960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u4E3B\u4EBA\u516C_0"
       objectReference: {fileID: 0}
+    - target: {fileID: 6105907372134001094, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: currentScore
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 6749542906229459267, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.01
