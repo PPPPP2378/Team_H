@@ -75,6 +75,7 @@ public class player_move : MonoBehaviour
     public AudioClip upgradeSE;          // 設備アップグレード
     public AudioClip errorSE;            // エラー（スコア足りない など）
 
+
     //UIManagerを参照する
     private UIManager uiManager;
 
