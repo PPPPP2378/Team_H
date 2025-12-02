@@ -23,6 +23,7 @@ TagManager:
   - Waypoint2
   - Waypoint3
   - W
+  - menu
   layers:
   - Default
   - TransparentFX
