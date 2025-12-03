@@ -237,26 +237,37 @@ public class WaveManager : MonoBehaviour
     // --- 次ステージ解放 ---
     private void UnlockNextStage()
     {
+        // 現在プレイ中のステージ番号
         int currentStage = GetCurrentStageNumber();
+
+        // これまでに解放されている最大ステージ番号を読み取る
         int unlocked = PlayerPrefs.GetInt("UnlockedStage", 1);
 
+        // 現在ステージが「解放済み最大ステージ」以上なら、次のステージを解放する
         if (currentStage >= unlocked)
         {
+            // 次ステージを解放
             PlayerPrefs.SetInt("UnlockedStage", currentStage + 1);
+
+            // 保存（デバイスに永続保存される）
             PlayerPrefs.Save();
         }
     }
 
     private int GetCurrentStageNumber()
     {
+        // 現在読み込まれているシーン名を取得
         string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
+        // シーン名が "Stage◯" で始まる場合のみ処理
         if (scene.StartsWith("Stage"))
         {
+            // "Stage" を取り除いて数字だけにする
             string numStr = scene.Replace("Stage", "");
+            // 数字に変換できればその値を返す（例：Stage5 → 5）
             if (int.TryParse(numStr, out int num)) return num;
         }
-
+        // 想定外のシーン名の場合は 1 を返す
         return 1;
     }
 }

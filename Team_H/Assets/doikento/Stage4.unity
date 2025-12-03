@@ -1956,6 +1956,10 @@ PrefabInstance:
       propertyPath: maxDestroyedCount
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1969296175111470152, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -31.299973
+      objectReference: {fileID: 0}
     - target: {fileID: 3245726647100418377, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5646,7 +5650,7 @@ Transform:
   m_GameObject: {fileID: 1140393567}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.3, y: -4.63, z: 0}
+  m_LocalPosition: {x: 9.51, y: -4.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9549,7 +9553,7 @@ Transform:
   m_GameObject: {fileID: 2140561119}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.96, y: 2.41, z: 0}
+  m_LocalPosition: {x: -9.44, y: 2.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
