@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 /*ウサギの動きを決めるコード
  * 倒すとグラフィックが削除されポイントが加算される
  */
-public class RabbitAI_Complete : MonoBehaviour
+public class RabbitAI_Complete : MonoBehaviour, IEnemyStats
 {
     [Header("移動設定")]
     public float moveSpeed = 2f;// 通常の移動速度
@@ -422,6 +422,18 @@ public class RabbitAI_Complete : MonoBehaviour
                 sr.sprite = spriteDown;
             }
         }
+    }
+    public void ApplyWaveMultiplier(int wave)
+    {
+        float hpMul = 1f + (wave - 1) * 1f;     // 50%ずつHP強化
+        float speedMul = 1f + (wave - 1) * 0.1f;  // 速度少しUP
+
+        maxHP = Mathf.RoundToInt(maxHP * hpMul);
+        currentHP = maxHP;
+
+        moveSpeed *= speedMul;
+
+        // scoreValue なども強化可能
     }
 }
 

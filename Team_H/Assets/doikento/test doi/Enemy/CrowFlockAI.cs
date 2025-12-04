@@ -8,7 +8,7 @@ using UnityEngine;
  * ・他のカラスと少し離れて群れ行動する
  * ・倒されるとスコア加算
  */
-public class CrowFlockAI : MonoBehaviour
+public class CrowFlockAI : MonoBehaviour, IEnemyStats
 {
     [Header("移動設定")]
     public float moveSpeed = 2f;// 通常の移動速度
@@ -18,6 +18,9 @@ public class CrowFlockAI : MonoBehaviour
     [Header("HP設定")]
     public int maxHP = 100; //最大HP
     private int currentHP;  //現在のHP
+
+    public float hp = 50f;
+    public float speed = 3f;
 
     [Header("ターゲット変換設定")]
     public Sprite plowedSoilSprite; // 食べ終わった畑のスプライト
@@ -422,5 +425,17 @@ public class CrowFlockAI : MonoBehaviour
                 sr.sprite = spriteDown;
             }
         }
+    }
+    public void ApplyWaveMultiplier(int wave)
+    {
+        float hpMul = 1f + (wave - 1) * 1f;     // 50%ずつHP強化
+        float speedMul = 1f + (wave - 1) * 0.1f;  // 速度少しUP
+
+        maxHP = Mathf.RoundToInt(maxHP * hpMul);
+        currentHP = maxHP;
+
+        moveSpeed *= speedMul;
+
+        // scoreValue なども強化可能
     }
 }
