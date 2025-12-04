@@ -761,7 +761,7 @@ Transform:
   m_GameObject: {fileID: 54914657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.74, y: -1.1, z: 0}
+  m_LocalPosition: {x: -13.35, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2005,7 +2005,7 @@ Transform:
   m_GameObject: {fileID: 210254896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.79, y: -8.36, z: 0}
+  m_LocalPosition: {x: -12.79, y: -8.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12188,7 +12188,7 @@ Transform:
   m_GameObject: {fileID: 1566682615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.63, y: -1.1, z: 0}
+  m_LocalPosition: {x: 12.94, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16324,6 +16324,10 @@ PrefabInstance:
       propertyPath: maxDestroyedCount
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2132365322490543716, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3245726647100418377, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Camera
       value: 
@@ -16466,7 +16470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &619378473201667512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17484,9 +17488,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c246d60f43ea6ee43bc3d6492a4781da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
-  - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
+  waveEnemySets:
+  - enemies:
+    - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
+  - enemies:
+    - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
+    - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
   spawnPoints:
   - {fileID: 547315797}
   - {fileID: 182511499}

@@ -141,7 +141,7 @@ MonoBehaviour:
   obstacleCheckDistance: 0.1
   avoidStrength: 3
   slideStrength: 10
-  scoreValue: 5
+  scoreValue: 2
   deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
   deathDisappearTime: 1
   damageTextPrefab: {fileID: 5605639851439266096, guid: 0d2eec51acc47a7479098f7c44d352ed, type: 3}

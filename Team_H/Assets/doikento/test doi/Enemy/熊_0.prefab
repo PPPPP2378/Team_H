@@ -181,13 +181,15 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 80
+  maxHP: 120
+  hp: 50
+  speed: 3
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   obstacleCheckDistance: 2
   avoidStrength: 5
   slideStrength: 2
-  scoreValue: 20
+  scoreValue: 5
   deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
   deathDisappearTime: 1
   damageTextPrefab: {fileID: 5605639851439266096, guid: 0d2eec51acc47a7479098f7c44d352ed, type: 3}
