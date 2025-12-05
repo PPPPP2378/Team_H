@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6884804602552370216}
   - component: {fileID: 4956925992023346183}
   - component: {fileID: 7601219923508314024}
+  - component: {fileID: 7173761428649401639}
   m_Layer: 7
   m_Name: "\u30A6\u30B5\u30AE_0"
   m_TagString: Enemy
@@ -129,18 +130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2e9f2262de6634f987d039702802e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.35
+  moveSpeed: 1
   detectionRange: 2.1
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 45
+  maxHP: 30
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
   obstacleCheckDistance: 0.1
   avoidStrength: 3
   slideStrength: 10
-  scoreValue: 5
+  scoreValue: 2
   deadSprite: {fileID: -6532156775637078082, guid: 89e6aaa786c0eec45888809e7c336188, type: 3}
   deathDisappearTime: 1
   damageTextPrefab: {fileID: 5605639851439266096, guid: 0d2eec51acc47a7479098f7c44d352ed, type: 3}
@@ -149,6 +150,7 @@ MonoBehaviour:
   spriteLeft: {fileID: 97987624060749941, guid: 30f796a45adfc6541bf4984195c1a4c8, type: 3}
   spriteRight: {fileID: -7076201000853916034, guid: 6e0d8389c673e2d4b941dd40b82113a7, type: 3}
   deathSE: {fileID: 8300000, guid: ebb99dcf96a010e468b545eb34224da5, type: 3}
+  damageSoilSE: {fileID: 8300000, guid: 339577f57377d334ca1fb500e204c9be, type: 3}
   manualWaypoints: []
 --- !u!61 &7601219923508314024
 BoxCollider2D:
@@ -196,3 +198,100 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.14994285, y: 0.16160208}
   m_EdgeRadius: 0
+--- !u!82 &7173761428649401639
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6139544446933270633}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

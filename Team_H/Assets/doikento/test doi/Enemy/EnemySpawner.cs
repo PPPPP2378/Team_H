@@ -1,13 +1,20 @@
 
+using System;
 using System.Collections;
 using UnityEngine;
+
+[System.Serializable]
+public class WaveEnemySet
+{
+    public GameObject[] enemies;   // このウェーブで出す敵
+}
 
 // 敵のスポーン（出現）を管理するスクリプト。
 //WaveManager から「StartSpawning / StopSpawning」を呼び出して制御する。
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("敵設定")]
-    public GameObject[] enemyPrefabs;    // 出現させる敵のプレハブ
+    [Header("ウェーブごとの敵設定")]
+    public WaveEnemySet[] waveEnemySets;
 
     [Header("スポーン位置設定")]
     public Transform[] spawnPoints;   // 敵を出す座標（複数指定可）
@@ -36,18 +43,33 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemies(int wave)
     {
         spawning = true;
+        int waveIndex = Mathf.Clamp(wave - 1, 0, waveEnemySets.Length - 1);
+
+        GameObject[] useEnemies = waveEnemySets[waveIndex].enemies;
+
         while (spawning)
         {
             // --- 敵を出現させる処理 ---
 
             // ランダムなスポーン位置
-            int spawnIndex = Random.Range(0, spawnPoints.Length);
+            int spawnIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
 
             // 出現位置をランダムに選択
-            int enemyIndex = Random.Range(0, enemyPrefabs.Length);
+            int enemyIndex = UnityEngine.Random.Range(0, useEnemies.Length);
 
-            // 指定位置に敵プレハブを生成
-            Instantiate(enemyPrefabs[enemyIndex], spawnPoints[spawnIndex].position, Quaternion.identity);
+            //敵を生成
+            GameObject enemy = Instantiate(
+                 useEnemies[enemyIndex],
+                spawnPoints[spawnIndex].position,
+                Quaternion.identity
+            );
+
+            //ここで強化を適用
+            IEnemyStats stats = enemy.GetComponent<IEnemyStats>();
+            if (stats != null)
+            {
+                stats.ApplyWaveMultiplier(wave);
+            }
 
             // ウェーブが進むごとに出現頻度を上げる
             float interval = Mathf.Max(0.5f, spawnInterval - (wave * 0.2f));

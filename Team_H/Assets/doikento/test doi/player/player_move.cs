@@ -42,7 +42,7 @@ public class player_move : MonoBehaviour
     private int selectedCropIndex = 0; // 現在選択中の作物
 
     [Header("スコア・経験値設定")]
-    private int currentScore = 100;
+    private int currentScore = 150;
     private int currentExp = 0;
     private int expToNext = 50;
     private int playerLevel = 1;
@@ -74,6 +74,7 @@ public class player_move : MonoBehaviour
     public AudioClip placeEquipmentSE;   // 設備設置
     public AudioClip upgradeSE;          // 設備アップグレード
     public AudioClip errorSE;            // エラー（スコア足りない など）
+
 
     //UIManagerを参照する
     private UIManager uiManager;

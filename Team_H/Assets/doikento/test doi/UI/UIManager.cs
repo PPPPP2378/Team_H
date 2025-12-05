@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,7 +39,7 @@ public class UIManager : MonoBehaviour
         if (resultPanel != null && resultPanel.activeSelf)
         {
             resultPanel.SetActive(false);
-            Debug.Log("ResultPanel ‚ğ‰Šú‰»‚É”ñ•\¦‚É‚µ‚Ü‚µ‚½B");
+           
         }
 
         if (inventoryPanel != null)
@@ -118,7 +119,7 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int score)
     {
         if (scoreText != null)
-            scoreText.text = $"Score: {score}";
+            scoreText.text = $": {score}";
     }
 
     public void UpdateLevel(int level, int currentExp, int expToNext)
