@@ -54,7 +54,7 @@ public class SettingsManager : MonoBehaviour
     void LoadVolume()
     {
         float savedVolume = PlayerPrefs.GetFloat(MASTER_VOL_KEY, 1.0f);
-        masterVolumeSlider.value = savedVolume;
+       // masterVolumeSlider.value = savedVolume;
         SetMasterVolume(savedVolume);
         // SetMasterVolume内ですでに UpdateVolumeText(volume) が呼ばれるため、ここではコメントアウトでもOK
     }
