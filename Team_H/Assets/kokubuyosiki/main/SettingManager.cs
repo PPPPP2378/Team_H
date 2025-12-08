@@ -22,10 +22,10 @@ public class SettingsManager : MonoBehaviour
         LoadVolume();
 
         // スライダーのリスナーを設定
-        masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
+       // masterVolumeSlider.onValueChanged.AddListener(SetMasterVolume);
 
         // ⭐ 追加: 初回起動時にテキストを更新
-        UpdateVolumeText(masterVolumeSlider.value);
+        //UpdateVolumeText(masterVolumeSlider.value);
     }
 
     // スライダーの値 (0.0f ~ 1.0f) を受け取り、音量を設定する関数
@@ -48,13 +48,13 @@ public class SettingsManager : MonoBehaviour
         int percentage = Mathf.RoundToInt(volume * 100f);
 
         // TextMeshProUGUIに文字列を設定
-        masterVolumeText.text = percentage.ToString() + "%";
+       // masterVolumeText.text = percentage.ToString() + "%";
     }
 
     void LoadVolume()
     {
         float savedVolume = PlayerPrefs.GetFloat(MASTER_VOL_KEY, 1.0f);
-        masterVolumeSlider.value = savedVolume;
+       // masterVolumeSlider.value = savedVolume;
         SetMasterVolume(savedVolume);
         // SetMasterVolume内ですでに UpdateVolumeText(volume) が呼ばれるため、ここではコメントアウトでもOK
     }
