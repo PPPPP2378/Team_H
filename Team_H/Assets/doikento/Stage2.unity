@@ -19852,6 +19852,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1295038803621151692, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: maxWave
       value: 3
@@ -19880,10 +19884,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2384925804784414141, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100.95999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384925804784414141, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 56.75859
+      objectReference: {fileID: 0}
     - target: {fileID: 3245726647100418377, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 605043821}
+    - target: {fileID: 3935277776695165066, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935277776695165066, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5509296348376373760, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_Name
       value: "\u4E3B\u4EBA\u516C_0"
@@ -21452,7 +21472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6573884211085729141
 RectTransform:
   m_ObjectHideFlags: 0
