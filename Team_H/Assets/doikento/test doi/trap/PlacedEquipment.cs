@@ -11,6 +11,7 @@ public class EquipmentLevelData
     public Sprite sprite; // グラフィック
     public int cost;      // 設置コスト
     public int damage;    // 敵に与えるダメージ量
+    public float damageInterval = 0.5f;//ダメージインターバル
     public int requiredPlayerLevel;
     public GameObject hitEffect;
 
@@ -118,6 +119,9 @@ public class PlacedEquipment : MonoBehaviour
 
         // 攻撃力更新
         damage = stats.damage;
+
+        //インターバル更新
+        damageInterval = stats.damageInterval;
 
         // レベルごとのエフェクトを更新
         currentEffectPrefab = stats.hitEffect;

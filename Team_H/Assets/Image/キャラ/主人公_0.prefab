@@ -335,6 +335,7 @@ GameObject:
   - component: {fileID: 2384925804784414141}
   - component: {fileID: 7444224780656897081}
   - component: {fileID: 5288280773405349964}
+  - component: {fileID: 3093299079791108468}
   m_Layer: 8
   m_Name: descriptionPanel
   m_TagString: Untagged
@@ -400,6 +401,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3093299079791108468
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295038803621151692}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 1
 --- !u!1 &1369170062373153251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,8 +1610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.5366, y: -332.02682}
-  m_SizeDelta: {x: 779.1344, y: 60.2683}
+  m_AnchoredPosition: {x: -20.5366, y: -338.34348}
+  m_SizeDelta: {x: 779.1344, y: 72.9016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2135151186537878359
 CanvasRenderer:
@@ -1630,8 +1643,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f5cb28cb29364c34f83ba5884ebb18e2, type: 2}
+  m_sharedMaterial: {fileID: -2040145017153471642, guid: f5cb28cb29364c34f83ba5884ebb18e2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1655,8 +1668,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2189,7 +2202,8 @@ MonoBehaviour:
     levels:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
-      damage: 10
+      damage: 6
+      damageInterval: 0.8
       requiredPlayerLevel: 0
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2198,7 +2212,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
-      damage: 12
+      damage: 10
+      damageInterval: 0.8
       requiredPlayerLevel: 1
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2207,7 +2222,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 15
-      damage: 15
+      damage: 12
+      damageInterval: 0.8
       requiredPlayerLevel: 2
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2216,7 +2232,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 20
-      damage: 20
+      damage: 15
+      damageInterval: 0.8
       requiredPlayerLevel: 3
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2225,7 +2242,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
-      damage: 25
+      damage: 17
+      damageInterval: 0.8
       requiredPlayerLevel: 4
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2234,7 +2252,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
-      damage: 30
+      damage: 20
+      damageInterval: 0.7
       requiredPlayerLevel: 5
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2243,7 +2262,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 30
-      damage: 35
+      damage: 23
+      damageInterval: 0.7
       requiredPlayerLevel: 6
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2252,7 +2272,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 30
-      damage: 37
+      damage: 25
+      damageInterval: 0.7
       requiredPlayerLevel: 7
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2261,7 +2282,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
-      damage: 40
+      damage: 27
+      damageInterval: 0.7
       requiredPlayerLevel: 8
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2270,7 +2292,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
-      damage: 42
+      damage: 30
+      damageInterval: 0.6
       requiredPlayerLevel: 9
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2279,7 +2302,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
-      damage: 42
+      damage: 33
+      damageInterval: 0.6
       requiredPlayerLevel: 10
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2288,7 +2312,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
-      damage: 45
+      damage: 35
+      damageInterval: 0.6
       requiredPlayerLevel: 11
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2297,7 +2322,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
-      damage: 47
+      damage: 37
+      damageInterval: 0.6
       requiredPlayerLevel: 12
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2306,7 +2332,8 @@ MonoBehaviour:
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
-      damage: 50
+      damage: 40
+      damageInterval: 0.6
       requiredPlayerLevel: 13
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2314,8 +2341,9 @@ MonoBehaviour:
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
-      cost: 40
+      cost: 43
       damage: 53
+      damageInterval: 0.6
       requiredPlayerLevel: 14
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2329,6 +2357,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
       damage: 5
+      damageInterval: 0.5
       requiredPlayerLevel: 0
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2338,6 +2367,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
       damage: 5
+      damageInterval: 0.5
       requiredPlayerLevel: 1
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2347,6 +2377,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
       damage: 7
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2356,6 +2387,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 3
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2365,6 +2397,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 15
       damage: 15
+      damageInterval: 0.5
       requiredPlayerLevel: 4
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2374,6 +2407,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 15
       damage: 17
+      damageInterval: 0.5
       requiredPlayerLevel: 5
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2383,6 +2417,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 15
       damage: 20
+      damageInterval: 0.5
       requiredPlayerLevel: 6
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2392,6 +2427,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 20
       damage: 23
+      damageInterval: 0.5
       requiredPlayerLevel: 7
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2401,6 +2437,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 20
       damage: 25
+      damageInterval: 0.5
       requiredPlayerLevel: 8
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2410,6 +2447,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 20
       damage: 27
+      damageInterval: 0.5
       requiredPlayerLevel: 9
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2419,6 +2457,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 20
       damage: 30
+      damageInterval: 0.5
       requiredPlayerLevel: 10
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2428,6 +2467,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 25
       damage: 32
+      damageInterval: 0.5
       requiredPlayerLevel: 11
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2437,6 +2477,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 25
       damage: 35
+      damageInterval: 0.5
       requiredPlayerLevel: 12
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2446,6 +2487,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 25
       damage: 38
+      damageInterval: 0.5
       requiredPlayerLevel: 13
       hitEffect: {fileID: 0}
       isRanged: 1
@@ -2455,6 +2497,7 @@ MonoBehaviour:
     - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
       cost: 30
       damage: 40
+      damageInterval: 0.5
       requiredPlayerLevel: 14
       hitEffect: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
       isRanged: 1
@@ -2965,7 +3008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u5FC5\u8981\u30B3\u30B9\u30C810\n\u7BC4\u56F2\u5185\u306E\u6575\u306B\u77E2\u3092\u767A\u5C04\u3059\u308B"
+  description: "\u30C0\u30FC\u30C4\u30C8\u30E9\u30C3\u30D7:\u5FC5\u8981\u30B3\u30B9\u30C810\n\u58C1\u306B\u8A2D\u7F6E\u53EF\u80FD\n\u7BC4\u56F2\u5185\u306E\u6575\u306B\u77E2\u3092\u767A\u5C04\u3059\u308B"
 --- !u!1 &6088074549862040131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,7 +3154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u5FC5\u8981\u30B3\u30B9\u30C810\n\u8E0F\u3093\u3060\u6575\u306B\u7D99\u7D9A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
+  description: "\u307B\u3046\u3067\u3093\u30C8\u30E9\u30C3\u30D7:\u5FC5\u8981\u30B3\u30B9\u30C810\n\u8349\u5730\u306B\u8A2D\u7F6E\u53EF\u80FD\n\u8E0F\u3093\u3060\u6575\u306B\u7D99\u7D9A\u30C0\u30E1\u30FC\u30B8\u3092\u4E0E\u3048\u308B"
 --- !u!1 &6164315560010672251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,7 +3366,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

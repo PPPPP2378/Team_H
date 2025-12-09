@@ -104,6 +104,12 @@ public class UIManager : MonoBehaviour
 
         isInventoryOpen = !isInventoryOpen;
         inventoryPanel.SetActive(isInventoryOpen);
+
+        // インベントリを閉じた時に説明文を強制的に消す
+        if (!isInventoryOpen)
+        {
+            HideDescription();
+        }
     }
 
     public void ShowEquipmentInventory()
@@ -163,5 +169,4 @@ public class UIManager : MonoBehaviour
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
     }
-
 }

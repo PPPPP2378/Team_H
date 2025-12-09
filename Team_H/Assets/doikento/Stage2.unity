@@ -19878,7 +19878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969296175111470152, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -31.300003
+      value: -31.299942
       objectReference: {fileID: 0}
     - target: {fileID: 2132365322490543716, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_IsActive
@@ -21191,8 +21191,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -21229,7 +21229,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -255.2406, y: 0, z: -238.5228, w: -74.226746}
+  m_margin: {x: -398.7972, y: -29.622791, z: -315.9977, w: -74.226746}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
