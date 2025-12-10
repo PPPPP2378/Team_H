@@ -289,7 +289,7 @@ MonoBehaviour:
     placementType: 0
     isWallEquipment: 0
   level: 1
-  damageInterval: 0.8
+  damageInterval: 2
 --- !u!50 &3700973229427622527
 Rigidbody2D:
   serializedVersion: 5

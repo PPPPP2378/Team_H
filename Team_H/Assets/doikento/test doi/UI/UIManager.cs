@@ -30,6 +30,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button retryButton;
     [SerializeField] private Button stageSelectButton;
 
+    [Header("設備説明UI")]
+    [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private TextMeshProUGUI descriptionText;
 
     private player_move player;
     private bool isInventoryOpen = false;
@@ -44,6 +47,9 @@ public class UIManager : MonoBehaviour
 
         if (inventoryPanel != null)
             inventoryPanel.SetActive(false);
+
+        if (descriptionPanel != null)
+            descriptionPanel.SetActive(false);
 
         player = FindAnyObjectByType<player_move>();
 
@@ -98,6 +104,12 @@ public class UIManager : MonoBehaviour
 
         isInventoryOpen = !isInventoryOpen;
         inventoryPanel.SetActive(isInventoryOpen);
+
+        // インベントリを閉じた時に説明文を強制的に消す
+        if (!isInventoryOpen)
+        {
+            HideDescription();
+        }
     }
 
     public void ShowEquipmentInventory()
@@ -141,5 +153,20 @@ public class UIManager : MonoBehaviour
     {
         if (progressBar != null)
             progressBar.fillAmount = Mathf.Clamp01(value);
+    }
+
+    public void ShowDescription(string text)
+    {
+        if (descriptionPanel != null)
+            descriptionPanel.SetActive(true);
+
+        if (descriptionText != null)
+            descriptionText.text = text;
+    }
+
+    public void HideDescription()
+    {
+        if (descriptionPanel != null)
+            descriptionPanel.SetActive(false);
     }
 }

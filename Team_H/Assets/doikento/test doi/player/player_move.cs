@@ -152,6 +152,9 @@ public class player_move : MonoBehaviour
                 isHolding = true;
                 holdTimer = 0f;
                 uiManager?.ShowProgress(true);
+
+                //長押しアニメーション
+                animator?.SetBool("IsHolding", true);
             }
 
             holdTimer += Time.deltaTime;
@@ -163,6 +166,8 @@ public class player_move : MonoBehaviour
                 holdTimer = 0f;
                 isHolding = false;
                 uiManager?.ShowProgress(false);
+
+                animator?.SetBool("IsHolding", false);
             }
         }
         else if (isHolding)
@@ -170,6 +175,8 @@ public class player_move : MonoBehaviour
             isHolding = false;
             holdTimer = 0f;
             uiManager?.ShowProgress(false);
+
+            animator?.SetBool("IsHolding", false);
         }
     }
 

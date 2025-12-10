@@ -17,6 +17,9 @@ public class RabbitAI_Complete : MonoBehaviour, IEnemyStats
     public int maxHP = 100; //最大HP
     private int currentHP;  //現在のHP
 
+    public float hp = 50f;
+    public float speed = 3f;
+
     [Header("ターゲット変換設定")]
     public Sprite plowedSoilSprite; // 食べ終わった畑のスプライト
     [Header("荒らした後の設定")]
