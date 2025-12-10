@@ -371,7 +371,7 @@ public class bear_Ai : MonoBehaviour,IEnemyStats
             Destroy(bear);
         }
     }
-
+    
     void ShowDamageText(int dmg)
     {
         if (damageTextPrefab == null) return;
