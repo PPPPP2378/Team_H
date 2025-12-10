@@ -5,7 +5,7 @@ public class EquipmentButtonTooltip : MonoBehaviour, IPointerEnterHandler, IPoin
     [TextArea]
     public string description;   // İ”õ‚Ìà–¾•¶
 
-    private UIManager ui;
+    private UIManager ui;//QÆ‚·‚é
 
     private void Start()
     {

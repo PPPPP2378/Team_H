@@ -132,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &903123519113456310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -204,6 +204,7 @@ GameObject:
   - component: {fileID: 1925307921807443398}
   - component: {fileID: 4120605499737982224}
   - component: {fileID: 7282216590257369653}
+  - component: {fileID: 2819442534909346608}
   m_Layer: 8
   m_Name: Button (Legacy) (4)
   m_TagString: Untagged
@@ -324,6 +325,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2819442534909346608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047376768438279120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: "\u30C8\u30DE\u30C8\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C840\n\u6210\u9577\u3059\u308B\u307E\u306720\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &1295038803621151692
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +613,7 @@ GameObject:
   - component: {fileID: 6186661440363660704}
   - component: {fileID: 1657342522686613796}
   - component: {fileID: 4740322359779117326}
+  - component: {fileID: 4582574653352849937}
   m_Layer: 8
   m_Name: Button (Legacy) (3)
   m_TagString: Untagged
@@ -719,6 +734,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4582574653352849937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830516839284795385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: "\u30AD\u30E3\u30D9\u30C4\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C830\n\u6210\u9577\u3059\u308B\u307E\u306723\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &2132365322490543716
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +918,7 @@ GameObject:
   - component: {fileID: 8419966698451870190}
   - component: {fileID: 1210157525529446271}
   - component: {fileID: 3335663174306151181}
+  - component: {fileID: 2348495977549873146}
   m_Layer: 8
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -1010,6 +1039,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2348495977549873146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3108939631667713891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: "\u5C0F\u9EA6\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C810\n\u6210\u9577\u3059\u308B\u307E\u306710\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &3452143470854357390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1269,7 @@ GameObject:
   - component: {fileID: 2831407621560382373}
   - component: {fileID: 4180765037722170918}
   - component: {fileID: 5479091545554082564}
+  - component: {fileID: 1515742352052807013}
   m_Layer: 8
   m_Name: Button (Legacy) (2)
   m_TagString: Untagged
@@ -1347,6 +1390,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1515742352052807013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625506797965622426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: "\u30B8\u30E3\u30AC\u30A4\u30E2\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C820\n\u6210\u9577\u3059\u308B\u307E\u306715\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &3719899604548673902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,7 +1591,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -124.1, y: 8.3}
+  m_AnchoredPosition: {x: -115, y: 11}
   m_SizeDelta: {x: 43.4655, y: 29.5394}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6205940343226630333
@@ -1610,7 +1666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -20.5366, y: -338.34348}
+  m_AnchoredPosition: {x: -20.5366, y: -324}
   m_SizeDelta: {x: 779.1344, y: 72.9016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2135151186537878359
@@ -2203,7 +2259,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 6
-      damageInterval: 0.8
+      damageInterval: 0.7
       requiredPlayerLevel: 0
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2213,7 +2269,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
-      damageInterval: 0.8
+      damageInterval: 0.7
       requiredPlayerLevel: 1
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2223,7 +2279,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 15
       damage: 12
-      damageInterval: 0.8
+      damageInterval: 0.7
       requiredPlayerLevel: 2
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2233,7 +2289,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 20
       damage: 15
-      damageInterval: 0.8
+      damageInterval: 0.7
       requiredPlayerLevel: 3
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -2243,7 +2299,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
       damage: 17
-      damageInterval: 0.8
+      damageInterval: 0.7
       requiredPlayerLevel: 4
       hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
       isRanged: 0
@@ -3444,7 +3500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3277419555779485156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3992,6 +4048,7 @@ GameObject:
   - component: {fileID: 2226893957074537199}
   - component: {fileID: 381290376277422809}
   - component: {fileID: 1742097410515250821}
+  - component: {fileID: 3734643624082756634}
   m_Layer: 8
   m_Name: Button (Legacy) (1)
   m_TagString: Untagged
@@ -4112,6 +4169,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3734643624082756634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256429995094275949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: "\u4EBA\u53C2\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C815\n\u6210\u9577\u3059\u308B\u307E\u306715\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &8273644063421791065
 GameObject:
   m_ObjectHideFlags: 0
