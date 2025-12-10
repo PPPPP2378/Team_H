@@ -39,22 +39,23 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        // リザルト画面が ON になっていた場合 OFF にしておく
         if (resultPanel != null && resultPanel.activeSelf)
         {
             resultPanel.SetActive(false);
            
         }
-
+        // インベントリUI 初期状態は非表示
         if (inventoryPanel != null)
             inventoryPanel.SetActive(false);
-
+        // 説明パネル 初期は非表示
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
-
+        // プレイヤー情報を取得
         player = FindAnyObjectByType<player_move>();
-
+        // 初期状態では設備タブを表示
         ShowEquipmentInventory();
-
+        // タブ切り替えボタン設定
         equipmentTabButton?.onClick.AddListener(ShowEquipmentInventory);
         seedTabButton?.onClick.AddListener(ShowSeedInventory);
     }
@@ -73,10 +74,10 @@ public class UIManager : MonoBehaviour
             _scoreText.text = $"SCORE: {playerScoreText()}";
         else
             _scoreText.text = "";
-
+        // ボタン表示制御
         retryButton.gameObject.SetActive(!isClear);
         stageSelectButton.gameObject.SetActive(true);
-
+        // ゲーム操作を止める
         WaveManager.PlayerCanControl = false;
         WaveManager.CanGrow = false;
     }
@@ -86,18 +87,19 @@ public class UIManager : MonoBehaviour
         return $"{player.GetType().GetField("currentScore", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(player)}";
     }
 
+    // リトライボタン処理
     public void OnRetryButton()
     {
         LoadingManager.nextSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("LoadingScene");
     }
-
+    // ステージセレクトへ戻る
     public void OnStageSelectButton()
     {
         LoadingManager.nextSceneName = "StageSelect"; //セレクト画面のシーン名
         SceneManager.LoadScene("LoadingScene");
     }
-
+    // インベントリの開閉
     public void ToggleInventory()
     {
         if (inventoryPanel == null) return;
@@ -111,7 +113,7 @@ public class UIManager : MonoBehaviour
             HideDescription();
         }
     }
-
+    // 設備タブの表示
     public void ShowEquipmentInventory()
     {
         if (equipmentInventoryUI == null || seedInventoryUI == null) return;
@@ -119,7 +121,7 @@ public class UIManager : MonoBehaviour
         equipmentInventoryUI.SetActive(true);
         seedInventoryUI.SetActive(false);
     }
-
+    // 種タブの表示
     public void ShowSeedInventory()
     {
         if (equipmentInventoryUI == null || seedInventoryUI == null) return;
@@ -127,19 +129,19 @@ public class UIManager : MonoBehaviour
         equipmentInventoryUI.SetActive(false);
         seedInventoryUI.SetActive(true);
     }
-
+    // スコア表示の更新
     public void UpdateScore(int score)
     {
         if (scoreText != null)
             scoreText.text = $": {score}";
     }
-
+    // レベル情報の更新
     public void UpdateLevel(int level, int currentExp, int expToNext)
     {
         if (levelText != null)
             levelText.text = $"   : {currentExp}/{expToNext} : Lv{level}";
     }
-
+    // 進行ゲージの表示切り替え
     public void ShowProgress(bool show)
     {
         if (progressGroup != null)
@@ -148,13 +150,13 @@ public class UIManager : MonoBehaviour
         if (progressBar != null)
             progressBar.gameObject.SetActive(show);
     }
-
+    // プログレスバー進行値の設定
     public void SetProgress(float value)
     {
         if (progressBar != null)
             progressBar.fillAmount = Mathf.Clamp01(value);
     }
-
+    // 設備・種の説明テキスト表示
     public void ShowDescription(string text)
     {
         if (descriptionPanel != null)
@@ -163,7 +165,7 @@ public class UIManager : MonoBehaviour
         if (descriptionText != null)
             descriptionText.text = text;
     }
-
+    // 説明パネルを閉じる
     public void HideDescription()
     {
         if (descriptionPanel != null)

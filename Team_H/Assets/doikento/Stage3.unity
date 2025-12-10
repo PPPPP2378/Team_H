@@ -9162,7 +9162,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c246d60f43ea6ee43bc3d6492a4781da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveEnemySets: []
+  waveEnemySets:
+  - enemies:
+    - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
+  - enemies:
+    - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
+    - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
+    - {fileID: 877529833379613432, guid: 1a17d9ba34402bd419d8d2eea8e7f005, type: 3}
+  - enemies:
+    - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
+    - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
+    - {fileID: 877529833379613432, guid: 1a17d9ba34402bd419d8d2eea8e7f005, type: 3}
   spawnPoints:
   - {fileID: 968008319}
   - {fileID: 1632506182}

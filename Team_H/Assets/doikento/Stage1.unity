@@ -17497,7 +17497,6 @@ MonoBehaviour:
     - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
   - enemies:
     - {fileID: 6139544446933270633, guid: 9c46383409391444d9ec4cb4d1bdfe42, type: 3}
-    - {fileID: 5529715230052389475, guid: cba4c0afb2d17b54e9ac01a25a479838, type: 3}
   spawnPoints:
   - {fileID: 547315797}
   - {fileID: 182511499}
