@@ -293,6 +293,8 @@ public class player_move : MonoBehaviour
                     UpdateScoreUI();
                     GainExp(20);
                     PlaySE(placeEquipmentSE);
+
+                    uiManager?.ShowTooltip($"Lv {eq.level + 1}", currentTarget.transform.position);
                 }
                 else
                 {

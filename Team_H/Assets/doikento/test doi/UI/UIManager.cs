@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject descriptionPanel;
     [SerializeField] private TextMeshProUGUI descriptionText;
 
+    [Header("ツールチップ")]
+    [SerializeField] private GameObject tooltipPanel;
+    [SerializeField] private TextMeshProUGUI tooltipText;
+
     private player_move player;
     private bool isInventoryOpen = false;
 
@@ -170,5 +174,24 @@ public class UIManager : MonoBehaviour
     {
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
+    }
+
+    public void ShowTooltip(string text, Vector3 worldPos)
+    {
+        if (tooltipPanel == null) return;
+
+        tooltipPanel.SetActive(true);
+        tooltipText.text = text;
+
+        // ワールド座標 → 画面座標に変換
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
+        tooltipPanel.transform.position = screenPos + new Vector3(0, 40f, 0); //少し上にずらす
+    }
+
+    public void HideTooltip()
+    {
+        if (tooltipPanel == null) return;
+
+        tooltipPanel.SetActive(false);
     }
 }

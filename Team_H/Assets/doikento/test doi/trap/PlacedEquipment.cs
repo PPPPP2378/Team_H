@@ -73,7 +73,6 @@ public class PlacedEquipment : MonoBehaviour
     // レベルアップ処理
     public bool TryUpgrade(ref int currentScore)
     {
-        Debug.Log("TryUpgrade 呼ばれたよ！");
 
         if (level >= data.levels.Length - 1)
         {
@@ -108,6 +107,13 @@ public class PlacedEquipment : MonoBehaviour
         ApplyLevelStats();
 
         Debug.Log($"{data.name} をレベル {level + 1} に強化しました！");
+
+        UIManager ui = FindAnyObjectByType<UIManager>();
+        if (ui != null)
+        {
+            ui.ShowTooltip($"Lv {level + 1}", transform.position);
+        }
+
         return true;
     }
 
@@ -300,5 +306,17 @@ public class PlacedEquipment : MonoBehaviour
         }
 
         if (bullet) Destroy(bullet);
+    }
+
+    private void OnMouseEnter()
+    {
+        UIManager ui = FindAnyObjectByType<UIManager>();
+        ui.ShowTooltip($"Lv {level + 1}", transform.position);
+    }
+
+    private void OnMouseExit()
+    {
+        UIManager ui = FindAnyObjectByType<UIManager>();
+        ui.HideTooltip();
     }
 }
