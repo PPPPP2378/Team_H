@@ -673,7 +673,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -1282,7 +1282,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -1414,7 +1414,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -1701,7 +1701,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -1991,7 +1991,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -2123,7 +2123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -2255,7 +2255,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -3668,7 +3668,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -5519,7 +5519,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -6890,7 +6890,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -7022,7 +7022,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -7540,7 +7540,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -7827,7 +7827,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -8092,7 +8092,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1684300184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76873f7b4f52304c93ca3e98d3845be, type: 3}
+  m_Script: {fileID: 11500000, guid: 35ab79dfa5239bb4fa5eeac8f6fb88b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pages:
@@ -8188,7 +8188,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -8849,7 +8849,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: PrevPage
         m_Mode: 1
         m_Arguments:
@@ -9215,7 +9215,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -9886,7 +9886,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -10565,7 +10565,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1684300186}
-        m_TargetAssemblyTypeName: PanelSwitcher, Assembly-CSharp
+        m_TargetAssemblyTypeName: PageManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
