@@ -71,6 +71,7 @@
     <Compile Include="Assets\doikento\test doi\trap\PlacedEquipment.cs" />
     <Compile Include="Assets\doikento\test doi\player\CropData.cs" />
     <Compile Include="Assets\kokubuyosiki\main\Electricmeta.cs" />
+    <Compile Include="Assets\doikento\test doi\UI\DamageText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
