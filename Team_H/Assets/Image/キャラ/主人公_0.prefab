@@ -2397,7 +2397,7 @@ MonoBehaviour:
       damage: 6
       damageInterval: 0.7
       requiredPlayerLevel: 0
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2407,7 +2407,7 @@ MonoBehaviour:
       damage: 10
       damageInterval: 0.7
       requiredPlayerLevel: 1
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2417,7 +2417,7 @@ MonoBehaviour:
       damage: 12
       damageInterval: 0.7
       requiredPlayerLevel: 2
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2427,7 +2427,7 @@ MonoBehaviour:
       damage: 15
       damageInterval: 0.7
       requiredPlayerLevel: 3
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2457,7 +2457,7 @@ MonoBehaviour:
       damage: 23
       damageInterval: 0.7
       requiredPlayerLevel: 6
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2467,7 +2467,7 @@ MonoBehaviour:
       damage: 25
       damageInterval: 0.7
       requiredPlayerLevel: 7
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2477,7 +2477,7 @@ MonoBehaviour:
       damage: 27
       damageInterval: 0.7
       requiredPlayerLevel: 8
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2487,7 +2487,7 @@ MonoBehaviour:
       damage: 30
       damageInterval: 0.6
       requiredPlayerLevel: 9
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2785,7 +2785,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 7456520142624371399}
   levelText: {fileID: 8104590376356896002}
-  equipmentLevelText: {fileID: 0}
   progressBar: {fileID: 862522515473277362}
   progressGroup: {fileID: 1209488797766028640}
   inventoryPanel: {fileID: 2132365322490543716}

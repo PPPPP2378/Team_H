@@ -2486,11 +2486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cfd10766a014143874f9939cc251c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageButtons:
-  - {fileID: 1312684790}
-  - {fileID: 1408512545}
-  - {fileID: 877282064}
-  - {fileID: 1910469271}
 --- !u!1 &2037874870
 GameObject:
   m_ObjectHideFlags: 0
