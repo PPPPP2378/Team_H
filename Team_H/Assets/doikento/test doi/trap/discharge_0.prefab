@@ -154,6 +154,7 @@ MonoBehaviour:
     - sprite: {fileID: 0}
       cost: 0
       damage: 0
+      damageInterval: 0.5
       requiredPlayerLevel: 0
       hitEffect: {fileID: 339985639231566837, guid: cd3b2dbc7dcaaf847bf42df5153c6a81, type: 3}
       isRanged: 0
@@ -163,6 +164,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 1
       hitEffect: {fileID: 339985639231566837, guid: cd3b2dbc7dcaaf847bf42df5153c6a81, type: 3}
       isRanged: 0
@@ -172,6 +174,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -181,6 +184,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -190,6 +194,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -199,6 +204,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -208,6 +214,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -217,6 +224,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -226,6 +234,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -235,6 +244,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -244,6 +254,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -253,6 +264,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -262,6 +274,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -271,6 +284,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -280,6 +294,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 0
@@ -289,7 +304,7 @@ MonoBehaviour:
     placementType: 0
     isWallEquipment: 0
   level: 1
-  damageInterval: 2
+  damageInterval: 4
 --- !u!50 &3700973229427622527
 Rigidbody2D:
   serializedVersion: 5
