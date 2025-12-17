@@ -117,6 +117,12 @@ public class UIManager : MonoBehaviour
             HideDescription();
         }
     }
+    //設備または種を選択時インベントリと説明テキストを閉じる
+    public void CloseInventory()
+    {
+        inventoryPanel.SetActive(false);
+        descriptionPanel.SetActive(false);
+    }
     // 設備タブの表示
     public void ShowEquipmentInventory()
     {

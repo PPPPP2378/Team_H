@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -75,6 +76,8 @@ public class player_move : MonoBehaviour
     public AudioClip upgradeSE;          // 設備アップグレード
     public AudioClip errorSE;            // エラー（スコア足りない など）
 
+    [Header("マウス判定レイヤー")]
+    [SerializeField] private LayerMask interactableLayer;
 
     //UIManagerを参照する
     private UIManager uiManager;
@@ -184,7 +187,7 @@ public class player_move : MonoBehaviour
     private void UpdateMouseTarget()
     {
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos);
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorldPos, interactableLayer);
 
         if (hit != null)
         {
@@ -399,6 +402,8 @@ public class player_move : MonoBehaviour
         if (index >= 0 && index < equipments.Length)
         {
             selectedEquipmentIndex = index;
+
+            uiManager?.CloseInventory();
         }
     }
 
@@ -413,6 +418,9 @@ public class player_move : MonoBehaviour
         {
             selectedCropIndex = index;
             Debug.Log("選択された作物: " + crops[index].cropName);
+
+            // インベントリを自動で閉じる
+            uiManager?.CloseInventory();
         }
     }
 
