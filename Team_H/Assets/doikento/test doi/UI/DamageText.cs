@@ -4,15 +4,15 @@ using TMPro;
 public class DamageText : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    public float lifeTime = 1.0f;
 
     public void SetText(string value)
     {
         text.text = value;
+
+        Destroy(gameObject, lifeTime);
     }
 
-    public void DestroySelf()
-    {
-        Destroy(gameObject, 1f);
-    }
+    
 }
 

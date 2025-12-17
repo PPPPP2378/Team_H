@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1848318195033194464}
   - component: {fileID: 3464542760000311123}
   - component: {fileID: 7723671454726749182}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall_2_0
   m_TagString: Grassland
   m_Icon: {fileID: 0}
