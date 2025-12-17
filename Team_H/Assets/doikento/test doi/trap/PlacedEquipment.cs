@@ -21,6 +21,7 @@ public class EquipmentLevelData
     public float projectileSpeed = 6f;
     public GameObject projectilePrefab; // 弾のPrefab
 
+   
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -36,6 +37,7 @@ public class PlacedEquipment : MonoBehaviour
     private SpriteRenderer sr;
     private Collider2D col;
     private Coroutine damageCoroutine;
+    private float shootCooldown = 0f;
 
     private Dictionary<MonoBehaviour, Coroutine> damageCoroutines = new Dictionary<MonoBehaviour, Coroutine>();
     private GameObject currentEffectPrefab;
@@ -227,37 +229,44 @@ public class PlacedEquipment : MonoBehaviour
 
     }
 
+   
     private IEnumerator RangedAttackLoop()
     {
         while (true)
         {
             var lv = data.levels[level];
-
             if (!lv.isRanged)
             {
                 yield return null;
                 continue;
             }
 
-            // 射程内の敵を探す
-            Collider2D[] hits = Physics2D.OverlapCircleAll(
+            // クールタイム更新
+            if (shootCooldown > 0f)
+            {
+                shootCooldown -= Time.deltaTime;
+            }
+
+            Vector2 dir = transform.up; //向いている方向
+
+            RaycastHit2D hit = Physics2D.Raycast(
                 transform.position,
+                dir,
                 lv.attackRange,
                 LayerMask.GetMask("Enemy")
             );
-
-            if (hits.Length > 0)
+            // 射線に敵がいて、クールタイム終了してたら撃つ
+            if (hit.collider != null && shootCooldown <= 0f)
             {
-                // 最初の敵をターゲット
-                var enemy = hits[0];
-                FireProjectile(enemy.transform);
+                FireProjectile(dir);
+                shootCooldown = damageInterval;
             }
 
-            yield return new WaitForSeconds(damageInterval);
+            yield return null;
         }
     }
 
-    private void FireProjectile(Transform target)
+    private void FireProjectile(Vector2 dir)
     {
         var lv = data.levels[level];
         if (lv.projectilePrefab == null) return;
@@ -268,7 +277,7 @@ public class PlacedEquipment : MonoBehaviour
             Quaternion.identity
         );
 
-        StartCoroutine(MoveProjectile(bullet, target, lv));
+        StartCoroutine(MoveProjectileStraight(bullet, dir, lv));
     }
     //弾丸発射処理
     private IEnumerator MoveProjectile(GameObject bullet, Transform target, EquipmentLevelData lv)
@@ -318,5 +327,48 @@ public class PlacedEquipment : MonoBehaviour
     {
         UIManager ui = FindAnyObjectByType<UIManager>();
         ui.HideTooltip();
+    }
+
+    private IEnumerator MoveProjectileStraight(
+    GameObject bullet,
+    Vector2 dir,
+    EquipmentLevelData lv
+)
+    {
+        float traveled = 0f;
+
+        while (bullet != null && traveled < lv.attackRange)
+        {
+            float move = lv.projectileSpeed * Time.deltaTime;
+            bullet.transform.position += (Vector3)(dir * move);
+            traveled += move;
+
+            // 命中判定
+            Collider2D hit = Physics2D.OverlapPoint(
+                bullet.transform.position,
+                LayerMask.GetMask("Enemy")
+            );
+
+            if (hit != null)
+            {
+                var rabbit = hit.GetComponent<RabbitAI_Complete>();
+                var crow = hit.GetComponent<CrowFlockAI>();
+                var bear = hit.GetComponent<bear_Ai>();
+
+                if (rabbit) rabbit.TakeDamage(lv.damage);
+                if (crow) crow.TakeDamage(lv.damage);
+                if (bear) bear.TakeDamage(lv.damage);
+
+                if (lv.hitEffect != null)
+                    Instantiate(lv.hitEffect, hit.transform.position, Quaternion.identity);
+
+                Destroy(bullet);
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        if (bullet) Destroy(bullet);
     }
 }

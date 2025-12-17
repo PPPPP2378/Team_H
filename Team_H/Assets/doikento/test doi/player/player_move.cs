@@ -19,6 +19,8 @@ public class EquipmentData
     public EquipmentLevelData[] levels;       // レベルごとのデータ
     public EquipmentPlacementType placementType = EquipmentPlacementType.Both;
     public bool isWallEquipment = false;      // 壁専用設備かどうか
+
+   
 }
 
 public class player_move : MonoBehaviour
@@ -143,6 +145,8 @@ public class player_move : MonoBehaviour
         {
             uiManager?.ToggleInventory();
         }
+
+        HandleRotateEquipment();
     }
 
     // --- 長押し処理 ---
@@ -450,6 +454,28 @@ public class player_move : MonoBehaviour
     {
         if (audioSource != null && clip != null)
             audioSource.PlayOneShot(clip);
+    }
+
+    private void HandleRotateEquipment()
+    {
+        // Rキーが押された
+        if (!Input.GetKeyDown(KeyCode.R)) return;
+
+        // 何も指していなければ何もしない
+        if (currentTarget == null) return;
+
+        // 設置済み設備かどうか
+        PlacedEquipment equipment = currentTarget.GetComponent<PlacedEquipment>();
+        if (equipment == null) return;
+
+        // プレイヤーとの距離チェック
+        float dist = Vector2.Distance(transform.position, currentTarget.transform.position);
+        if (dist > interactRadius) return;
+
+        // Z軸を90度回転
+        currentTarget.transform.Rotate(0f, 0f, 90f);
+
+        Debug.Log("設備を回転しました");
     }
 
     public int PlayerLevel => playerLevel;

@@ -2437,7 +2437,7 @@ MonoBehaviour:
       damage: 17
       damageInterval: 0.7
       requiredPlayerLevel: 4
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2447,7 +2447,7 @@ MonoBehaviour:
       damage: 20
       damageInterval: 0.7
       requiredPlayerLevel: 5
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2497,7 +2497,7 @@ MonoBehaviour:
       damage: 33
       damageInterval: 0.6
       requiredPlayerLevel: 10
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2507,7 +2507,7 @@ MonoBehaviour:
       damage: 35
       damageInterval: 0.6
       requiredPlayerLevel: 11
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2517,7 +2517,7 @@ MonoBehaviour:
       damage: 37
       damageInterval: 0.6
       requiredPlayerLevel: 12
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2527,7 +2527,7 @@ MonoBehaviour:
       damage: 40
       damageInterval: 0.6
       requiredPlayerLevel: 13
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
@@ -2537,7 +2537,7 @@ MonoBehaviour:
       damage: 53
       damageInterval: 0.6
       requiredPlayerLevel: 14
-      hitEffect: {fileID: 3236876136529910886, guid: 9b6a8f0688f5bf54f9c956f5139d6fb3, type: 3}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
       attackRange: 3
       projectileSpeed: 6
