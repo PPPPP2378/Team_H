@@ -274,7 +274,7 @@ public class PlacedEquipment : MonoBehaviour
         GameObject bullet = Instantiate(
             lv.projectilePrefab,
             transform.position,
-            Quaternion.identity
+            transform.rotation
         );
 
         StartCoroutine(MoveProjectileStraight(bullet, dir, lv));

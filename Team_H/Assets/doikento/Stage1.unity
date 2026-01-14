@@ -16321,6 +16321,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: firstprepTime
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855142108888065684, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: maxDestroyedCount
       value: 8
       objectReference: {fileID: 0}
