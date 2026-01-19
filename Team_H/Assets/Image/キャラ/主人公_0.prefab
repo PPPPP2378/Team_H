@@ -2546,7 +2546,7 @@ MonoBehaviour:
     isWallEquipment: 0
   - name: darts
     levels:
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 5
       damageInterval: 0.5
@@ -2555,8 +2555,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 5
       damageInterval: 0.5
@@ -2565,8 +2565,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 7
       damageInterval: 0.5
@@ -2575,8 +2575,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 10
       damageInterval: 0.5
@@ -2585,8 +2585,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 15
       damageInterval: 0.5
@@ -2595,8 +2595,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 17
       damageInterval: 0.5
@@ -2605,8 +2605,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 20
       damageInterval: 0.5
@@ -2615,8 +2615,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 23
       damageInterval: 0.5
@@ -2625,8 +2625,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 25
       damageInterval: 0.5
@@ -2635,8 +2635,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 27
       damageInterval: 0.5
@@ -2645,8 +2645,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 30
       damageInterval: 0.5
@@ -2655,8 +2655,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 32
       damageInterval: 0.5
@@ -2665,8 +2665,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 35
       damageInterval: 0.5
@@ -2675,8 +2675,8 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 38
       damageInterval: 0.5
@@ -2685,17 +2685,17 @@ MonoBehaviour:
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
-    - sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+    - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 30
       damage: 40
       damageInterval: 0.5
       requiredPlayerLevel: 14
-      hitEffect: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
+      hitEffect: {fileID: 0}
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
-      projectilePrefab: {fileID: 3355409571674182653, guid: 77e8cf368835df349a59030ecc37f68b, type: 3}
+      projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
     placementType: 1
     isWallEquipment: 1
   - name: 
@@ -2735,14 +2735,14 @@ MonoBehaviour:
     growingSprite: {fileID: -5021481931098149597, guid: dc52ec93cc827b84b8e0c0a5f786d731, type: 3}
     grownSprite: {fileID: 3304151830600840588, guid: c1e90eec03be1c74abe73576d72dc4c1, type: 3}
     growTime: 15
-    fullGrowTime: 8
+    fullGrowTime: 10
     harvestPoints: 30
     expGain: 20
   - cropName: tomato
     seedSprite: {fileID: -1931649684300762147, guid: 37dfcde004289ff48967a09634fb2e9c, type: 3}
     growingSprite: {fileID: 1693137065039621466, guid: dc86a43fa5ef84c48aac930f7f7f5e21, type: 3}
     grownSprite: {fileID: 5986707135889605919, guid: 1bceadfff2b236c40b38eb1794f312bb, type: 3}
-    growTime: 10
+    growTime: 20
     fullGrowTime: 10
     harvestPoints: 40
     expGain: 30
@@ -3127,7 +3127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3053058948399044648, guid: 7c8fd817eadb3f048a9171142f993966, type: 3}
+  m_Sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -7,6 +7,7 @@ public class WaveManager : MonoBehaviour
 {
     [Header("ウェーブ設定")]
     public float prepTime = 10f;
+    public float firstprepTime = 20f;
     public float waveDuration = 20f;
     public int maxWave = 5;
 
@@ -60,7 +61,10 @@ public class WaveManager : MonoBehaviour
             ShowStateText("PREPA TIME", displayTime);
 
             spawner.StopSpawning();
-            timer = prepTime;
+            if (currentWave == 0)
+                timer = firstprepTime;
+            else
+                timer = prepTime;
 
             while (timer > 0)
             {
