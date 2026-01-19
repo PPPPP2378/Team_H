@@ -388,8 +388,19 @@ public class PlacedEquipment : MonoBehaviour
 
     private void SetupLaser()
     {
-        if (laserRenderer == null) return;
+        var lv = data.levels[level];
+        if (!lv.isLaser) return;
 
+        if (laserRenderer == null)
+        {
+            laserRenderer = GetComponent<LineRenderer>();
+        }
+
+        if (laserRenderer == null)
+        {
+            Debug.LogError("LineRenderer ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñIGameObject=" + gameObject.name);
+            return;
+        }
         laserRenderer.positionCount = 2;
         laserRenderer.enabled = false;
     }

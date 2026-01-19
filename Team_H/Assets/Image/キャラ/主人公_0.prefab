@@ -2591,6 +2591,7 @@ MonoBehaviour:
       laserDuration: 0.1
     placementType: 0
     isWallEquipment: 0
+    laserRenderer: {fileID: 0}
   - name: darts
     levels:
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
@@ -2790,6 +2791,7 @@ MonoBehaviour:
       laserDuration: 0.1
     placementType: 1
     isWallEquipment: 1
+    laserRenderer: {fileID: 0}
   - name: Laser
     levels:
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
@@ -2989,6 +2991,7 @@ MonoBehaviour:
       laserDuration: 0
     placementType: 1
     isWallEquipment: 1
+    laserRenderer: {fileID: 0}
   plowedSprite: {fileID: -6141724211594974790, guid: ffe297430ba95ef4aadcc05dc1ffc8a5, type: 3}
   wateredSprite: {fileID: -4229860799339438811, guid: e79bd15e7024aab468a636057639ba56, type: 3}
   plowSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}

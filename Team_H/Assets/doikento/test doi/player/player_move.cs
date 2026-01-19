@@ -20,7 +20,6 @@ public class EquipmentData
     public EquipmentPlacementType placementType = EquipmentPlacementType.Both;
     public bool isWallEquipment = false;      // 壁専用設備かどうか
 
-   
 }
 
 public class player_move : MonoBehaviour

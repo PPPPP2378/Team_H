@@ -24,6 +24,7 @@ TagManager:
   - Waypoint3
   - W
   - menu
+  - Laser
   layers:
   - Default
   - TransparentFX
