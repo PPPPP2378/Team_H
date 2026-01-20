@@ -114,7 +114,9 @@ public class player_move : MonoBehaviour
         //UIは非表示から開始
         uiManager?.ShowProgress(false);
     }
-
+    /// <summary>
+    /// 移動に関する関数
+    /// </summary>
     void FixedUpdate()
     {
         if (!WaveManager.PlayerCanControl) return;
@@ -131,7 +133,9 @@ public class player_move : MonoBehaviour
             animator.SetFloat("Speed", move.sqrMagnitude);
         }
     }
-
+    /// <summary>
+    /// インベントリを開く為の関数
+    /// </summary>
     void Update()
     {
         if (!WaveManager.PlayerCanControl) return;
@@ -148,7 +152,9 @@ public class player_move : MonoBehaviour
         HandleRotateEquipment();
     }
 
-    // --- 長押し処理 ---
+    /// <summary>
+    /// 左クリック長押しの動作の関数
+    /// </summary>
     private void HandleHoldProgress()
     {
         if (Input.GetMouseButton(0))
@@ -186,7 +192,9 @@ public class player_move : MonoBehaviour
         }
     }
 
-    // --- マウス位置更新 ---
+    /// <summary>
+    /// マウスカーソルの位置を取得する為の関数
+    /// </summary>
     private void UpdateMouseTarget()
     {
         Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -219,7 +227,11 @@ public class player_move : MonoBehaviour
             highlightFrame.SetActive(false);
     }
 
-    // --- タグ判定 ---
+    /// <summary>
+    /// マウスカーソルが取得するタグを決める関数
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
     private bool IsValidTarget(Collider2D other)
     {
         return other.CompareTag("Plow") || other.CompareTag("Plowed") ||
@@ -229,7 +241,9 @@ public class player_move : MonoBehaviour
                IsPlacedEquipment(other.tag);
     }
 
-    // --- インタラクト ---
+    /// <summary>
+    /// 設備の設置や畑を耕すなど動作を決める関数
+    /// </summary>
     private void TryInteract()
     {
         if (currentTarget == null) return;
@@ -320,7 +334,13 @@ public class player_move : MonoBehaviour
         }
     }
 
-    // --- 植物成長 ---
+    /// <summary>
+    /// 植物の成長を管理する
+    /// </summary>
+    /// <param name="target"></param>
+    /// <param name="sr"></param>
+    /// <param name="crop"></param>
+    /// <returns></returns>
     private IEnumerator GrowPlant(Collider2D target, SpriteRenderer sr,CropData crop)
     {
         float timer = 0f;
@@ -366,7 +386,10 @@ public class player_move : MonoBehaviour
     private void UpdateScoreUI() => uiManager?.UpdateScore(currentScore);
     private void UpdateLevelUI() => uiManager?.UpdateLevel(playerLevel, currentExp, expToNext);
 
-    // --- 経験値 ---
+    /// <summary>
+    /// 経験値処理
+    /// </summary>
+    /// <param name="amount"></param>
     private void GainExp(int amount)
     {
         currentExp += amount;
@@ -374,7 +397,9 @@ public class player_move : MonoBehaviour
             LevelUp();
         UpdateLevelUI();
     }
-
+    /// <summary>
+    /// プレイヤーのレベルアップに関する関数
+    /// </summary>
     private void LevelUp()
     {
         if(playerLevel>=maxLevel)
@@ -399,7 +424,10 @@ public class player_move : MonoBehaviour
         currentScore += amount;
         UpdateScoreUI();
     }
-
+    /// <summary>
+    /// 設備のアイコンボタンを押すと自動でインベントリを閉じる
+    /// </summary>
+    /// <param name="index"></param>
     public void SelectEquipment(int index)
     {
         if (index >= 0 && index < equipments.Length)
@@ -414,7 +442,10 @@ public class player_move : MonoBehaviour
     {
         selectedEquipmentIndex = -1;
     }
-
+    /// <summary>
+    /// 作物のアイコンボタンを押すと自動でインベントリを閉じる
+    /// </summary>
+    /// <param name="index"></param>
     public void SelectCrop(int index)
     {
         if (index >= 0 && index < crops.Length)
@@ -454,7 +485,9 @@ public class player_move : MonoBehaviour
         if (audioSource != null && clip != null)
             audioSource.PlayOneShot(clip);
     }
-
+    /// <summary>
+    /// 設備の回転処理
+    /// </summary>
     private void HandleRotateEquipment()
     {
         // Rキーが押された

@@ -103,13 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc67a230374957346a990536720685dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.1
+  moveSpeed: 1.2
   detectionRange: 2.1
   WallLayer:
     serializedVersion: 2
     m_Bits: 0
-  maxHP: 50
-  hp: 11
+  maxHP: 55
+  hp: 10
   speed: 3
   plowedSoilSprite: {fileID: 5540867108637075714, guid: d1a3a86bf8897224d99e4d0a1f69b3b1, type: 3}
   destroyedFieldTag: Rough
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0003681183, y: -0.06257439}
+  m_Offset: {x: -0.01700592, y: -0.045851707}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,7 +170,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.531456, y: 0.28552055}
+  m_Size: {x: 0.4233055, y: 0.3189659}
   m_EdgeRadius: 0
 --- !u!50 &1339101681964481534
 Rigidbody2D:
