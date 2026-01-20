@@ -20,10 +20,6 @@ public class EquipmentLevelData
     public float projectileSpeed = 6f;
     public GameObject projectilePrefab; // 弾のPrefab
 
-    [Header("レーザー用")]
-    public bool isLaser;
-    public float laserRange = 6f;
-    public float laserDuration = 0.1f; // 表示時間
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -44,7 +40,7 @@ public class PlacedEquipment : MonoBehaviour
     private Dictionary<MonoBehaviour, Coroutine> damageCoroutines = new Dictionary<MonoBehaviour, Coroutine>();
     private GameObject currentEffectPrefab;
 
-    [SerializeField] private LineRenderer laserRenderer;
+   
 
     void Start()
     {
@@ -67,15 +63,12 @@ public class PlacedEquipment : MonoBehaviour
         }
 
         ApplyLevelStats();
-        SetupLaser();
+       
 
 
         // もし遠距離設備なら、専用コルーチンを開始
-        if (data.levels[level].isLaser)
-        {
-            StartCoroutine(LaserAttackLoop());
-        }
-        else if (data.levels[level].isRanged)
+       
+        if (data.levels[level].isRanged)
         {
             StartCoroutine(RangedAttackLoop());
         }
@@ -385,110 +378,4 @@ public class PlacedEquipment : MonoBehaviour
 
         if (bullet) Destroy(bullet);
     }
-
-    private void SetupLaser()
-    {
-        var lv = data.levels[level];
-        if (!lv.isLaser) return;
-
-        if (laserRenderer == null)
-        {
-            laserRenderer = GetComponent<LineRenderer>();
-        }
-
-        if (laserRenderer == null)
-        {
-            Debug.LogError("LineRenderer が見つかりません！GameObject=" + gameObject.name);
-            return;
-        }
-        laserRenderer.positionCount = 2;
-        laserRenderer.enabled = false;
-    }
-
-    private IEnumerator LaserAttackLoop()
-    {
-        while (true)
-        {
-            var lv = data.levels[level];
-            if (!lv.isLaser)
-            {
-                yield return null;
-                continue;
-            }
-
-            if (shootCooldown > 0f)
-            {
-                shootCooldown -= Time.deltaTime;
-                yield return null;
-                continue;
-            }
-
-            Vector2 dir = transform.up;
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(
-                transform.position,
-                dir,
-                lv.laserRange,
-                LayerMask.GetMask("Enemy")
-            );
-
-            if (hits.Length > 0)
-            {
-                FireLaser(dir, hits, lv);
-                shootCooldown = damageInterval;
-            }
-
-            yield return null;
-        }
-    }
-
-    private void FireLaser(
-    Vector2 dir,
-    RaycastHit2D[] hits,
-    EquipmentLevelData lv
-)
-    {
-        // ダメージ
-        foreach (var hit in hits)
-        {
-            var rabbit = hit.collider.GetComponent<RabbitAI_Complete>();
-            var crow = hit.collider.GetComponent<CrowFlockAI>();
-            var bear = hit.collider.GetComponent<bear_Ai>();
-
-            if (rabbit) rabbit.TakeDamage(lv.damage);
-            if (crow) crow.TakeDamage(lv.damage);
-            if (bear) bear.TakeDamage(lv.damage);
-
-            // ヒットエフェクト
-            if (lv.hitEffect != null)
-            {
-                GameObject effect =
-                    Instantiate(lv.hitEffect, hit.point, Quaternion.identity);
-                Destroy(effect, 0.5f);
-            }
-        }
-
-        // 見た目レーザー
-        StartCoroutine(ShowLaser(
-            transform.position,
-            transform.position + (Vector3)(dir * lv.laserRange),
-            lv.laserDuration
-        ));
-    }
-
-    private IEnumerator ShowLaser(
-    Vector3 start,
-    Vector3 end,
-    float duration
-)
-    {
-        laserRenderer.SetPosition(0, start);
-        laserRenderer.SetPosition(1, end);
-        laserRenderer.enabled = true;
-
-        yield return new WaitForSeconds(duration);
-
-        laserRenderer.enabled = false;
-    }
-
 }
