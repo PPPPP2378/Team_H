@@ -161,6 +161,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -171,6 +174,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -181,6 +187,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -191,6 +200,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -201,6 +213,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -211,6 +226,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -221,6 +239,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -231,6 +252,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -241,6 +265,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -251,6 +278,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -261,6 +291,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -271,6 +304,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -281,6 +317,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -291,6 +330,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -301,10 +343,14 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     placementType: 0
     isWallEquipment: 0
   level: 1
-  damageInterval: 4
+  damageInterval: 0.5
+  laserRenderer: {fileID: 0}
 --- !u!50 &3700973229427622527
 Rigidbody2D:
   serializedVersion: 5
