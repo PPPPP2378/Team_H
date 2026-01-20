@@ -132,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &903123519113456310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -147,6 +147,7 @@ RectTransform:
   m_Children:
   - {fileID: 3786657382837487117}
   - {fileID: 423697606411688243}
+  - {fileID: 4542435133011062881}
   m_Father: {fileID: 4060794722950387190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1999,6 +2000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prepTime: 10
+  firstprepTime: 20
   waveDuration: 15
   maxWave: 2
   displayTime: 2
@@ -2402,6 +2404,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -2412,6 +2417,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 15
       damage: 12
@@ -2422,6 +2430,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 20
       damage: 15
@@ -2432,6 +2443,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
       damage: 17
@@ -2442,6 +2456,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
       damage: 20
@@ -2452,6 +2469,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 30
       damage: 23
@@ -2462,6 +2482,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 30
       damage: 25
@@ -2472,6 +2495,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
       damage: 27
@@ -2482,6 +2508,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
       damage: 30
@@ -2492,6 +2521,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
       damage: 33
@@ -2502,6 +2534,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
       damage: 35
@@ -2512,6 +2547,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
       damage: 37
@@ -2522,6 +2560,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
       damage: 40
@@ -2532,6 +2573,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 43
       damage: 53
@@ -2542,8 +2586,12 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     placementType: 0
     isWallEquipment: 0
+    laserRenderer: {fileID: 0}
   - name: darts
     levels:
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
@@ -2551,11 +2599,14 @@ MonoBehaviour:
       damage: 5
       damageInterval: 0.5
       requiredPlayerLevel: 0
-      hitEffect: {fileID: 0}
+      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 1
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 5
@@ -2566,6 +2617,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 7
@@ -2576,6 +2630,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 10
@@ -2586,6 +2643,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 15
@@ -2596,6 +2656,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 17
@@ -2606,6 +2669,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 20
@@ -2616,6 +2682,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 23
@@ -2626,6 +2695,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 25
@@ -2636,6 +2708,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 27
@@ -2646,6 +2721,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 30
@@ -2656,6 +2734,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 32
@@ -2666,6 +2747,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 35
@@ -2676,6 +2760,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 38
@@ -2686,6 +2773,9 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 30
       damage: 40
@@ -2696,12 +2786,212 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      isLaser: 0
+      laserRange: 6
+      laserDuration: 0.1
     placementType: 1
     isWallEquipment: 1
-  - name: 
-    levels: []
-    placementType: 2
-    isWallEquipment: 0
+    laserRenderer: {fileID: 0}
+  - name: Laser
+    levels:
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 15
+      damage: 7
+      damageInterval: 0.5
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 6
+      laserDuration: 0.1
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 0}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 0}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 0}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+      cost: 0
+      damage: 0
+      damageInterval: 0
+      requiredPlayerLevel: 0
+      hitEffect: {fileID: 0}
+      isRanged: 0
+      attackRange: 0
+      projectileSpeed: 0
+      projectilePrefab: {fileID: 0}
+      isLaser: 1
+      laserRange: 0
+      laserDuration: 0
+    placementType: 1
+    isWallEquipment: 1
+    laserRenderer: {fileID: 0}
   plowedSprite: {fileID: -6141724211594974790, guid: ffe297430ba95ef4aadcc05dc1ffc8a5, type: 3}
   wateredSprite: {fileID: -4229860799339438811, guid: e79bd15e7024aab468a636057639ba56, type: 3}
   plowSprite: {fileID: 884520269855536536, guid: e1ee6a2590fa58e48ab899ed30996d0a, type: 3}
@@ -2712,7 +3002,7 @@ MonoBehaviour:
     grownSprite: {fileID: -8341788796487943218, guid: f0fd39fa05c7a7142957bff996662cc4, type: 3}
     growTime: 5
     fullGrowTime: 5
-    harvestPoints: 10
+    harvestPoints: 15
     expGain: 6
   - cropName: ninnzinn
     seedSprite: {fileID: -7779527143205097403, guid: c0e32c359973fa04baf478ace644699b, type: 3}
@@ -2720,15 +3010,15 @@ MonoBehaviour:
     grownSprite: {fileID: -3086468177703413657, guid: 3a3b95a444d54a344b042a851bc0c7d2, type: 3}
     growTime: 5
     fullGrowTime: 10
-    harvestPoints: 15
+    harvestPoints: 20
     expGain: 10
   - cropName: zyagaimo
     seedSprite: {fileID: -883582205518614150, guid: 52ad210373798334e9bd71b07789d2b7, type: 3}
     growingSprite: {fileID: -7621058754175749967, guid: 3d436c94f7f18b44fb89b14e85acbb1c, type: 3}
     grownSprite: {fileID: -4819836660323628225, guid: 3a60eea85c4198f4cb4e87a4a4b25482, type: 3}
-    growTime: 5
+    growTime: 10
     fullGrowTime: 10
-    harvestPoints: 20
+    harvestPoints: 25
     expGain: 20
   - cropName: kyabetu
     seedSprite: {fileID: 5371779389558694591, guid: c648aa1d49989cd449850915cf6d173b, type: 3}
@@ -2736,15 +3026,15 @@ MonoBehaviour:
     grownSprite: {fileID: 3304151830600840588, guid: c1e90eec03be1c74abe73576d72dc4c1, type: 3}
     growTime: 15
     fullGrowTime: 10
-    harvestPoints: 30
+    harvestPoints: 40
     expGain: 20
   - cropName: tomato
     seedSprite: {fileID: -1931649684300762147, guid: 37dfcde004289ff48967a09634fb2e9c, type: 3}
     growingSprite: {fileID: 1693137065039621466, guid: dc86a43fa5ef84c48aac930f7f7f5e21, type: 3}
     grownSprite: {fileID: 5986707135889605919, guid: 1bceadfff2b236c40b38eb1794f312bb, type: 3}
-    growTime: 20
+    growTime: 10
     fullGrowTime: 10
-    harvestPoints: 40
+    harvestPoints: 50
     expGain: 30
   holdInterval: 0.8
   highlightSprite: {fileID: -909141687429717216, guid: 0cdd1c910ab46884aac946d3eaa6e87c, type: 3}
@@ -3624,6 +3914,152 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6528755483093526700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4542435133011062881}
+  - component: {fileID: 5337595467624323626}
+  - component: {fileID: 4235599487711953803}
+  - component: {fileID: 2791328699222371998}
+  - component: {fileID: 3799079079539736268}
+  m_Layer: 8
+  m_Name: Button (Legacy) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4542435133011062881
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528755483093526700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 903123519113456310}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -151, y: -228.93}
+  m_SizeDelta: {x: 79.64, y: 64.4619}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5337595467624323626
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528755483093526700}
+  m_CullTransparentMesh: 1
+--- !u!114 &4235599487711953803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528755483093526700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2791328699222371998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528755483093526700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 4235599487711953803}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6105907372134001094}
+        m_TargetAssemblyTypeName: player_move, Assembly-CSharp
+        m_MethodName: SelectEquipment
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3799079079539736268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6528755483093526700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: "\u30C0\u30FC\u30C4\u30C8\u30E9\u30C3\u30D7:\u5FC5\u8981\u30B3\u30B9\u30C810\n\u58C1\u306B\u8A2D\u7F6E\u53EF\u80FD\n\u7BC4\u56F2\u5185\u306E\u6575\u306B\u77E2\u3092\u767A\u5C04\u3059\u308B"
 --- !u!1 &6646529160443935228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,7 +4077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3277419555779485156
 RectTransform:
   m_ObjectHideFlags: 0
