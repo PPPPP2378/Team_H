@@ -372,7 +372,10 @@ public class player_move : MonoBehaviour
 
         GainExp(crop.expGain);
     }
-
+    /// <summary>
+    /// 作物の収穫した時の処理
+    /// </summary>
+    /// <param name="sr"></param>
     private void HarvestCrop(SpriteRenderer sr)
     {
         CropData crop = crops[selectedCropIndex];
@@ -383,7 +386,13 @@ public class player_move : MonoBehaviour
     }
 
     // --- UI更新 ---
+    /// <summary>
+    /// スコアUIの更新
+    /// </summary>
     private void UpdateScoreUI() => uiManager?.UpdateScore(currentScore);
+    /// <summary>
+    /// レベル,経験値UIを更新
+    /// </summary>
     private void UpdateLevelUI() => uiManager?.UpdateLevel(playerLevel, currentExp, expToNext);
 
     /// <summary>
@@ -419,11 +428,16 @@ public class player_move : MonoBehaviour
         UpdateLevelUI();
     }
 
+    /// <summary>
+    /// スコアを加算してUIを更新
+    /// </summary>
+    /// <param name="amount"></param>
     public void AddScore(int amount)
     {
         currentScore += amount;
         UpdateScoreUI();
     }
+
     /// <summary>
     /// 設備のアイコンボタンを押すと自動でインベントリを閉じる
     /// </summary>
@@ -442,6 +456,7 @@ public class player_move : MonoBehaviour
     {
         selectedEquipmentIndex = -1;
     }
+
     /// <summary>
     /// 作物のアイコンボタンを押すと自動でインベントリを閉じる
     /// </summary>
@@ -457,7 +472,11 @@ public class player_move : MonoBehaviour
             uiManager?.CloseInventory();
         }
     }
-
+    /// <summary>
+    /// タグ名が設置済み設備かどうかを判定する
+    /// </summary>
+    /// <param name="tag"></param>
+    /// <returns></returns>
     private bool IsPlacedEquipment(string tag)
     {
         foreach (var eq in equipments)
@@ -474,12 +493,19 @@ public class player_move : MonoBehaviour
         StartCoroutine(ResumeWalk());
     }
 
+    /// <summary>
+    /// 一定時間後にアニメーションを再開
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ResumeWalk()
     {
         yield return new WaitForSeconds(0.3f); // 秒停止
         animator.speed = 1f;
     }
-
+    /// <summary>
+    /// SEの再生
+    /// </summary>
+    /// <param name="clip"></param>
     private void PlaySE(AudioClip clip)
     {
         if (audioSource != null && clip != null)
@@ -490,8 +516,8 @@ public class player_move : MonoBehaviour
     /// </summary>
     private void HandleRotateEquipment()
     {
-        // Rキーが押された
-        if (!Input.GetKeyDown(KeyCode.R)) return;
+        // 右クリックを押した時
+        if (!Input.GetMouseButtonDown(1)) return;
 
         // 何も指していなければ何もしない
         if (currentTarget == null) return;

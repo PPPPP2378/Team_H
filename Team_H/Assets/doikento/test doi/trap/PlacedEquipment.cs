@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PlacedEquipment;
 
-
+/// <summary>
+/// 設備のレベルレベルごとのデータ
+/// </summary>
 [System.Serializable]
 public class EquipmentLevelData
 {
@@ -75,7 +77,11 @@ public class PlacedEquipment : MonoBehaviour
     }
 
 
-    // レベルアップ処理
+    /// <summary>
+    /// レベルアップできるか判断する
+    /// </summary>
+    /// <param name="currentScore"></param>
+    /// <returns></returns>
     public bool TryUpgrade(ref int currentScore)
     {
 
@@ -121,7 +127,9 @@ public class PlacedEquipment : MonoBehaviour
 
         return true;
     }
-
+    /// <summary>
+    /// 現在レベルのステータスを反映
+    /// </summary>
     private void ApplyLevelStats()
     {
         if (sr == null) sr = GetComponent<SpriteRenderer>();
@@ -141,6 +149,10 @@ public class PlacedEquipment : MonoBehaviour
     // --- DamageTrap の機能統合 ---
     private int damage = 0;
 
+    /// <summary>
+    /// 敵が設備の範囲内にいるとダメージを与える
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy")) return;
@@ -161,7 +173,10 @@ public class PlacedEquipment : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// 反映から出るとダメージ処理を終了
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -191,7 +206,9 @@ public class PlacedEquipment : MonoBehaviour
             yield return new WaitForSeconds(damageInterval);
         }
     }
-
+    /// <summary>
+    /// 敵に一定間隔でダメージを与え続けるコルーチン
+    /// </summary>
     private IEnumerator DealDamageOverTime(MonoBehaviour target)
     {
         // 敵の Collider を取得
@@ -232,7 +249,10 @@ public class PlacedEquipment : MonoBehaviour
 
     }
 
-   
+    /// <summary>
+    /// 遠距離設備の攻撃ループ
+    /// 正面方向に敵がいれば弾を発射する
+    /// </summary>
     private IEnumerator RangedAttackLoop()
     {
         while (true)
@@ -268,7 +288,9 @@ public class PlacedEquipment : MonoBehaviour
             yield return null;
         }
     }
-
+    /// <summary>
+    /// 弾を生成し直進させる
+    /// </summary>
     private void FireProjectile(Vector2 dir)
     {
         var lv = data.levels[level];
@@ -333,7 +355,9 @@ public class PlacedEquipment : MonoBehaviour
         UIManager ui = FindAnyObjectByType<UIManager>();
         ui.HideTooltip();
     }
-
+    /// <summary>
+    /// 弾を直線移動させ、敵に当たったらダメージを与える
+    /// </summary>
     private IEnumerator MoveProjectileStraight(
     GameObject bullet,
     Vector2 dir,

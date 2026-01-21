@@ -395,6 +395,10 @@ public class RabbitAI_Complete : MonoBehaviour, IEnemyStats
         obj.GetComponent<DamageText>().SetText("-" + dmg);
     }
 
+    /// <summary>
+    /// 方向ごとにグラフィックを変える
+    /// </summary>
+    /// <param name="dir"></param>
     void UpdateSpriteByDirection(Vector2 dir)
     {
         if (isDead) return;
@@ -426,6 +430,11 @@ public class RabbitAI_Complete : MonoBehaviour, IEnemyStats
             }
         }
     }
+
+    /// <summary>
+    /// ウェーブ毎に強化
+    /// </summary>
+    /// <param name="wave"></param>
     public void ApplyWaveMultiplier(int wave)
     {
         float hpMul = 1f + (wave - 1) * 1f;     // 50%ずつHP強化
