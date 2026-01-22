@@ -2720,6 +2720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "\u4E3B\u4EBA\u516C_0"
       objectReference: {fileID: 0}
+    - target: {fileID: 5509296348376373760, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6105907372134001094, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: currentScore
       value: 130
@@ -2766,11 +2770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8242638533430236369, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -349.88022
+      value: -443
       objectReference: {fileID: 0}
     - target: {fileID: 8242638533430236369, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -248.64795
+      value: 257
       objectReference: {fileID: 0}
     - target: {fileID: 8915200903127116476, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: titleText
