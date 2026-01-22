@@ -152,6 +152,8 @@ public class player_move : MonoBehaviour
         HandleRotateEquipment();
     }
 
+   
+
     /// <summary>
     /// 左クリック長押しの動作の関数
     /// </summary>
@@ -535,6 +537,8 @@ public class player_move : MonoBehaviour
 
         Debug.Log("設備を回転しました");
     }
+
+  
 
     public int PlayerLevel => playerLevel;
 }

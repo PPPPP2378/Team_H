@@ -2404,6 +2404,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
@@ -2414,6 +2416,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 15
       damage: 12
@@ -2424,6 +2428,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 20
       damage: 15
@@ -2434,6 +2440,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
       damage: 17
@@ -2444,6 +2452,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 25
       damage: 20
@@ -2454,6 +2464,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 30
       damage: 23
@@ -2464,6 +2476,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 30
       damage: 25
@@ -2474,6 +2488,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
       damage: 27
@@ -2484,6 +2500,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
       damage: 30
@@ -2494,6 +2512,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 35
       damage: 33
@@ -2504,6 +2524,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
       damage: 35
@@ -2514,6 +2536,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
       damage: 37
@@ -2524,6 +2548,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 40
       damage: 40
@@ -2534,6 +2560,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 43
       damage: 53
@@ -2544,6 +2572,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     placementType: 0
     isWallEquipment: 0
   - name: darts
@@ -2558,6 +2588,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 1
+      maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 5
@@ -2568,6 +2600,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 7
@@ -2578,6 +2612,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
       damage: 10
@@ -2588,6 +2624,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 15
@@ -2598,6 +2636,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 17
@@ -2608,6 +2648,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 15
       damage: 20
@@ -2618,6 +2660,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 23
@@ -2628,6 +2672,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 25
@@ -2638,6 +2684,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 27
@@ -2648,6 +2696,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 20
       damage: 30
@@ -2658,6 +2708,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 32
@@ -2668,6 +2720,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 35
@@ -2678,6 +2732,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 25
       damage: 38
@@ -2688,6 +2744,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 30
       damage: 40
@@ -2698,6 +2756,8 @@ MonoBehaviour:
       attackRange: 3
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     placementType: 1
     isWallEquipment: 1
   - name: Laser
@@ -2712,6 +2772,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 15
       damage: 15
@@ -2722,6 +2784,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 0}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 20
       damage: 20
@@ -2732,6 +2796,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 25
       damage: 25
@@ -2742,6 +2808,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 30
       damage: 30
@@ -2752,6 +2820,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 35
       damage: 35
@@ -2762,6 +2832,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 40
       damage: 40
@@ -2772,6 +2844,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 45
       damage: 45
@@ -2782,6 +2856,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 50
       damage: 50
@@ -2792,6 +2868,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 55
       damage: 55
@@ -2802,6 +2880,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 60
       damage: 57
@@ -2812,6 +2892,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 65
       damage: 60
@@ -2822,6 +2904,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 70
       damage: 62
@@ -2832,6 +2916,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 75
       damage: 65
@@ -2842,6 +2928,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 80
       damage: 68
@@ -2852,6 +2940,8 @@ MonoBehaviour:
       attackRange: 2
       projectileSpeed: 4
       projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
+      canPierce: 0
+      maxPierceCount: 1
     placementType: 1
     isWallEquipment: 1
   plowedSprite: {fileID: -6141724211594974790, guid: ffe297430ba95ef4aadcc05dc1ffc8a5, type: 3}

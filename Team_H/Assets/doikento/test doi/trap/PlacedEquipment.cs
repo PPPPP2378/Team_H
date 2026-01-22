@@ -22,6 +22,8 @@ public class EquipmentLevelData
     public float projectileSpeed = 6f;
     public GameObject projectilePrefab; // 弾のPrefab
 
+    public bool canPierce = false;   // 貫通するか
+    public int maxPierceCount = 1;   // 何体まで貫通するか（1＝1体で消える）
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -365,6 +367,10 @@ public class PlacedEquipment : MonoBehaviour
 )
     {
         float traveled = 0f;
+        int pierceCount = 0;
+
+        // すでにヒットした敵
+        HashSet<Collider2D> hitTargets = new HashSet<Collider2D>();
 
         while (bullet != null && traveled < lv.attackRange)
         {
@@ -378,23 +384,29 @@ public class PlacedEquipment : MonoBehaviour
                 LayerMask.GetMask("Enemy")
             );
 
-            if (hit != null)
+            if (hit != null && !hitTargets.Contains(hit))
             {
-                var rabbit = hit.GetComponent<RabbitAI_Complete>();
-                var crow = hit.GetComponent<CrowFlockAI>();
-                var bear = hit.GetComponent<bear_Ai>();
+                hitTargets.Add(hit);
 
-                if (rabbit) rabbit.TakeDamage(lv.damage);
-                if (crow) crow.TakeDamage(lv.damage);
-                if (bear) bear.TakeDamage(lv.damage);
+                // ダメージ
+                if (hit.TryGetComponent(out RabbitAI_Complete rabbit))
+                    rabbit.TakeDamage(lv.damage);
+                else if (hit.TryGetComponent(out CrowFlockAI crow))
+                    crow.TakeDamage(lv.damage);
+                else if (hit.TryGetComponent(out bear_Ai bear))
+                    bear.TakeDamage(lv.damage);
 
                 if (lv.hitEffect != null)
                 {
                     GameObject effect = Instantiate(lv.hitEffect, hit.transform.position, Quaternion.identity);
                     Destroy(effect, 0.6f);
                 }
-                Destroy(bullet);
-                yield break;
+                pierceCount++;
+                if (!lv.canPierce || pierceCount >= lv.maxPierceCount)
+                {
+                    Destroy(bullet);
+                    yield break;
+                }
             }
 
             yield return null;
@@ -402,4 +414,6 @@ public class PlacedEquipment : MonoBehaviour
 
         if (bullet) Destroy(bullet);
     }
+
+   
 }
