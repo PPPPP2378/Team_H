@@ -25,6 +25,7 @@ TagManager:
   - W
   - menu
   - Laser
+  - Landmine
   layers:
   - Default
   - TransparentFX
