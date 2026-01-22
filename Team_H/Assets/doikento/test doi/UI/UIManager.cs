@@ -64,6 +64,10 @@ public class UIManager : MonoBehaviour
         seedTabButton?.onClick.AddListener(ShowSeedInventory);
     }
 
+    /// <summary>
+    /// リザルト画面を表示
+    /// </summary>
+    /// <param name="isClear"></param>
     public void ShowResult(bool isClear)
     {
         if (resultPanel == null) return;
@@ -85,7 +89,9 @@ public class UIManager : MonoBehaviour
         WaveManager.PlayerCanControl = false;
         WaveManager.CanGrow = false;
     }
-
+    /// <summary>
+    /// プレイヤーのスコア表示
+    /// </summary>
     private string playerScoreText()
     {
         return $"{player.GetType().GetField("currentScore", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(player)}";
@@ -182,6 +188,11 @@ public class UIManager : MonoBehaviour
             descriptionPanel.SetActive(false);
     }
 
+    /// <summary>
+    /// ツールチップを表示する
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="worldPos"></param>
     public void ShowTooltip(string text, Vector3 worldPos)
     {
         if (tooltipPanel == null) return;
@@ -194,6 +205,9 @@ public class UIManager : MonoBehaviour
         tooltipPanel.transform.position = screenPos + new Vector3(0, 40f, 0); //少し上にずらす
     }
 
+    /// <summary>
+    /// ツールチップを非表示にする
+    /// </summary>
     public void HideTooltip()
     {
         if (tooltipPanel == null) return;

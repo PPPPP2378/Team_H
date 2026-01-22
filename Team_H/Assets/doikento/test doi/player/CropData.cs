@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// 作物のステータス
+/// インスペクターで個別に設定できる
+/// </summary>
 [System.Serializable]
 public class CropData
 {

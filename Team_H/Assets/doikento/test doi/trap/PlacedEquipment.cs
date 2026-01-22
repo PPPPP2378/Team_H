@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PlacedEquipment;
 
-
+/// <summary>
+/// 設備のレベルレベルごとのデータ
+/// </summary>
 [System.Serializable]
 public class EquipmentLevelData
 {
@@ -20,6 +22,8 @@ public class EquipmentLevelData
     public float projectileSpeed = 6f;
     public GameObject projectilePrefab; // 弾のPrefab
 
+    public bool canPierce = false;   // 貫通するか
+    public int maxPierceCount = 1;   // 何体まで貫通するか（1＝1体で消える）
 }
 
 public class PlacedEquipment : MonoBehaviour
@@ -75,7 +79,11 @@ public class PlacedEquipment : MonoBehaviour
     }
 
 
-    // レベルアップ処理
+    /// <summary>
+    /// レベルアップできるか判断する
+    /// </summary>
+    /// <param name="currentScore"></param>
+    /// <returns></returns>
     public bool TryUpgrade(ref int currentScore)
     {
 
@@ -121,7 +129,9 @@ public class PlacedEquipment : MonoBehaviour
 
         return true;
     }
-
+    /// <summary>
+    /// 現在レベルのステータスを反映
+    /// </summary>
     private void ApplyLevelStats()
     {
         if (sr == null) sr = GetComponent<SpriteRenderer>();
@@ -141,6 +151,10 @@ public class PlacedEquipment : MonoBehaviour
     // --- DamageTrap の機能統合 ---
     private int damage = 0;
 
+    /// <summary>
+    /// 敵が設備の範囲内にいるとダメージを与える
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerStay2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy")) return;
@@ -161,7 +175,10 @@ public class PlacedEquipment : MonoBehaviour
             }
         }
     }
-
+    /// <summary>
+    /// 反映から出るとダメージ処理を終了
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
@@ -191,7 +208,9 @@ public class PlacedEquipment : MonoBehaviour
             yield return new WaitForSeconds(damageInterval);
         }
     }
-
+    /// <summary>
+    /// 敵に一定間隔でダメージを与え続けるコルーチン
+    /// </summary>
     private IEnumerator DealDamageOverTime(MonoBehaviour target)
     {
         // 敵の Collider を取得
@@ -232,7 +251,10 @@ public class PlacedEquipment : MonoBehaviour
 
     }
 
-   
+    /// <summary>
+    /// 遠距離設備の攻撃ループ
+    /// 正面方向に敵がいれば弾を発射する
+    /// </summary>
     private IEnumerator RangedAttackLoop()
     {
         while (true)
@@ -268,7 +290,9 @@ public class PlacedEquipment : MonoBehaviour
             yield return null;
         }
     }
-
+    /// <summary>
+    /// 弾を生成し直進させる
+    /// </summary>
     private void FireProjectile(Vector2 dir)
     {
         var lv = data.levels[level];
@@ -333,7 +357,9 @@ public class PlacedEquipment : MonoBehaviour
         UIManager ui = FindAnyObjectByType<UIManager>();
         ui.HideTooltip();
     }
-
+    /// <summary>
+    /// 弾を直線移動させ、敵に当たったらダメージを与える
+    /// </summary>
     private IEnumerator MoveProjectileStraight(
     GameObject bullet,
     Vector2 dir,
@@ -341,6 +367,10 @@ public class PlacedEquipment : MonoBehaviour
 )
     {
         float traveled = 0f;
+        int pierceCount = 0;
+
+        // すでにヒットした敵
+        HashSet<Collider2D> hitTargets = new HashSet<Collider2D>();
 
         while (bullet != null && traveled < lv.attackRange)
         {
@@ -354,23 +384,29 @@ public class PlacedEquipment : MonoBehaviour
                 LayerMask.GetMask("Enemy")
             );
 
-            if (hit != null)
+            if (hit != null && !hitTargets.Contains(hit))
             {
-                var rabbit = hit.GetComponent<RabbitAI_Complete>();
-                var crow = hit.GetComponent<CrowFlockAI>();
-                var bear = hit.GetComponent<bear_Ai>();
+                hitTargets.Add(hit);
 
-                if (rabbit) rabbit.TakeDamage(lv.damage);
-                if (crow) crow.TakeDamage(lv.damage);
-                if (bear) bear.TakeDamage(lv.damage);
+                // ダメージ
+                if (hit.TryGetComponent(out RabbitAI_Complete rabbit))
+                    rabbit.TakeDamage(lv.damage);
+                else if (hit.TryGetComponent(out CrowFlockAI crow))
+                    crow.TakeDamage(lv.damage);
+                else if (hit.TryGetComponent(out bear_Ai bear))
+                    bear.TakeDamage(lv.damage);
 
                 if (lv.hitEffect != null)
                 {
                     GameObject effect = Instantiate(lv.hitEffect, hit.transform.position, Quaternion.identity);
                     Destroy(effect, 0.6f);
                 }
-                Destroy(bullet);
-                yield break;
+                pierceCount++;
+                if (!lv.canPierce || pierceCount >= lv.maxPierceCount)
+                {
+                    Destroy(bullet);
+                    yield break;
+                }
             }
 
             yield return null;
@@ -378,4 +414,6 @@ public class PlacedEquipment : MonoBehaviour
 
         if (bullet) Destroy(bullet);
     }
+
+   
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 
+//敵がダメージを受けたらテキストを表示
 public class DamageText : MonoBehaviour
 {
     public TextMeshProUGUI text;

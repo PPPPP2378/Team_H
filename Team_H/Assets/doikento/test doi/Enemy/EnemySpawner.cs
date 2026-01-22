@@ -3,6 +3,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// “G‚Ì\¬‚ğŒˆ‚ß‚é
+/// </summary>
 [System.Serializable]
 public class WaveEnemySet
 {
