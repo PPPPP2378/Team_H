@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("ステージ設定")]
+    [Tooltip("このシーンのステージ番号 (1, 2, 3...)")]
+    [SerializeField] private int stageNumber = 1;
+
     [Header("スコア表示")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
@@ -47,25 +51,29 @@ public class UIManager : MonoBehaviour
         if (resultPanel != null && resultPanel.activeSelf)
         {
             resultPanel.SetActive(false);
-           
         }
+
         // インベントリUI 初期状態は非表示
         if (inventoryPanel != null)
             inventoryPanel.SetActive(false);
+
         // 説明パネル 初期は非表示
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
+
         // プレイヤー情報を取得
         player = FindAnyObjectByType<player_move>();
+
         // 初期状態では設備タブを表示
         ShowEquipmentInventory();
+
         // タブ切り替えボタン設定
         equipmentTabButton?.onClick.AddListener(ShowEquipmentInventory);
         seedTabButton?.onClick.AddListener(ShowSeedInventory);
     }
 
     /// <summary>
-    /// リザルト画面を表示
+    /// リザルト画面を表示し、クリア時はデータを保存する
     /// </summary>
     /// <param name="isClear"></param>
     public void ShowResult(bool isClear)
@@ -74,27 +82,73 @@ public class UIManager : MonoBehaviour
 
         resultPanel.SetActive(true);
 
-        // タイトルテキストを元に戻す
+        // タイトルテキストの設定
         titleText.text = isClear ? "STAGE CLEAR" : "GAME OVER";
 
-        // スコア表示
+        // スコアの取得と表示
         if (player != null)
-            _scoreText.text = $"SCORE: {playerScoreText()}";
+        {
+            int currentScore = GetPlayerScore();
+            _scoreText.text = $"SCORE: {currentScore}";
+
+            // ステージクリア時のみデータを保存
+            if (isClear)
+            {
+                SaveStageData(currentScore);
+            }
+        }
         else
+        {
             _scoreText.text = "";
+        }
+
         // ボタン表示制御
         retryButton.gameObject.SetActive(!isClear);
         stageSelectButton.gameObject.SetActive(true);
+
         // ゲーム操作を止める
         WaveManager.PlayerCanControl = false;
         WaveManager.CanGrow = false;
     }
+
     /// <summary>
-    /// プレイヤーのスコア表示
+    /// PlayerPrefsを使用してステージデータを保存
+    /// </summary>
+    private void SaveStageData(int score)
+    {
+        // クリアフラグ (1 = クリア済み)
+        PlayerPrefs.SetInt($"Stage{stageNumber}Clear", 1);
+
+        // 今回のスコアを「前回のスコア」として保存
+        PlayerPrefs.SetInt($"Stage{stageNumber}LastScore", score);
+
+        // ハイスコアの更新
+        int currentBest = PlayerPrefs.GetInt($"Stage{stageNumber}HighScore", 0);
+        if (score > currentBest)
+        {
+            PlayerPrefs.SetInt($"Stage{stageNumber}HighScore", score);
+        }
+
+        PlayerPrefs.Save();
+        UnityEngine.Debug.Log($"Stage {stageNumber} Data Saved: Score {score}");
+    }
+
+    /// <summary>
+    /// リフレクションを使用してplayer_moveから現在のスコアを数値で取得
+    /// </summary>
+    private int GetPlayerScore()
+    {
+        if (player == null) return 0;
+        var field = player.GetType().GetField("currentScore", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        return field != null ? (int)field.GetValue(player) : 0;
+    }
+
+    /// <summary>
+    /// プレイヤーのスコア表示用文字列（UI更新用）
     /// </summary>
     private string playerScoreText()
     {
-        return $"{player.GetType().GetField("currentScore", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).GetValue(player)}";
+        return GetPlayerScore().ToString();
     }
 
     // リトライボタン処理
@@ -103,12 +157,14 @@ public class UIManager : MonoBehaviour
         LoadingManager.nextSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene("LoadingScene");
     }
+
     // ステージセレクトへ戻る
     public void OnStageSelectButton()
     {
         LoadingManager.nextSceneName = "StageSelect"; //セレクト画面のシーン名
         SceneManager.LoadScene("LoadingScene");
     }
+
     // インベントリの開閉
     public void ToggleInventory()
     {
@@ -117,47 +173,44 @@ public class UIManager : MonoBehaviour
         isInventoryOpen = !isInventoryOpen;
         inventoryPanel.SetActive(isInventoryOpen);
 
-        // インベントリを閉じた時に説明文を強制的に消す
         if (!isInventoryOpen)
         {
             HideDescription();
         }
     }
-    //設備または種を選択時インベントリと説明テキストを閉じる
+
     public void CloseInventory()
     {
         inventoryPanel.SetActive(false);
         descriptionPanel.SetActive(false);
     }
-    // 設備タブの表示
+
     public void ShowEquipmentInventory()
     {
         if (equipmentInventoryUI == null || seedInventoryUI == null) return;
-
         equipmentInventoryUI.SetActive(true);
         seedInventoryUI.SetActive(false);
     }
-    // 種タブの表示
+
     public void ShowSeedInventory()
     {
         if (equipmentInventoryUI == null || seedInventoryUI == null) return;
-
         equipmentInventoryUI.SetActive(false);
         seedInventoryUI.SetActive(true);
     }
-    // スコア表示の更新
+
     public void UpdateScore(int score)
     {
         if (scoreText != null)
             scoreText.text = $": {score}";
     }
-    // レベル情報の更新
+
     public void UpdateLevel(int level, int currentExp, int expToNext)
     {
         if (levelText != null)
             levelText.text = $"   : {currentExp}/{expToNext} : Lv{level}";
     }
-    // 進行ゲージの表示切り替え
+
     public void ShowProgress(bool show)
     {
         if (progressGroup != null)
@@ -166,13 +219,13 @@ public class UIManager : MonoBehaviour
         if (progressBar != null)
             progressBar.gameObject.SetActive(show);
     }
-    // プログレスバー進行値の設定
+
     public void SetProgress(float value)
     {
         if (progressBar != null)
             progressBar.fillAmount = Mathf.Clamp01(value);
     }
-    // 設備・種の説明テキスト表示
+
     public void ShowDescription(string text)
     {
         if (descriptionPanel != null)
@@ -181,18 +234,13 @@ public class UIManager : MonoBehaviour
         if (descriptionText != null)
             descriptionText.text = text;
     }
-    // 説明パネルを閉じる
+
     public void HideDescription()
     {
         if (descriptionPanel != null)
             descriptionPanel.SetActive(false);
     }
 
-    /// <summary>
-    /// ツールチップを表示する
-    /// </summary>
-    /// <param name="text"></param>
-    /// <param name="worldPos"></param>
     public void ShowTooltip(string text, Vector3 worldPos)
     {
         if (tooltipPanel == null) return;
@@ -200,18 +248,13 @@ public class UIManager : MonoBehaviour
         tooltipPanel.SetActive(true);
         tooltipText.text = text;
 
-        // ワールド座標 → 画面座標に変換
         Vector3 screenPos = Camera.main.WorldToScreenPoint(worldPos);
-        tooltipPanel.transform.position = screenPos + new Vector3(0, 40f, 0); //少し上にずらす
+        tooltipPanel.transform.position = screenPos + new Vector3(0, 40f, 0);
     }
 
-    /// <summary>
-    /// ツールチップを非表示にする
-    /// </summary>
     public void HideTooltip()
     {
         if (tooltipPanel == null) return;
-
         tooltipPanel.SetActive(false);
     }
 }

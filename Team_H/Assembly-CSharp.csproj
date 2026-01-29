@@ -68,6 +68,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\kokubuyosiki\main\LoadingManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+    <Compile Include="Assets\doikento\test doi\UI\StageManager.cs" />
     <Compile Include="Assets\doikento\test doi\trap\PlacedEquipment.cs" />
     <Compile Include="Assets\doikento\test doi\player\CropData.cs" />
     <Compile Include="Assets\kokubuyosiki\main\Electricmeta.cs" />

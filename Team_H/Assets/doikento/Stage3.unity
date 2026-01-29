@@ -2793,6 +2793,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3395524935472784669}
     - target: {fileID: 8915200903127116476, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
+      propertyPath: stageNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915200903127116476, guid: 791f8d17696496e4a9633a5fe34dc66c, type: 3}
       propertyPath: stageSelectButton
       value: 
       objectReference: {fileID: 474000775787218615}
