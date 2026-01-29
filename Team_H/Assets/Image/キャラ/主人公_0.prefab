@@ -2396,9 +2396,9 @@ MonoBehaviour:
   - name: Discharge
     levels:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
-      cost: 7
-      damage: 2
-      damageInterval: 0.6
+      cost: 5
+      damage: 3
+      damageInterval: 0.5
       requiredPlayerLevel: 0
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2408,9 +2408,9 @@ MonoBehaviour:
       canPierce: 0
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
-      cost: 7
-      damage: 4
-      damageInterval: 0.6
+      cost: 5
+      damage: 6
+      damageInterval: 0.5
       requiredPlayerLevel: 1
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2421,8 +2421,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 7
-      damage: 6
-      damageInterval: 0.6
+      damage: 9
+      damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2434,7 +2434,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 8
-      damageInterval: 0.6
+      damageInterval: 0.5
       requiredPlayerLevel: 3
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2446,7 +2446,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 10
-      damageInterval: 0.6
+      damageInterval: 0.5
       requiredPlayerLevel: 4
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2458,7 +2458,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 10
       damage: 12
-      damageInterval: 0.6
+      damageInterval: 0.5
       requiredPlayerLevel: 5
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2470,7 +2470,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 13
       damage: 14
-      damageInterval: 0.6
+      damageInterval: 0.5
       requiredPlayerLevel: 6
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2481,8 +2481,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 13
-      damage: 16
-      damageInterval: 0.6
+      damage: 20
+      damageInterval: 0.5
       requiredPlayerLevel: 7
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2493,8 +2493,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 13
-      damage: 18
-      damageInterval: 0.6
+      damage: 22
+      damageInterval: 0.5
       requiredPlayerLevel: 8
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2505,8 +2505,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 16
-      damage: 20
-      damageInterval: 0.6
+      damage: 24
+      damageInterval: 0.5
       requiredPlayerLevel: 9
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2517,8 +2517,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 16
-      damage: 22
-      damageInterval: 0.4
+      damage: 26
+      damageInterval: 0.5
       requiredPlayerLevel: 10
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2529,8 +2529,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 16
-      damage: 24
-      damageInterval: 0.4
+      damage: 27
+      damageInterval: 0.5
       requiredPlayerLevel: 11
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2541,8 +2541,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 19
-      damage: 26
-      damageInterval: 0.4
+      damage: 28
+      damageInterval: 0.5
       requiredPlayerLevel: 12
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2554,7 +2554,7 @@ MonoBehaviour:
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 19
       damage: 29
-      damageInterval: 0.4
+      damageInterval: 0.5
       requiredPlayerLevel: 13
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2565,8 +2565,8 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 8054649531430733884, guid: 2c6454be97f26d74796f8befebc4b916, type: 3}
       cost: 19
-      damage: 32
-      damageInterval: 0.4
+      damage: 30
+      damageInterval: 0.5
       requiredPlayerLevel: 14
       hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
       isRanged: 0
@@ -2584,188 +2584,188 @@ MonoBehaviour:
       damage: 5
       damageInterval: 0.5
       requiredPlayerLevel: 0
-      hitEffect: {fileID: 7484866973036073531, guid: a949a62da47a27e468fdf55d670c8e60, type: 3}
+      hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 5
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
       canPierce: 1
       maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
-      damage: 5
+      damage: 7
       damageInterval: 0.5
       requiredPlayerLevel: 1
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 6
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
-      damage: 7
+      damage: 9
       damageInterval: 0.5
       requiredPlayerLevel: 2
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 6
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
       cost: 10
-      damage: 10
+      damage: 11
       damageInterval: 0.5
       requiredPlayerLevel: 3
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 6
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 15
-      damage: 15
+      cost: 24
+      damage: 13
       damageInterval: 0.5
       requiredPlayerLevel: 4
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 6
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 15
-      damage: 17
+      cost: 27
+      damage: 15
       damageInterval: 0.5
       requiredPlayerLevel: 5
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 6
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 3
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 15
-      damage: 20
-      damageInterval: 0.5
+      cost: 31
+      damage: 19
+      damageInterval: 0.45
       requiredPlayerLevel: 6
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 20
+      cost: 35
       damage: 23
-      damageInterval: 0.5
+      damageInterval: 0.45
       requiredPlayerLevel: 7
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 20
-      damage: 25
-      damageInterval: 0.5
+      cost: 41
+      damage: 26
+      damageInterval: 0.45
       requiredPlayerLevel: 8
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 20
-      damage: 27
-      damageInterval: 0.5
+      cost: 48
+      damage: 30
+      damageInterval: 0.45
       requiredPlayerLevel: 9
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 20
-      damage: 30
-      damageInterval: 0.5
+      cost: 56
+      damage: 34
+      damageInterval: 0.45
       requiredPlayerLevel: 10
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 25
-      damage: 32
-      damageInterval: 0.5
+      cost: 65
+      damage: 38
+      damageInterval: 0.45
       requiredPlayerLevel: 11
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 25
-      damage: 35
-      damageInterval: 0.5
+      cost: 75
+      damage: 42
+      damageInterval: 0.45
       requiredPlayerLevel: 12
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 25
-      damage: 38
-      damageInterval: 0.5
+      cost: 86
+      damage: 46
+      damageInterval: 0.45
       requiredPlayerLevel: 13
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     - sprite: {fileID: -8186890479509846336, guid: 8e3eb280a3588f44693981b43c219c5a, type: 3}
-      cost: 30
-      damage: 40
-      damageInterval: 0.5
+      cost: 98
+      damage: 52
+      damageInterval: 0.45
       requiredPlayerLevel: 14
       hitEffect: {fileID: 0}
       isRanged: 1
-      attackRange: 3
+      attackRange: 8
       projectileSpeed: 6
       projectilePrefab: {fileID: 5387203998164867327, guid: d64db1d1fb5477b41a623dacc58e807c, type: 3}
-      canPierce: 0
-      maxPierceCount: 1
+      canPierce: 1
+      maxPierceCount: 5
     placementType: 1
     isWallEquipment: 1
   - name: Laser
     levels:
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 15
-      damage: 10
+      damage: 13
       damageInterval: 1
       requiredPlayerLevel: 0
       hitEffect: {fileID: 0}
@@ -2777,14 +2777,14 @@ MonoBehaviour:
       maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
       cost: 15
-      damage: 15
+      damage: 16
       damageInterval: 1
       requiredPlayerLevel: 1
       hitEffect: {fileID: 0}
       isRanged: 1
       attackRange: 2
       projectileSpeed: 4
-      projectilePrefab: {fileID: 0}
+      projectilePrefab: {fileID: 333292710616577115, guid: 890bed5a64a19234e99cc2241f112845, type: 3}
       canPierce: 0
       maxPierceCount: 1
     - sprite: {fileID: 6180934119996359813, guid: ce549d1a169180b44bea27ecf12b1345, type: 3}
