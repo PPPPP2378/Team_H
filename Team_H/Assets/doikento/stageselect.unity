@@ -834,6 +834,7 @@ GameObject:
   - component: {fileID: 877282063}
   - component: {fileID: 877282062}
   - component: {fileID: 877282067}
+  - component: {fileID: 877282068}
   m_Layer: 5
   m_Name: Button (Legacy) (2)
   m_TagString: Untagged
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7090691682978998755, guid: 74731620c67acb4438c556f532aa4368, type: 3}
+  m_Sprite: {fileID: 5238860390003058821, guid: 952948e87e4c5f04ca615ad197c85961, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1090,6 +1091,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   se: {fileID: 877282062}
+--- !u!114 &877282068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877282060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb21aff9fab2ea41b922adbf1c3ec83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageKey: Stage3Clear
+  buttonImage: {fileID: 877282065}
+  clearedSprite: {fileID: -8066426939146629705, guid: 083846091264c0841a243ab776b04662, type: 3}
 --- !u!1 &963284744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,7 +1316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7090691682978998755, guid: 74731620c67acb4438c556f532aa4368, type: 3}
+  m_Sprite: {fileID: 5238860390003058821, guid: 952948e87e4c5f04ca615ad197c85961, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1455,7 +1471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageKey: Stage1Clear
   buttonImage: {fileID: 1312684791}
-  clearedSprite: {fileID: 0}
+  clearedSprite: {fileID: -8066426939146629705, guid: 083846091264c0841a243ab776b04662, type: 3}
 --- !u!1 &1339727527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,6 +1566,7 @@ GameObject:
   - component: {fileID: 1408512544}
   - component: {fileID: 1408512543}
   - component: {fileID: 1408512548}
+  - component: {fileID: 1408512549}
   m_Layer: 5
   m_Name: Button (Legacy) (1)
   m_TagString: Untagged
@@ -1775,7 +1792,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7090691682978998755, guid: 74731620c67acb4438c556f532aa4368, type: 3}
+  m_Sprite: {fileID: 5238860390003058821, guid: 952948e87e4c5f04ca615ad197c85961, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1806,6 +1823,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   se: {fileID: 1408512543}
+--- !u!114 &1408512549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408512541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb21aff9fab2ea41b922adbf1c3ec83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageKey: Stage2Clear
+  buttonImage: {fileID: 1408512546}
+  clearedSprite: {fileID: -8066426939146629705, guid: 083846091264c0841a243ab776b04662, type: 3}
 --- !u!1 &1422776188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1856,7 +1888,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2282,6 +2314,7 @@ GameObject:
   - component: {fileID: 1910469270}
   - component: {fileID: 1910469269}
   - component: {fileID: 1910469274}
+  - component: {fileID: 1910469275}
   m_Layer: 5
   m_Name: Button (Legacy) (3)
   m_TagString: Untagged
@@ -2507,7 +2540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7090691682978998755, guid: 74731620c67acb4438c556f532aa4368, type: 3}
+  m_Sprite: {fileID: 5238860390003058821, guid: 952948e87e4c5f04ca615ad197c85961, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2538,6 +2571,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   se: {fileID: 1910469269}
+--- !u!114 &1910469275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910469267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb21aff9fab2ea41b922adbf1c3ec83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageKey: Stage4Clear
+  buttonImage: {fileID: 1910469272}
+  clearedSprite: {fileID: -8066426939146629705, guid: 083846091264c0841a243ab776b04662, type: 3}
 --- !u!1 &1958808357
 GameObject:
   m_ObjectHideFlags: 0
