@@ -208,7 +208,7 @@ public class UIManager : MonoBehaviour
     public void UpdateLevel(int level, int currentExp, int expToNext)
     {
         if (levelText != null)
-            levelText.text = $"   : {currentExp}/{expToNext} : Lv{level}";
+            levelText.text = $"   {currentExp}/{expToNext} : Lv{level}";
     }
 
     public void ShowProgress(bool show)
