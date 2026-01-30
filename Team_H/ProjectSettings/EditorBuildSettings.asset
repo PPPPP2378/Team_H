@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/doikento/tutorial.unity
     guid: 52294f00ea48e7a488819967d883196e
+  - enabled: 1
+    path: Assets/doikento/tutorial 1.unity
+    guid: d3f9ad24d74909540a1816ed06103f47
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
