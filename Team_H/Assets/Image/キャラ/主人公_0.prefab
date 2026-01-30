@@ -132,7 +132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &903123519113456310
 RectTransform:
   m_ObjectHideFlags: 0
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u30C8\u30DE\u30C8\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C840\n\u6210\u9577\u3059\u308B\u307E\u306720\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
+  description: "\u30C8\u30DE\u30C8\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C850\n\u6210\u9577\u3059\u308B\u307E\u306725\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &1295038803621151692
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u30AD\u30E3\u30D9\u30C4\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C830\n\u6210\u9577\u3059\u308B\u307E\u306723\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
+  description: "\u30AD\u30E3\u30D9\u30C4\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C840\n\u6210\u9577\u3059\u308B\u307E\u306720\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &2132365322490543716
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4060794722950387190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u5C0F\u9EA6\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C810\n\u6210\u9577\u3059\u308B\u307E\u306710\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
+  description: "\u5C0F\u9EA6\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C815\n\u6210\u9577\u3059\u308B\u307E\u306710\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &3452143470854357390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u30B8\u30E3\u30AC\u30A4\u30E2\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C820\n\u6210\u9577\u3059\u308B\u307E\u306715\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
+  description: "\u30B8\u30E3\u30AC\u30A4\u30E2\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C825\n\u6210\u9577\u3059\u308B\u307E\u306720\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &3719899604548673902
 GameObject:
   m_ObjectHideFlags: 0
@@ -3161,7 +3161,7 @@ MonoBehaviour:
     seedSprite: {fileID: 5371779389558694591, guid: c648aa1d49989cd449850915cf6d173b, type: 3}
     growingSprite: {fileID: -5021481931098149597, guid: dc52ec93cc827b84b8e0c0a5f786d731, type: 3}
     grownSprite: {fileID: 3304151830600840588, guid: c1e90eec03be1c74abe73576d72dc4c1, type: 3}
-    growTime: 15
+    growTime: 10
     fullGrowTime: 10
     harvestPoints: 40
     expGain: 20
@@ -3169,7 +3169,7 @@ MonoBehaviour:
     seedSprite: {fileID: -1931649684300762147, guid: 37dfcde004289ff48967a09634fb2e9c, type: 3}
     growingSprite: {fileID: 1693137065039621466, guid: dc86a43fa5ef84c48aac930f7f7f5e21, type: 3}
     grownSprite: {fileID: 5986707135889605919, guid: 1bceadfff2b236c40b38eb1794f312bb, type: 3}
-    growTime: 10
+    growTime: 15
     fullGrowTime: 10
     harvestPoints: 50
     expGain: 30
@@ -3213,6 +3213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26542b6e62e249643885bf8b432423b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNumber: 1
   scoreText: {fileID: 7456520142624371399}
   levelText: {fileID: 8104590376356896002}
   progressBar: {fileID: 862522515473277362}
@@ -4214,7 +4215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3277419555779485156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5118,7 +5119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29a2fb061b64d143bd0e83a06e0d587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: "\u4EBA\u53C2\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C815\n\u6210\u9577\u3059\u308B\u307E\u306715\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
+  description: "\u4EBA\u53C2\uFF1A\u53CE\u7A6B\u6642\u30DD\u30A4\u30F3\u30C820\n\u6210\u9577\u3059\u308B\u307E\u306715\u79D2\u7A0B\u5EA6\u304B\u304B\u308B"
 --- !u!1 &8273644063421791065
 GameObject:
   m_ObjectHideFlags: 0
